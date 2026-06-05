@@ -117,17 +117,62 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| NL-01 – NL-06 | Phase 1 | Pending |
-| CANVAS-01 – CANVAS-06 | Phase 2–3 | Pending |
-| LAYOUT-01 – LAYOUT-05 | Phase 2–3 | Pending |
-| ELEM-01 – ELEM-12 | Phase 4 | Pending |
-| HF-01 – HF-04 | Phase 5 | Pending |
-| EXPORT-01 – EXPORT-07 | Phase 6 | Pending |
+| NL-01 | Phase 2 — Newsletter CRUD & Dashboard | Pending |
+| NL-02 | Phase 2 — Newsletter CRUD & Dashboard | Pending |
+| NL-03 | Phase 2 — Newsletter CRUD & Dashboard | Pending |
+| NL-04 | Phase 2 — Newsletter CRUD & Dashboard | Pending |
+| NL-05 | Phase 2 — Newsletter CRUD & Dashboard | Pending |
+| NL-06 | Phase 2 — Newsletter CRUD & Dashboard | Pending |
+| HF-01 | Phase 8 — Header/Footer Presets & Pre-header | Pending |
+| HF-02 | Phase 8 — Header/Footer Presets & Pre-header | Pending |
+| HF-03 | Phase 8 — Header/Footer Presets & Pre-header | Pending |
+| HF-04 | Phase 8 — Header/Footer Presets & Pre-header | Pending |
+| CANVAS-01 | Phase 3 — Canvas Shell & Layout Rendering | Pending |
+| CANVAS-02 | Phase 4 — DnD: Row-Level Operations | Pending |
+| CANVAS-03 | Phase 4 — DnD: Row-Level Operations | Pending |
+| CANVAS-04 | Phase 4 — DnD: Row-Level Operations | Pending |
+| CANVAS-05 | Phase 4 — DnD: Row-Level Operations | Pending |
+| CANVAS-06 | Phase 4 — DnD: Row-Level Operations | Pending |
+| LAYOUT-01 | Phase 3 — Canvas Shell & Layout Rendering | Pending |
+| LAYOUT-02 | Phase 3 — Canvas Shell & Layout Rendering | Pending |
+| LAYOUT-03 | Phase 3 — Canvas Shell & Layout Rendering | Pending |
+| LAYOUT-04 | Phase 3 — Canvas Shell & Layout Rendering | Pending |
+| LAYOUT-05 | Phase 3 — Canvas Shell & Layout Rendering | Pending |
+| ELEM-01 | Phase 6 — Image & Button Elements | Pending |
+| ELEM-02 | Phase 6 — Image & Button Elements | Pending |
+| ELEM-03 | Phase 6 — Image & Button Elements | Pending |
+| ELEM-04 | Phase 6 — Image & Button Elements | Pending |
+| ELEM-05 | Phase 6 — Image & Button Elements | Pending |
+| ELEM-06 | Phase 7 — Rich Text, Divider & TipTap | Pending |
+| ELEM-07 | Phase 7 — Rich Text, Divider & TipTap | Pending |
+| ELEM-08 | Phase 7 — Rich Text, Divider & TipTap | Pending |
+| ELEM-09 | Phase 7 — Rich Text, Divider & TipTap | Pending |
+| ELEM-10 | Phase 5 — DnD: Element Placement | Pending |
+| ELEM-11 | Phase 5 — DnD: Element Placement | Pending |
+| ELEM-12 | Phase 5 — DnD: Element Placement | Pending |
+| EXPORT-01 | Phase 9 — HTML Export Pipeline | Pending |
+| EXPORT-02 | Phase 9 — HTML Export Pipeline | Pending |
+| EXPORT-03 | Phase 9 — HTML Export Pipeline | Pending |
+| EXPORT-04 | Phase 9 — HTML Export Pipeline | Pending |
+| EXPORT-05 | Phase 9 — HTML Export Pipeline | Pending |
+| EXPORT-06 | Phase 9 — HTML Export Pipeline | Pending |
+| EXPORT-07 | Phase 9 — HTML Export Pipeline | Pending |
 
 **Coverage:**
 - v1 requirements: 40 total
 - Mapped to phases: 40
 - Unmapped: 0 ✓
+
+**Phase summary:**
+- Phase 1: Foundation (infra only — 0 requirements)
+- Phase 2: NL-01–NL-06 (6 requirements)
+- Phase 3: CANVAS-01, LAYOUT-01–LAYOUT-05 (6 requirements)
+- Phase 4: CANVAS-02–CANVAS-06 (5 requirements)
+- Phase 5: ELEM-10–ELEM-12 (3 requirements)
+- Phase 6: ELEM-01–ELEM-05 (5 requirements)
+- Phase 7: ELEM-06–ELEM-09 (4 requirements)
+- Phase 8: HF-01–HF-04 (4 requirements)
+- Phase 9: EXPORT-01–EXPORT-07 (7 requirements)
 
 ---
 *Requirements defined: 2026-06-05*
