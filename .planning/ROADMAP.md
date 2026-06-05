@@ -26,16 +26,16 @@ NL Layouter delivers a web-based drag-and-drop newsletter builder in 9 phases. P
 
 **Requirements covered:** *(none — infrastructure phase enabling all later phases)*
 
-### Plans
+**Plans:** 7 plans across 4 waves
 
-1. **Monorepo scaffold** — Initialize pnpm workspace with `apps/client` (Vite 8 + React 19 + TypeScript strict) and `apps/server` (Fastify 5 + TypeScript); shared root `tsconfig.base.json`
-2. **Fastify server foundation** — Entry point with `@fastify/cors`, `@fastify/cookie`; health check `GET /health`; env-driven config via Zod + dotenv
-3. **Database setup** — `docker-compose.yml` for PostgreSQL 16 local dev; Drizzle ORM connection (`postgres.js` driver); `drizzle-kit` config; empty initial migration runs cleanly
-4. **`NewsletterDoc` TypeScript types** — Full type definitions: `NewsletterDoc`, `Section`, `ColumnSlot`, `ElementUnion` discriminated union (image, image-link, button, rich-text, divider) with per-element config shapes
-5. **DnD type constants** — Define `DRAG_TYPES` enum (`LAYOUT_CARD`, `ELEMENT_CARD`, `CANVAS_ROW`, `CANVAS_ELEMENT`); document accept constraints per droppable zone; commit as `src/dnd/types.ts`
-6. **TipTap v3 scaffold** — Install `@tiptap/react`, `@tiptap/pm`, `@tiptap/starter-kit`, `@tiptap/extensions`, `@tiptap/extension-text-style`, `@tiptap/extension-color`; create `src/editor/extensions.ts` with stub `renderHTML` overrides emitting `style=""` (to be fleshed out in Phase 7)
-7. **React client foundation** — Tailwind v4 CSS-first config (`@import "tailwindcss"` + `@tailwindcss/vite`); shadcn/ui CLI init; TanStack Query `QueryClientProvider`; react-router v7 with placeholder routes; Zustand store scaffold (`useNewsletterStore`)
-8. **Environment + dev tooling** — `.env.example`; Zod env validation on server startup; README quick-start; `pnpm dev` runs both apps concurrently
+Plans:
+- [ ] 01-01-PLAN.md — Monorepo scaffold: pnpm workspace, root tsconfig.base.json, apps/client + apps/server package.json with all dependencies, pnpm install
+- [ ] 01-02-PLAN.md — Fastify server foundation: Zod env config (config.ts), Fastify entry with @fastify/cors + @fastify/cookie + GET /health
+- [ ] 01-03-PLAN.md — Database setup: docker-compose.yml, drizzle.config.ts, empty schema.ts, connection.ts; [BLOCKING] drizzle-kit push against Neon.tech
+- [ ] 01-04-PLAN.md — NewsletterDoc TypeScript types (TDD): full discriminated union with all 5 elements including DividerElement; Vitest type test confirms exhaustive switch
+- [ ] 01-05-PLAN.md — DnD type constants + TipTap v3 scaffold: DRAG_TYPES enum + ACCEPT_CONSTRAINTS; emailSafeExtensions with inline-style renderHTML stubs
+- [ ] 01-06-PLAN.md — React client foundation: Tailwind v4 CSS-first + shadcn init; main.tsx with QueryClientProvider + RouterProvider; Zustand + Immer store scaffold
+- [ ] 01-07-PLAN.md — Environment & dev tooling: .env.example, README quick-start; [VERIFY] pnpm dev starts both apps, /health responds
 
 ### Done When
 
