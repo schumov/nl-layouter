@@ -78,6 +78,7 @@ Status In Progress
 | `DividerElement` explicitly in `ElementUnion` — 5th type missing from ARCHITECTURE.md | REQUIREMENTS.md ELEM-09 requires it; Phase 7 depends on it; adding in Phase 1 prevents breaking change | Phase 1 |
 | `Section`/`ColumnSlot` naming (not `Row`/`Slot`) | Matches ROADMAP naming conventions throughout codebase | Phase 1 |
 | `assertNeverElement` exported from `newsletter.ts` | Single exhaustiveness helper for all phases' switch statements | Phase 1 |
+| `drizzle.config.ts` excluded from `tsconfig.json` include — `rootDir=./src` conflict | drizzle-kit runs its own TS transpilation (esbuild); file works with CLI, tsc not needed | Phase 1 |
 
 ### Critical Constraints (from research)
 
@@ -129,7 +130,7 @@ Status In Progress
 
 ## Session Continuity
 
-Last updated: 2026-06-06 (Plan 01-04 executed)
+Last updated: 2026-06-06 (Plan 01-03 executed — Drizzle DB layer, drizzle-kit push OK)
 Next action: Execute Plan 01-05 (DnD type constants + TipTap v3 scaffold)
 
 ### Phase Dependency Chain
