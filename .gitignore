@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+
+# Environment (NEVER commit real secrets)
+.env
+.env.local
+.env.*.local
+apps/server/.env
+
+# Drizzle generated migrations
+apps/server/drizzle/
+
+# OS / editor
+.DS_Store
+*.local
+.vscode/settings.json
+
+# TypeScript
+*.tsbuildinfo
