@@ -1,0 +1,21 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: nl-layouter-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: nl_layouter
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+
+# Local connection string (for future use when Docker is available):
+# postgresql://postgres:postgres@localhost:5432/nl_layouter
