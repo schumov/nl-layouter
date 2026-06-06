@@ -34,7 +34,7 @@ Goal: The monorepo scaffold, database connection, shared TypeScript types, and c
 
 ## Status
 
-**In Progress** — Phase 1, Plan 02 complete (7 plans total)
+**In Progress** — Phase 1, Plan 04 complete (7 plans total)
 
 ---
 
@@ -42,7 +42,7 @@ Goal: The monorepo scaffold, database connection, shared TypeScript types, and c
 
 ```
 Phase  1 / 9  ███░░░░░░░░░░░░░░░░░  14%
-Plan   2 / 7  (Plan 02 complete)
+Plan   4 / 7  (Plan 04 complete)
 Status In Progress
 ```
 
@@ -56,7 +56,7 @@ Status In Progress
 | Phases complete | 0 |
 | Requirements mapped | 40 / 40 |
 | Plans created | 7 |
-| Plans complete | 2 |
+| Plans complete | 4 |
 
 ---
 
@@ -75,7 +75,9 @@ Status In Progress
 | Better Auth for v2 auth (v1 is single-user, no login) | Database sessions > stateless JWT for this use case | v2 |
 | One active TipTap editor instance; static-renderer for rest | 20+ ProseMirror instances = 500 ms+ lag | Phase 7 |
 | GET /health response schema locked to `{status: string}` only | No env info, uptime, or version exposed (T-02-01) | Phase 1 |
-| CORS `origin` set to explicit `config.CLIENT_URL`, never `'*'` | credentials: true requires exact origin; prevents spoofing (T-02-02) | Phase 1 |
+| `DividerElement` explicitly in `ElementUnion` — 5th type missing from ARCHITECTURE.md | REQUIREMENTS.md ELEM-09 requires it; Phase 7 depends on it; adding in Phase 1 prevents breaking change | Phase 1 |
+| `Section`/`ColumnSlot` naming (not `Row`/`Slot`) | Matches ROADMAP naming conventions throughout codebase | Phase 1 |
+| `assertNeverElement` exported from `newsletter.ts` | Single exhaustiveness helper for all phases' switch statements | Phase 1 |
 
 ### Critical Constraints (from research)
 
@@ -127,8 +129,8 @@ Status In Progress
 
 ## Session Continuity
 
-Last updated: 2026-06-06 (Plan 01-02 executed)
-Next action: Execute Plan 01-03 (Drizzle DB setup)
+Last updated: 2026-06-06 (Plan 01-04 executed)
+Next action: Execute Plan 01-05 (DnD type constants + TipTap v3 scaffold)
 
 ### Phase Dependency Chain
 
