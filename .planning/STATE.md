@@ -34,7 +34,7 @@ Goal: The monorepo scaffold, database connection, shared TypeScript types, and c
 
 ## Status
 
-**In Progress** — Phase 1, Plan 04 complete (7 plans total)
+**In Progress** — Phase 1, Plan 05 complete (7 plans total)
 
 ---
 
@@ -42,7 +42,7 @@ Goal: The monorepo scaffold, database connection, shared TypeScript types, and c
 
 ```
 Phase  1 / 9  ███░░░░░░░░░░░░░░░░░  14%
-Plan   4 / 7  (Plan 04 complete)
+Plan   5 / 7  (Plan 05 complete)
 Status In Progress
 ```
 
@@ -56,7 +56,7 @@ Status In Progress
 | Phases complete | 0 |
 | Requirements mapped | 40 / 40 |
 | Plans created | 7 |
-| Plans complete | 4 |
+| Plans complete | 5 |
 
 ---
 
@@ -130,8 +130,8 @@ Status In Progress
 
 ## Session Continuity
 
-Last updated: 2026-06-06 (Plan 01-03 executed — Drizzle DB layer, drizzle-kit push OK)
-Next action: Execute Plan 01-05 (DnD type constants + TipTap v3 scaffold)
+Last updated: 2026-06-06 (Plan 01-05 executed — DnD DRAG_TYPES constants + TipTap v3 emailSafeExtensions scaffold)
+Next action: Execute Plan 01-06 (next plan in Phase 1)
 
 ### Phase Dependency Chain
 

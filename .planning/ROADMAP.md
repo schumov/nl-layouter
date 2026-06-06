@@ -33,7 +33,7 @@ Plans:
 - [x] 01-02-PLAN.md — Fastify server foundation: Zod env config (config.ts), Fastify entry with @fastify/cors + @fastify/cookie + GET /health
 - [x] 01-03-PLAN.md — Database setup: docker-compose.yml, drizzle.config.ts, empty schema.ts, connection.ts; [BLOCKING] drizzle-kit push against Neon.tech
 - [x] 01-04-PLAN.md — NewsletterDoc TypeScript types (TDD): full discriminated union with all 5 elements including DividerElement; Vitest type test confirms exhaustive switch
-- [ ] 01-05-PLAN.md — DnD type constants + TipTap v3 scaffold: DRAG_TYPES enum + ACCEPT_CONSTRAINTS; emailSafeExtensions with inline-style renderHTML stubs
+- [x] 01-05-PLAN.md — DnD type constants + TipTap v3 scaffold: DRAG_TYPES enum + ACCEPT_CONSTRAINTS; emailSafeExtensions with inline-style renderHTML stubs
 - [ ] 01-06-PLAN.md — React client foundation: Tailwind v4 CSS-first + shadcn init; main.tsx with QueryClientProvider + RouterProvider; Zustand + Immer store scaffold
 - [ ] 01-07-PLAN.md — Environment & dev tooling: .env.example, README quick-start; [VERIFY] pnpm dev starts both apps, /health responds
 
