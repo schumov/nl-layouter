@@ -29,7 +29,7 @@ NL Layouter delivers a web-based drag-and-drop newsletter builder in 9 phases. P
 **Plans:** 7 plans across 4 waves
 
 Plans:
-- [ ] 01-01-PLAN.md — Monorepo scaffold: pnpm workspace, root tsconfig.base.json, apps/client + apps/server package.json with all dependencies, pnpm install
+- [x] 01-01-PLAN.md — Monorepo scaffold: pnpm workspace, root tsconfig.base.json, apps/client + apps/server package.json with all dependencies, pnpm install
 - [ ] 01-02-PLAN.md — Fastify server foundation: Zod env config (config.ts), Fastify entry with @fastify/cors + @fastify/cookie + GET /health
 - [ ] 01-03-PLAN.md — Database setup: docker-compose.yml, drizzle.config.ts, empty schema.ts, connection.ts; [BLOCKING] drizzle-kit push against Neon.tech
 - [ ] 01-04-PLAN.md — NewsletterDoc TypeScript types (TDD): full discriminated union with all 5 elements including DividerElement; Vitest type test confirms exhaustive switch
