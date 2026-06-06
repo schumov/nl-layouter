@@ -5,15 +5,15 @@
 See: `.planning/PROJECT.md` (updated 2026-06-05)
 
 **Core value:** Users can build a fully structured, export-ready HTML newsletter without writing any code.
-**Current focus:** Phase 1 — Foundation & Stack Setup
+**Current focus:** Phase 2 — Newsletter CRUD & Dashboard
 
 ---
 
 ## Active Phase
 
-**Phase 1: Foundation & Stack Setup**
+**Phase 2: Newsletter CRUD & Dashboard**
 
-Goal: The monorepo scaffold, database connection, shared TypeScript types, and critical architectural constants are in place so both client and server can be developed on a solid foundation.
+Goal: Users can create, name, list, open, rename, delete, and auto-save newsletters through a working API and dashboard UI.
 
 ---
 
@@ -34,16 +34,16 @@ Goal: The monorepo scaffold, database connection, shared TypeScript types, and c
 
 ## Status
 
-**Phase 1 Complete** — All 7 plans executed; awaiting human smoke test (pnpm dev verification)
+**Phase 1 Verified ✅** — All 7 plans executed + smoke test passed + verification report written
 
 ---
 
 ## Current Position
 
 ```
-Phase  1 / 9  ████░░░░░░░░░░░░░░░░  ~14% (Phase 1 plans all complete)
-Plan   7 / 7  (Plan 07 complete — awaiting human verify)
-Status Phase 1 Complete (pending smoke test)
+Phase  1 / 9  ████░░░░░░░░░░░░░░░░  ~14% (Phase 1 COMPLETE ✅)
+Plan   0 / 8  (Phase 2 not yet started)
+Status Phase 2 ready to begin
 ```
 
 ---
@@ -53,7 +53,7 @@ Status Phase 1 Complete (pending smoke test)
 | Metric | Value |
 |--------|-------|
 | Phases total | 9 |
-| Phases complete | 1 (pending smoke test confirmation) |
+| Phases complete | 1 ✅ |
 | Requirements mapped | 40 / 40 |
 | Plans created | 7 |
 | Plans complete | 7 |
@@ -130,8 +130,8 @@ Status Phase 1 Complete (pending smoke test)
 
 ## Session Continuity
 
-Last updated: 2026-06-06 (Plan 01-07 executed — .env.example with placeholders, README.md quick-start guide; automated checks: typecheck exits 0, 7 type tests pass)
-Next action: Human smoke test — run `pnpm dev`, verify both apps start; then Phase 1 transitions to Phase 2
+Last updated: 2026-06-06 (Phase 1 verification complete — 01-VERIFICATION.md written; all 5 done-when criteria verified)
+Next action: Begin Phase 2 — Newsletter CRUD & Dashboard (Drizzle schema → API routes → TanStack Query hooks → dashboard UI)
 
 ### Phase Dependency Chain
 

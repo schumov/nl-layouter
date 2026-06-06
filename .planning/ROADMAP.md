@@ -39,11 +39,11 @@ Plans:
 
 ### Done When
 
-- [ ] `pnpm dev` starts client on port 3000 and server on port 3001 with zero errors
-- [ ] `GET /health` returns `{ "status": "ok" }` from Fastify
-- [ ] `drizzle-kit push` applies the initial schema against local PostgreSQL without errors
-- [ ] TypeScript strict-mode compilation passes on both `apps/client` and `apps/server` with 0 errors
-- [ ] `NewsletterDoc` type correctly models a newsletter with sections containing columns containing all 5 element types
+- [x] `pnpm dev` starts client on port 3000 and server on port 3001 with zero errors
+- [x] `GET /health` returns `{ "status": "ok" }` from Fastify
+- [x] `drizzle-kit push` applies the initial schema against Neon.tech without errors
+- [x] TypeScript strict-mode compilation passes on both `apps/client` and `apps/server` with 0 errors
+- [x] `NewsletterDoc` type correctly models a newsletter with sections containing columns containing all 5 element types
 
 ---
 
