@@ -34,7 +34,7 @@ Goal: The monorepo scaffold, database connection, shared TypeScript types, and c
 
 ## Status
 
-**In Progress** — Phase 1, Plan 01 complete (7 plans total)
+**In Progress** — Phase 1, Plan 02 complete (7 plans total)
 
 ---
 
@@ -42,7 +42,7 @@ Goal: The monorepo scaffold, database connection, shared TypeScript types, and c
 
 ```
 Phase  1 / 9  ███░░░░░░░░░░░░░░░░░  14%
-Plan   1 / 7  (Plan 01 complete)
+Plan   2 / 7  (Plan 02 complete)
 Status In Progress
 ```
 
@@ -56,7 +56,7 @@ Status In Progress
 | Phases complete | 0 |
 | Requirements mapped | 40 / 40 |
 | Plans created | 7 |
-| Plans complete | 1 |
+| Plans complete | 2 |
 
 ---
 
@@ -74,6 +74,8 @@ Status In Progress
 | Drizzle ORM (not Prisma) | No codegen step; TypeScript-native; lighter runtime | Phase 1 |
 | Better Auth for v2 auth (v1 is single-user, no login) | Database sessions > stateless JWT for this use case | v2 |
 | One active TipTap editor instance; static-renderer for rest | 20+ ProseMirror instances = 500 ms+ lag | Phase 7 |
+| GET /health response schema locked to `{status: string}` only | No env info, uptime, or version exposed (T-02-01) | Phase 1 |
+| CORS `origin` set to explicit `config.CLIENT_URL`, never `'*'` | credentials: true requires exact origin; prevents spoofing (T-02-02) | Phase 1 |
 
 ### Critical Constraints (from research)
 
@@ -125,8 +127,8 @@ Status In Progress
 
 ## Session Continuity
 
-Last updated: 2026-06-06 (Plan 01-01 executed)
-Next action: Execute Plan 01-02 (Fastify server foundation)
+Last updated: 2026-06-06 (Plan 01-02 executed)
+Next action: Execute Plan 01-03 (Drizzle DB setup)
 
 ### Phase Dependency Chain
 
