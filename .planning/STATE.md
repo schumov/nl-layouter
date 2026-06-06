@@ -34,16 +34,16 @@ Goal: The monorepo scaffold, database connection, shared TypeScript types, and c
 
 ## Status
 
-**In Progress** — Phase 1, Plan 06 complete (7 plans total)
+**Phase 1 Complete** — All 7 plans executed; awaiting human smoke test (pnpm dev verification)
 
 ---
 
 ## Current Position
 
 ```
-Phase  1 / 9  ███░░░░░░░░░░░░░░░░░  14%
-Plan   6 / 7  (Plan 06 complete)
-Status In Progress
+Phase  1 / 9  ████░░░░░░░░░░░░░░░░  ~14% (Phase 1 plans all complete)
+Plan   7 / 7  (Plan 07 complete — awaiting human verify)
+Status Phase 1 Complete (pending smoke test)
 ```
 
 ---
@@ -53,10 +53,10 @@ Status In Progress
 | Metric | Value |
 |--------|-------|
 | Phases total | 9 |
-| Phases complete | 0 |
+| Phases complete | 1 (pending smoke test confirmation) |
 | Requirements mapped | 40 / 40 |
 | Plans created | 7 |
-| Plans complete | 6 |
+| Plans complete | 7 |
 
 ---
 
@@ -130,8 +130,8 @@ Status In Progress
 
 ## Session Continuity
 
-Last updated: 2026-06-06 (Plan 01-06 executed — React client foundation: Tailwind v4 CSS-first, shadcn/ui init, QueryClientProvider + RouterProvider, Zustand + Immer store scaffold)
-Next action: Execute Plan 01-07 (environment & dev tooling — final plan in Phase 1)
+Last updated: 2026-06-06 (Plan 01-07 executed — .env.example with placeholders, README.md quick-start guide; automated checks: typecheck exits 0, 7 type tests pass)
+Next action: Human smoke test — run `pnpm dev`, verify both apps start; then Phase 1 transitions to Phase 2
 
 ### Phase Dependency Chain
 

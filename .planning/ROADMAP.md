@@ -8,7 +8,7 @@ NL Layouter delivers a web-based drag-and-drop newsletter builder in 9 phases. P
 
 ## Phases
 
-- [ ] **Phase 1: Foundation & Stack Setup** — Monorepo, Fastify + Drizzle + PostgreSQL, NewsletterDoc types, TipTap v3 scaffold, DnD type constants
+- [x] **Phase 1: Foundation & Stack Setup** — Monorepo, Fastify + Drizzle + PostgreSQL, NewsletterDoc types, TipTap v3 scaffold, DnD type constants
 - [ ] **Phase 2: Newsletter CRUD & Dashboard** — Full newsletter lifecycle: create, list, open, rename, delete, auto-save
 - [ ] **Phase 3: Canvas Shell & Layout Rendering** — Two-panel builder UI; all 5 layout types render with correct column proportions
 - [ ] **Phase 4: DnD — Row-Level Operations** — Drag layout sections from palette, reorder, delete, duplicate
@@ -35,7 +35,7 @@ Plans:
 - [x] 01-04-PLAN.md — NewsletterDoc TypeScript types (TDD): full discriminated union with all 5 elements including DividerElement; Vitest type test confirms exhaustive switch
 - [x] 01-05-PLAN.md — DnD type constants + TipTap v3 scaffold: DRAG_TYPES enum + ACCEPT_CONSTRAINTS; emailSafeExtensions with inline-style renderHTML stubs
 - [x] 01-06-PLAN.md — React client foundation: Tailwind v4 CSS-first + shadcn init; main.tsx with QueryClientProvider + RouterProvider; Zustand + Immer store scaffold
-- [ ] 01-07-PLAN.md — Environment & dev tooling: .env.example, README quick-start; [VERIFY] pnpm dev starts both apps, /health responds
+- [x] 01-07-PLAN.md — Environment & dev tooling: .env.example, README quick-start; [VERIFY] pnpm dev starts both apps, /health responds
 
 ### Done When
 
