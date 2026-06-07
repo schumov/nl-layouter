@@ -13,6 +13,9 @@ import { createBrowserRouter } from 'react-router'
 import { RouterProvider } from 'react-router/dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import './index.css'
+import DashboardPage from './pages/DashboardPage';
+import BuilderPage from './pages/BuilderPage';
+import { Toaster } from '@/components/ui/sonner';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -23,19 +26,19 @@ const queryClient = new QueryClient({
   },
 })
 
-// Placeholder routes — replaced in Phase 2 (dashboard) and Phase 3 (builder)
+// Routes
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <div style={{ padding: '2rem' }}>NL Layouter — Home (Phase 2 replaces this)</div>,
+    element: <DashboardPage />,
   },
   {
     path: '/newsletters',
-    element: <div style={{ padding: '2rem' }}>Newsletter List (Phase 2 replaces this)</div>,
+    element: <DashboardPage />,
   },
   {
     path: '/newsletters/:id',
-    element: <div style={{ padding: '2rem' }}>Builder (Phase 3 replaces this)</div>,
+    element: <BuilderPage />,
   },
 ])
 
@@ -46,6 +49,7 @@ ReactDOM.createRoot(rootEl).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
+      <Toaster position="bottom-right" />
     </QueryClientProvider>
   </React.StrictMode>
 )

@@ -2,19 +2,8 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router';
 import { useNewsletter } from '../hooks/useNewsletters';
 import { useNewsletterStore } from '../store/useNewsletterStore';
-import { useAutoSave, type SaveStatus } from '../hooks/useAutoSave';
-
-// BuilderHeader placeholder — replaced by real component in Plan 08
-function BuilderHeader({ id, title, saveStatus }: { id: string; title: string; saveStatus: SaveStatus }) {
-  return (
-    <div className="h-14 border-b bg-background flex items-center px-4 gap-4">
-      <span className="font-semibold truncate flex-1">{title}</span>
-      {saveStatus === 'saving' && <span className="text-sm text-muted-foreground">Saving…</span>}
-      {saveStatus === 'saved' && <span className="text-sm text-muted-foreground">Saved ✓</span>}
-      {saveStatus === 'error' && <span className="text-sm text-destructive">Save failed</span>}
-    </div>
-  );
-}
+import { useAutoSave } from '../hooks/useAutoSave';
+import BuilderHeader from '../components/builder/BuilderHeader';
 
 export default function BuilderPage() {
   const { id }                       = useParams<{ id: string }>();
