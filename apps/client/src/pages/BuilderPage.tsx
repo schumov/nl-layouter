@@ -16,7 +16,13 @@ export default function BuilderPage() {
     return () => clearDoc();
   }, [data, setDoc, clearDoc]);
 
-  if (isPending) return null;
+  if (isPending) {
+    return (
+      <div className="flex items-center justify-center h-screen text-sm text-muted-foreground">
+        Loading newsletter…
+      </div>
+    );
+  }
 
   if (isError) {
     return (

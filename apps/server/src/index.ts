@@ -12,6 +12,7 @@ const server = Fastify({
 await server.register(cors, {
   origin: config.CLIENT_URL,
   credentials: true,
+  methods: ['GET', 'HEAD', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
 });
 
 // Cookie plugin: needed by Better Auth (added in v2)
