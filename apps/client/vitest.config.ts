@@ -1,11 +1,16 @@
+/// <reference types="vitest" />
 import { defineConfig } from 'vitest/config';
+import path from 'path';
 
 export default defineConfig({
   test: {
-    environment: 'node',
-    include: ['src/**/*.test.ts', 'src/**/*.test-d.ts'],
-    typecheck: {
-      enabled: true,
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: [],
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
     },
   },
 });
