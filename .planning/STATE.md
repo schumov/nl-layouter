@@ -2,18 +2,18 @@
 
 ## Project Reference
 
-See: `.planning/PROJECT.md` (updated 2026-06-05)
+See: `.planning/PROJECT.md` (updated 2026-06-07)
 
 **Core value:** Users can build a fully structured, export-ready HTML newsletter without writing any code.
-**Current focus:** Phase 2 — Newsletter CRUD & Dashboard
+**Current focus:** Phase 3 — Canvas Shell & Layout Rendering
 
 ---
 
 ## Active Phase
 
-**Phase 2: Newsletter CRUD & Dashboard**
+**Phase 3: Canvas Shell & Layout Rendering**
 
-Goal: Users can create, name, list, open, rename, delete, and auto-save newsletters through a working API and dashboard UI.
+Goal: The builder page displays a two-panel layout where the canvas correctly renders all five layout section types with proportional columns and empty-slot placeholders.
 
 ---
 
@@ -35,16 +35,16 @@ Goal: Users can create, name, list, open, rename, delete, and auto-save newslett
 ## Status
 
 **Phase 1 Verified ✅** — All 7 plans executed + smoke test passed + verification report written
-**Phase 2 Executed ✅** — All 9 plans executed across 7 waves, TypeScript clean, tests green
+**Phase 2 Verified ✅** — All 9 plans executed, UAT 12/13 passed (1 skipped: auto-save pending Phase 3 canvas), CORS fix applied
 
 ---
 
 ## Current Position
 
 ```
-Phase  2 / 9  ████████░░░░░░░░░░░░  ~22% (Phase 2 EXECUTED ✅ — awaiting verification)
-Plan   9 / 9  (All waves complete)
-Status Phase 2 execution done — run /gsd-verify-work to verify
+Phase  3 / 9  ██████████░░░░░░░░░░  ~22% (Phase 3 — ready to plan)
+Plan   0 / ?  (not started)
+Status Phase 2 complete ✅ — run /gsd-plan-phase 3
 ```
 
 ---
@@ -54,7 +54,7 @@ Status Phase 2 execution done — run /gsd-verify-work to verify
 | Metric | Value |
 |--------|-------|
 | Phases total | 9 |
-| Phases complete | 1 ✅ (Phase 2 executed, awaiting verification) |
+| Phases complete | 2 ✅ |
 | Requirements mapped | 40 / 40 |
 | Plans created | 16 |
 | Plans complete | 16 |
@@ -131,8 +131,8 @@ Status Phase 2 execution done — run /gsd-verify-work to verify
 
 ## Session Continuity
 
-Last updated: 2026-06-07 (Phase 2 execution complete — all 9 plans executed)
-Next action: Run /gsd-verify-work 2 to verify Phase 2
+Last updated: 2026-06-07 (Phase 2 complete — UAT passed, ready to plan Phase 3)
+Next action: Run /gsd-plan-phase 3 to plan Phase 3 (Canvas Shell)
 
 ### Phase Dependency Chain
 

@@ -9,7 +9,7 @@ NL Layouter delivers a web-based drag-and-drop newsletter builder in 9 phases. P
 ## Phases
 
 - [x] **Phase 1: Foundation & Stack Setup** — Monorepo, Fastify + Drizzle + PostgreSQL, NewsletterDoc types, TipTap v3 scaffold, DnD type constants
-- [ ] **Phase 2: Newsletter CRUD & Dashboard** — Full newsletter lifecycle: create, list, open, rename, delete, auto-save
+- [x] **Phase 2: Newsletter CRUD & Dashboard** — Full newsletter lifecycle: create, list, open, rename, delete, auto-save
 - [ ] **Phase 3: Canvas Shell & Layout Rendering** — Two-panel builder UI; all 5 layout types render with correct column proportions
 - [ ] **Phase 4: DnD — Row-Level Operations** — Drag layout sections from palette, reorder, delete, duplicate
 - [ ] **Phase 5: DnD — Element Placement** — Drag elements from palette into column slots; remove and replace elements
@@ -56,23 +56,23 @@ Plans:
 **Plans:** 9 plans across 7 waves
 
 Plans:
-- [ ] 02-00-PLAN.md — Wave 0: Test stubs — vitest.config.ts (jsdom) + 4 stub test files for hooks/components
-- [ ] 02-01-PLAN.md — Drizzle schema: `newsletters` table (UUID PK, text title, JSONB document, timestamps); [BLOCKING] drizzle-kit push to Neon.tech
-- [ ] 02-02-PLAN.md — Client setup: install shadcn components (button, input, dialog, alert-dialog, dropdown-menu, sonner, card); CSS token override (Infineon Blue --primary + --ring)
-- [ ] 02-03-PLAN.md — Newsletter API routes: FastifyPluginAsync with 6 routes (GET list lean, POST create, GET/:id, PUT/:id auto-save, PATCH/:id rename, DELETE/:id); register in index.ts
-- [ ] 02-04-PLAN.md — Query hooks: `useNewsletters()` + `useNewsletter(id)` + shared types (NewsletterSummary, NEWSLETTERS_QUERY_KEY, NEWSLETTER_QUERY_KEY)
-- [ ] 02-05-PLAN.md — Mutation hooks: `useCreateNewsletter`, `useUpdateNewsletter`, `useRenameNewsletter`, `useDeleteNewsletter` (optimistic + undo), `useAutoSave` (1500ms debounce + save status machine)
-- [ ] 02-06-PLAN.md — Dashboard UI: `DashboardPage` (responsive grid + empty state) + `NewsletterCard` (title/timestamp/sectionCount + hover ⋮ menu + delete confirm AlertDialog)
-- [ ] 02-07-PLAN.md — Create flow + Builder shell: `CreateNewsletterDialog` (name validation + create-and-navigate) wired into DashboardPage; `BuilderPage` (doc load → Zustand + useAutoSave integration)
-- [ ] 02-08-PLAN.md — BuilderHeader (back arrow + click-to-edit title rename + save status + Export stub) + main.tsx final route wiring (DashboardPage, BuilderPage) + Sonner Toaster mount
+- [x] 02-00-PLAN.md — Wave 0: Test stubs — vitest.config.ts (jsdom) + 4 stub test files for hooks/components
+- [x] 02-01-PLAN.md — Drizzle schema: `newsletters` table (UUID PK, text title, JSONB document, timestamps); [BLOCKING] drizzle-kit push to Neon.tech
+- [x] 02-02-PLAN.md — Client setup: install shadcn components (button, input, dialog, alert-dialog, dropdown-menu, sonner, card); CSS token override (Infineon Blue --primary + --ring)
+- [x] 02-03-PLAN.md — Newsletter API routes: FastifyPluginAsync with 6 routes (GET list lean, POST create, GET/:id, PUT/:id auto-save, PATCH/:id rename, DELETE/:id); register in index.ts
+- [x] 02-04-PLAN.md — Query hooks: `useNewsletters()` + `useNewsletter(id)` + shared types (NewsletterSummary, NEWSLETTERS_QUERY_KEY, NEWSLETTER_QUERY_KEY)
+- [x] 02-05-PLAN.md — Mutation hooks: `useCreateNewsletter`, `useUpdateNewsletter`, `useRenameNewsletter`, `useDeleteNewsletter` (optimistic + undo), `useAutoSave` (1500ms debounce + save status machine)
+- [x] 02-06-PLAN.md — Dashboard UI: `DashboardPage` (responsive grid + empty state) + `NewsletterCard` (title/timestamp/sectionCount + hover ⋮ menu + delete confirm AlertDialog)
+- [x] 02-07-PLAN.md — Create flow + Builder shell: `CreateNewsletterDialog` (name validation + create-and-navigate) wired into DashboardPage; `BuilderPage` (doc load → Zustand + useAutoSave integration)
+- [x] 02-08-PLAN.md — BuilderHeader (back arrow + click-to-edit title rename + save status + Export stub) + main.tsx final route wiring (DashboardPage, BuilderPage) + Sonner Toaster mount
 
 ### Done When
 
-- [ ] User can create a newsletter from the dashboard and see it in the list immediately
-- [ ] User can open a newsletter from the list, navigate away, return, and see the same document state
-- [ ] User can rename a newsletter; new name persists on page refresh and appears in both list and builder
-- [ ] User can delete a newsletter; it is removed from the list and `GET /newsletters/:id` returns 404
-- [ ] After the user stops editing for 1.5 s, the status shows "Saved ✓" and the document is present after hard reload
+- [x] User can create a newsletter from the dashboard and see it in the list immediately
+- [x] User can open a newsletter from the list, navigate away, return, and see the same document state
+- [x] User can rename a newsletter; new name persists on page refresh and appears in both list and builder
+- [x] User can delete a newsletter; it is removed from the list and `GET /newsletters/:id` returns 404
+- [x] After the user stops editing for 1.5 s, the status shows "Saved ✓" and the document is present after hard reload
 
 ---
 

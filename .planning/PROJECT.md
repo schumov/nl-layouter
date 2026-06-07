@@ -12,7 +12,7 @@ Users can build a fully structured, export-ready HTML newsletter without writing
 
 ### Validated
 
-(None yet — ship to validate)
+- ✓ User can create, name, save, and load newsletters from the backend — Phase 2
 
 ### Active
 
@@ -57,6 +57,8 @@ Users can build a fully structured, export-ready HTML newsletter without writing
 | PostgreSQL | Relational structure suits multi-user newsletter/section/element hierarchy | — Pending |
 | Backend persistence | Multi-user requirement demands server-side storage | — Pending |
 | Template-based header/footer | Balances flexibility with editorial consistency | — Pending |
+| @fastify/cors must declare all methods explicitly | Default allows only GET/HEAD/POST; PUT/PATCH/DELETE blocked in browser without explicit `methods` list | Phase 2 |
+| TanStack Query v5 `isPending` vs `isLoading` | Disabled queries have `isPending: true` permanently; use visible loading state instead of `return null` to prevent blank builder page | Phase 2 |
 
 ---
 
@@ -78,4 +80,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-06-05 after initialization*
+*Last updated: 2026-06-07 after Phase 2*
