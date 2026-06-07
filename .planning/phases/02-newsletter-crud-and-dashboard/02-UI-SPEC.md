@@ -1,7 +1,7 @@
 ---
 phase: 2
 slug: newsletter-crud-and-dashboard
-status: draft
+status: approved
 shadcn_initialized: true
 preset: "new-york / neutral / css-variables"
 created: 2026-06-07
@@ -118,9 +118,9 @@ All components installed via `npx shadcn@latest add button input dialog alert-di
 | Variant | Size | Used For |
 |---------|------|---------|
 | `default` | `default` | "New Newsletter" (dashboard), "Create" (dialog) |
-| `outline` | `default` | "Export" (BuilderHeader), "Cancel" in alert-dialog |
+| `outline` | `default` | "Export" (BuilderHeader), "Keep Newsletter" in alert-dialog |
 | `ghost` | `icon` | ← back (BuilderHeader), ⋮ menu trigger on card |
-| `destructive` | `default` | "Delete" button in AlertDialog |
+| `destructive` | `default` | "Delete Newsletter" button in AlertDialog |
 
 ### `input`
 | Usage | Props |
@@ -342,7 +342,7 @@ DROPDOWN: "Delete" clicked
 ALERT DIALOG:
   Title: "Delete newsletter?"
   Body: `This will permanently delete "${title}". This action cannot be undone.`
-  Buttons: [Cancel] [Delete — destructive]
+  Buttons: [Keep Newsletter] [Delete Newsletter — destructive]
 
 ON "Delete":
   AlertDialog closes immediately
@@ -459,8 +459,8 @@ All copy strings listed below are canonical — executor must use exactly these 
 | Dialog title | "New Newsletter" |
 | Dialog description (sr-only accessible) | "Give your newsletter a name to get started." |
 | Input placeholder | "Newsletter name" |
-| Submit button | "Create" |
-| Cancel button | "Cancel" |
+| Submit button | "Create Newsletter" |
+| Cancel button | "Discard" |
 
 ### Card ⋮ Dropdown Menu
 
@@ -477,8 +477,8 @@ All copy strings listed below are canonical — executor must use exactly these 
 |---------|------|
 | AlertDialog title | "Delete newsletter?" |
 | AlertDialog body | `This will permanently delete "${title}". This action cannot be undone.` |
-| Confirm button | "Delete" |
-| Cancel button | "Cancel" |
+| Confirm button | "Delete Newsletter" |
+| Cancel button | "Keep Newsletter" |
 
 ### BuilderHeader
 
@@ -578,11 +578,11 @@ All 7 components are from the official shadcn registry. No third-party registrie
 
 ## Checker Sign-Off
 
-- [ ] Dimension 1 Copywriting: PASS
-- [ ] Dimension 2 Visuals: PASS
-- [ ] Dimension 3 Color: PASS
-- [ ] Dimension 4 Typography: PASS
-- [ ] Dimension 5 Spacing: PASS
-- [ ] Dimension 6 Registry Safety: PASS
+- [x] Dimension 1 Copywriting: FLAG (non-blocking — "Export" single word; stale refs cleaned)
+- [x] Dimension 2 Visuals: PASS
+- [x] Dimension 3 Color: PASS
+- [x] Dimension 4 Typography: PASS
+- [x] Dimension 5 Spacing: PASS
+- [x] Dimension 6 Registry Safety: PASS
 
-**Approval:** pending
+**Approval:** approved 2026-06-07
