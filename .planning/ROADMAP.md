@@ -53,16 +53,18 @@ Plans:
 
 **Requirements covered:** NL-01, NL-02, NL-03, NL-04, NL-05, NL-06
 
-### Plans
+**Plans:** 9 plans across 7 waves
 
-1. **Drizzle schema — newsletters** — `newsletters` table (`id` UUID PK, `title` text, `document` JSONB, `created_at`, `updated_at`); run migration
-2. **Newsletter API routes** — `POST /newsletters`, `GET /newsletters`, `GET /newsletters/:id`, `PUT /newsletters/:id` (full document save), `PATCH /newsletters/:id` (title rename), `DELETE /newsletters/:id`; Zod validation on all request bodies
-3. **TanStack Query hooks** — `useNewsletters()`, `useNewsletter(id)`, `useCreateNewsletter()`, `useUpdateNewsletter()`, `useDeleteNewsletter()` with optimistic cache updates
-4. **Dashboard page** — Route `/newsletters`; `NewsletterCard` grid (title, last-saved timestamp); empty state with "Create your first newsletter" CTA
-5. **Create newsletter dialog** — Name input + Create button → `POST /newsletters` → navigate to `/newsletters/:id`
-6. **Rename newsletter** — Inline title edit in `BuilderHeader` (click-to-edit); `PATCH` on blur or Enter; reflected in dashboard card
-7. **Delete newsletter** — Confirm dialog ("Delete *Newsletter Name*?") → `DELETE` → optimistic removal from list with undo toast
-8. **Auto-save with debounce** — `useEffect` watching Zustand canvas state, 1500 ms debounce, mutation to `PUT /newsletters/:id`; "Saving…" → "Saved ✓" indicator in `BuilderHeader`
+Plans:
+- [ ] 02-00-PLAN.md — Wave 0: Test stubs — vitest.config.ts (jsdom) + 4 stub test files for hooks/components
+- [ ] 02-01-PLAN.md — Drizzle schema: `newsletters` table (UUID PK, text title, JSONB document, timestamps); [BLOCKING] drizzle-kit push to Neon.tech
+- [ ] 02-02-PLAN.md — Client setup: install shadcn components (button, input, dialog, alert-dialog, dropdown-menu, sonner, card); CSS token override (Infineon Blue --primary + --ring)
+- [ ] 02-03-PLAN.md — Newsletter API routes: FastifyPluginAsync with 6 routes (GET list lean, POST create, GET/:id, PUT/:id auto-save, PATCH/:id rename, DELETE/:id); register in index.ts
+- [ ] 02-04-PLAN.md — Query hooks: `useNewsletters()` + `useNewsletter(id)` + shared types (NewsletterSummary, NEWSLETTERS_QUERY_KEY, NEWSLETTER_QUERY_KEY)
+- [ ] 02-05-PLAN.md — Mutation hooks: `useCreateNewsletter`, `useUpdateNewsletter`, `useRenameNewsletter`, `useDeleteNewsletter` (optimistic + undo), `useAutoSave` (1500ms debounce + save status machine)
+- [ ] 02-06-PLAN.md — Dashboard UI: `DashboardPage` (responsive grid + empty state) + `NewsletterCard` (title/timestamp/sectionCount + hover ⋮ menu + delete confirm AlertDialog)
+- [ ] 02-07-PLAN.md — Create flow + Builder shell: `CreateNewsletterDialog` (name validation + create-and-navigate) wired into DashboardPage; `BuilderPage` (doc load → Zustand + useAutoSave integration)
+- [ ] 02-08-PLAN.md — BuilderHeader (back arrow + click-to-edit title rename + save status + Export stub) + main.tsx final route wiring (DashboardPage, BuilderPage) + Sonner Toaster mount
 
 ### Done When
 
