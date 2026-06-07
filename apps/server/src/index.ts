@@ -2,6 +2,7 @@ import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import cookie from '@fastify/cookie';
 import { config } from './config.js';
+import newsletterRoutes from './routes/newsletters.js';
 
 const server = Fastify({
   logger: true,
@@ -15,6 +16,9 @@ await server.register(cors, {
 
 // Cookie plugin: needed by Better Auth (added in v2)
 await server.register(cookie);
+
+// Newsletter CRUD routes
+await server.register(newsletterRoutes);
 
 // Health check — returns exactly {"status":"ok"}
 // DO NOT add env info, version numbers, or uptime — information disclosure risk
