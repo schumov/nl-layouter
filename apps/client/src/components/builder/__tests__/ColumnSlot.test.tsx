@@ -1,8 +1,24 @@
 // ColumnSlot component tests — empty-slot rendering
-// Wave 0: placeholders — implementation fills these in Phase 3 Wave 1
-import { describe, it } from 'vitest';
+import React from 'react';
+import { describe, it, expect } from 'vitest';
+import { render } from '@testing-library/react';
+import { ColumnSlot } from '../ColumnSlot';
 
 describe('ColumnSlot', () => {
-  it.todo('renders dashed border placeholder when slot.element is null');
-  it.todo('renders ElementRenderer when slot.element is defined');
+  it('renders dashed border placeholder when slot.element is null', () => {
+    const { getByText } = render(
+      <ColumnSlot slot={{ id: 'test-slot', element: null }} sectionId="test-section" />
+    );
+    getByText('Drop element here');
+  });
+
+  it('renders element type badge when slot.element is defined', () => {
+    const { getByText } = render(
+      <ColumnSlot
+        slot={{ id: 'test-slot', element: { type: 'image' } as any }}
+        sectionId="test-section"
+      />
+    );
+    getByText('[image]');
+  });
 });
