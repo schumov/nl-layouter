@@ -82,15 +82,13 @@ Plans:
 
 **Requirements covered:** CANVAS-01, LAYOUT-01, LAYOUT-02, LAYOUT-03, LAYOUT-04, LAYOUT-05
 
-### Plans
+**Plans:** 4 plans across 3 waves
 
-1. **Builder page route** — `/newsletters/:id`; loads newsletter via `useNewsletter(id)` into Zustand canvas store on mount; loading + error states
-2. **BuilderHeader** — Title display (editable inline), save-status indicator, placeholder Export button; sticky top bar
-3. **BuilderCanvas shell** — Left panel (~60% width), vertical scroll, `#f4f4f5` background, centered content area capped at 640 px
-4. **BuilderPalette shell** — Right panel (~40% width), sticky; tab group: "Layouts" tab and "Elements" tab (both empty stubs for now)
-5. **`RowBlock` + `ColumnGrid`** — `RowBlock` renders one section wrapper; `ColumnGrid` renders correct column widths for all 5 layout variants using Tailwind flex (builder UI only): 1-col (100%), 2-col (50/50), 3-col (33/33/33), small-left/big-right (33/67), big-left/small-right (67/33)
-6. **`ColumnSlot`** — Empty slot with dashed border, `Drop element here` hint text; renders `ElementRenderer` child when slot has content
-7. **Fixture validation** — Hardcoded `NewsletterDoc` with one section of each layout type (all slots empty); render all 5 on builder canvas; visually confirm column proportions
+Plans:
+- [ ] 03-00-PLAN.md — Wave 0: Test infrastructure — install @testing-library devDeps, vitest setupFiles, test-setup.ts, FIXTURE_DOC fixture, three stub test files
+- [ ] 03-01-PLAN.md — Wave 1: Core rendering chain — CSS canvas token, ElementRenderer stub, ColumnSlot (empty placeholder), ColumnGrid (COLUMN_CLASSES record, all 5 layout types), RowBlock (section card); fill ColumnGrid + ColumnSlot tests
+- [ ] 03-02-PLAN.md — Wave 1: Palette shell (parallel) — install shadcn tabs via CLI, BuilderPalette with Layouts/Elements tabs and 5 layout cards
+- [ ] 03-03-PLAN.md — Wave 2: Canvas wiring — BuilderCanvas (left panel, bg-canvas, RowBlock render), BuilderPage replace `<main>` placeholder, dev fixture route in main.tsx; fill BuilderCanvas tests
 
 ### Done When
 
