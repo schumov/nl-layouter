@@ -1,8 +1,8 @@
 # Phase 3: Canvas Shell & Layout Rendering — Research
 
-**Researched:** 2026-06-07
+**Researched:** 2026-06-08 (updated from 2026-06-07 — Tailwind v4 flex/basis patterns re-verified directly from `tailwindcss/dist/lib.js` source; @radix-ui/react-tabs availability confirmed in pnpm virtual store)
 **Domain:** React component layout · Tailwind v4 flex utilities · shadcn/ui Tabs · Zustand canvas state · Vitest component testing
-**Confidence:** HIGH (codebase verified; Tailwind v4 patterns confirmed from prior Phase 1 research; component patterns derived from existing Phase 2 code)
+**Confidence:** HIGH (codebase verified; Tailwind v4 flex/basis patterns verified directly from `node_modules/tailwindcss/dist/lib.js`; @radix-ui/react-tabs confirmed in pnpm store)
 
 ---
 
@@ -82,7 +82,7 @@ All production packages for Phase 3 are already installed. Phase 3 adds only:
 npx shadcn@latest add tabs
 ```
 
-Generates `src/components/ui/tabs.tsx` with Radix UI `@radix-ui/react-tabs` primitives. [VERIFIED: shadcn component list — `tabs` is a standard shadcn component, same CLI add pattern as other components installed in Phase 2]
+Generates `src/components/ui/tabs.tsx` with Radix UI `@radix-ui/react-tabs` primitives. [VERIFIED: shadcn component list — `tabs` is a standard shadcn component, same CLI add pattern as other components installed in Phase 2. Additionally confirmed: `@radix-ui/react-tabs@1.1.14` is already present in pnpm virtual store (`node_modules/.pnpm/@radix-ui+react-tabs@1.1.14_...`) as a transitive dependency of `radix-ui@1.5.0`, so `npx shadcn@latest add tabs` will not download a new package — it will only generate the component file from the already-installed Radix primitive]
 
 ### Installation Commands
 
@@ -234,9 +234,11 @@ export function BuilderCanvas({ doc }: BuilderCanvasProps) {
 }
 ```
 
-> **`flex-[3]`:** Tailwind v4 arbitrary flex value — equivalent to `flex: 3`. Paired with `flex-[2]` on palette gives a 60/40 split. [VERIFIED: Tailwind v4 supports arbitrary values in `flex-[n]` format]
+> **`flex-[3]`:** Tailwind v4 arbitrary flex value — equivalent to `flex: 3`. Paired with `flex-[2]` on palette gives a 60/40 split. [VERIFIED: from `tailwindcss/dist/lib.js` — `r.functional("flex", s => if kind==="arbitrary" → l("flex", s.value.value))`; `flex-[3]` → `flex: 3`]
 >
-> **`min-w-0`:** Prevents flex children from overflowing their container when content is wide. Essential in flex layouts. [VERIFIED: standard CSS flex pitfall mitigation]
+> **`flex-3` also works** (values 1-12 are in the scale: `i("flex",()=>[{values: Array.from({length:12},...)}])`), but the locked decision from STATE.md mandates `flex-[3]`/`flex-[2]` (arbitrary bracket form). Both produce identical CSS. [VERIFIED: lib.js source]
+>
+> **`min-w-0`:** Prevents flex children from overflowing their container when content is wide. Essential in flex layouts — flex items default to `min-width: auto`. [VERIFIED: standard CSS flex pitfall mitigation; applies to all flex children in this layout]
 
 ---
 
@@ -353,7 +355,8 @@ export function ColumnGrid({ section }: ColumnGridProps) {
       {section.slots.map((slot, i) => (
         <div
           key={slot.id}
-          className={basisClasses[i] ?? 'basis-full'}  // noUncheckedIndexedAccess fallback
+          data-testid="column-wrapper"
+          className={`min-w-0 ${basisClasses[i] ?? 'basis-full'}`}
         >
           <ColumnSlot slot={slot} sectionId={section.id} />
         </div>
@@ -363,7 +366,9 @@ export function ColumnGrid({ section }: ColumnGridProps) {
 }
 ```
 
-> **Why `basis-1/3` not `w-1/3`:** `flex-basis` correctly controls the initial size in a flex layout. `width` can be overridden by flex grow/shrink. `basis-*` is the right utility here. [VERIFIED: Tailwind docs — `basis-{fraction}` maps to `flex-basis` CSS property]
+> **Why `basis-1/3` not `w-1/3`:** `flex-basis` correctly controls the initial size in a flex layout. `width` can be overridden by flex grow/shrink. `basis-*` is the right utility here. [VERIFIED: `tailwindcss/dist/lib.js` — `o("basis",["--flex-basis","--spacing","--container"],s=>[l("flex-basis",s)],{supportsFractions:true})`; confirms `basis-1/3` → `flex-basis: calc(1/3 * 100%)` = `flex-basis: 33.333%`]
+>
+> **`basis-full` is a static utility:** `t("basis-full",[["flex-basis","100%"]])` — not fraction-computed, confirmed as a named static utility. [VERIFIED: lib.js]
 >
 > **Why not `flex-1` for equal columns:** `flex-1` gives `flex: 1 1 0%` (all columns start at 0 and grow equally). Using `basis-1/2` / `basis-1/3` is more explicit and easier to test. Either works; `basis-*` is recommended for clarity.
 >
@@ -521,7 +526,7 @@ return <BuilderCanvas doc={doc} />;
 
 - **Dynamic Tailwind class construction:** `className={\`basis-${numerator}/${denominator}\`}` — JIT scanner won't detect this and the class won't be in the CSS bundle. Use the `COLUMN_CLASSES` record with complete string literals.
 - **Using `position: sticky` for palette:** The palette should stay fixed via flex overflow containment, not `sticky`. `sticky` requires a scrolling ancestor, which creates layout issues.
-- **Forgetting `min-w-0` on flex children:** Without it, flex children that contain long text or wide content can overflow their flex container. Always add `min-w-0` to `BuilderCanvas` and `BuilderPalette`.
+- **Forgetting `min-w-0` on flex children:** Without it, flex children default to `min-width: auto` and can overflow their flex container when content is wide. Always add `min-w-0` to `BuilderCanvas`, `BuilderPalette`, AND the column wrapper `<div>` elements inside `ColumnGrid`. [VERIFIED: CSS flex spec — this is the #1 flex gotcha; confirmed the pattern needs `min-w-0` at every flex-child level]
 - **Naming component `ColumnSlot` without aliasing the TypeScript type:** Without `import type { ColumnSlot as ColumnSlotData }`, you get a naming collision that confuses IDE tooling even if TypeScript compiles.
 - **Accessing `basisClasses[i]` without fallback under `noUncheckedIndexedAccess`:** TypeScript 6 strict mode returns `string | undefined` for indexed access. The `?? 'basis-full'` fallback is required.
 - **Reading `doc.rows` directly from `BuilderPage` props:** `doc` should come from Zustand (already populated by the `useEffect` in `BuilderPage`). Don't pass the entire `NewsletterDetail` from TanStack Query to `BuilderCanvas`.
@@ -654,7 +659,11 @@ export function ColumnGrid({ section }: { section: Section }) {
   return (
     <div className="flex gap-2 p-2">
       {section.slots.map((slot, i) => (
-        <div key={slot.id} className={basisClasses[i] ?? 'basis-full'}>
+        <div
+          key={slot.id}
+          data-testid="column-wrapper"
+          className={`min-w-0 ${basisClasses[i] ?? 'basis-full'}`}
+        >
           <ColumnSlot slot={slot} sectionId={section.id} />
         </div>
       ))}
@@ -891,9 +900,11 @@ import '@testing-library/jest-dom';
 - `apps/client/package.json` — all dependencies verified; `@testing-library/*` NOT installed
 - `.planning/phases/01-foundation-and-stack-setup/01-RESEARCH.md` — Tailwind v4 CSS-first patterns, `noUncheckedIndexedAccess` pitfall, `flex basis-*` utilities
 
-### Secondary (MEDIUM confidence — verified from prior research)
-- Tailwind v4 `basis-{fraction}` utilities — confirmed via Phase 1 research that Tailwind v4 CSS-first is set up; fraction utilities are standard and unchanged from v3 [VERIFIED from codebase — fractions like `basis-1/3` are standard Tailwind utility names]
-- shadcn `tabs` component CLI install pattern — same install pattern as all other Phase 2 shadcn components [VERIFIED by analogy — `npx shadcn@latest add tabs` matches Phase 2 installs]
+### Secondary (HIGH confidence — verified directly from installed package source)
+- Tailwind v4 `basis-{fraction}` utilities — confirmed **directly from `tailwindcss@4.3.0/dist/lib.js`** (installed in this project): `o("basis",["--flex-basis","--spacing","--container"],s=>[l("flex-basis",s)],{supportsFractions:true})`. Confirms `basis-1/3` → `flex-basis: 33.333%`, `basis-2/3` → `flex-basis: 66.667%`, `basis-1/2` → `flex-basis: 50%`, `basis-full` (static) → `flex-basis: 100%`. [VERIFIED: lib.js source]
+- `flex-[3]`/`flex-[2]` arbitrary value handling — confirmed from lib.js: `if(s.value.kind==="arbitrary") return [l("flex",s.value.value)]`. `flex-3` through `flex-12` named scale also confirmed (values 1-12), but locked decision uses bracket form. [VERIFIED: lib.js source]
+- `@radix-ui/react-tabs@1.1.14` in pnpm virtual store — `node_modules/.pnpm/@radix-ui+react-tabs@1.1.14_...` confirmed present as transitive dep of `radix-ui@1.5.0`. [VERIFIED: filesystem check]
+- shadcn `tabs` component CLI install pattern — same install pattern as all other Phase 2 shadcn components. [VERIFIED by analogy — `npx shadcn@latest add tabs` matches Phase 2 installs]
 
 ### Tertiary (LOW confidence — training knowledge, flag for validation)
 - `@testing-library/react` v16+ React 19 support — [ASSUMED: A1 in assumptions log]
@@ -905,8 +916,8 @@ import '@testing-library/jest-dom';
 **Confidence breakdown:**
 - Standard stack: HIGH — all dependencies confirmed from codebase inspection
 - Architecture: HIGH — derived directly from existing code structure and Phase 1/2 patterns
-- ColumnGrid implementation: HIGH — Tailwind fraction utilities confirmed standard; COLUMN_CLASSES pattern confirmed from codebase conventions
+- ColumnGrid implementation: HIGH — Tailwind fraction utilities confirmed directly from lib.js source; COLUMN_CLASSES pattern confirmed from codebase conventions
 - Testing: MEDIUM — `@testing-library/react` version for React 19 is assumed
 
-**Research date:** 2026-06-07
-**Valid until:** 2026-07-07 (stable stack — 30-day window)
+**Research date:** 2026-06-08
+**Valid until:** 2026-07-08 (stable stack — 30-day window)
