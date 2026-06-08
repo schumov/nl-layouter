@@ -1,9 +1,27 @@
 // BuilderPalette component tests — CANVAS-01
-// Wave 0: placeholders — implementation fills these in Phase 3 Wave 1 (Plan 03-02)
-import { describe, it } from 'vitest';
+import React from 'react';
+import { describe, it, expect } from 'vitest';
+import { render } from '@testing-library/react';
+import { BuilderPalette } from '../BuilderPalette';
 
 describe('BuilderPalette', () => {
-  it.todo('renders Layouts tab and Elements tab');
-  it.todo('renders all 5 layout cards in Layouts tab');
-  it.todo('renders Elements stub text in Elements tab');
+  it('renders Layouts tab and Elements tab', () => {
+    const { getByText } = render(<BuilderPalette />);
+    getByText('Layouts');
+    getByText('Elements');
+  });
+
+  it('renders all 5 layout cards in Layouts tab', () => {
+    const { getByText } = render(<BuilderPalette />);
+    getByText('1 Column');
+    getByText('2 Columns');
+    getByText('3 Columns');
+    getByText('Small-Left / Big-Right');
+    getByText('Big-Left / Small-Right');
+  });
+
+  it('renders Elements stub text in Elements tab', () => {
+    const { getByText } = render(<BuilderPalette />);
+    getByText('Elements will be available in a future phase.', { hidden: true });
+  });
 });
