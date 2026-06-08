@@ -9,6 +9,8 @@
 
 import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';  // NOT from 'immer' directly
+import { current } from 'immer';
+import { arrayMove } from '@dnd-kit/sortable';
 import type {
   NewsletterDoc,
   Section,
@@ -36,6 +38,8 @@ interface NewsletterActions {
   // Section mutations (Phase 4 adds: reorderSections, duplicateSection)
   addSection: (section: Section) => void;
   removeSection: (sectionId: string) => void;
+  reorderSections: (activeId: string, overId: string) => void;
+  duplicateSection: (sectionId: string) => void;
 
   // Element mutations (Phase 5 adds: moveElement, replaceElement)
   setElement: (sectionId: string, slotId: string, element: ElementUnion | null) => void;
@@ -78,6 +82,35 @@ export const useNewsletterStore = create<NewsletterState & NewsletterActions>()(
         if (state.doc) {
           state.doc.rows = state.doc.rows.filter((r) => r.id !== sectionId);
         }
+      }),
+
+    reorderSections: (activeId, overId) =>
+      set((state) => {
+        if (!state.doc) return;
+        const rows = state.doc.rows;
+        const activeIndex = rows.findIndex((r) => r.id === activeId);
+        const overIndex  = rows.findIndex((r) => r.id === overId);
+        if (activeIndex === -1 || overIndex === -1 || activeIndex === overIndex) return;
+        state.doc.rows = arrayMove(rows as Section[], activeIndex, overIndex);
+        // Assignment (not splice) — arrayMove returns a NEW array; Immer allows assignment here
+        // Same pattern as removeSection: state.doc.rows = ...filter()
+      }),
+
+    duplicateSection: (sectionId) =>
+      set((state) => {
+        if (!state.doc) return;
+        const index = state.doc.rows.findIndex((r) => r.id === sectionId);
+        if (index === -1) return;
+        const clone = structuredClone<Section>(current(state.doc.rows[index]));
+        // current() converts the Immer Proxy draft to a plain object so structuredClone can serialize it
+        clone.id = crypto.randomUUID();
+        clone.slots = clone.slots.map((slot) => ({
+          ...slot,
+          id: crypto.randomUUID(),
+          element: slot.element ? { ...slot.element, id: crypto.randomUUID() } : null,
+        }));
+        state.doc.rows.splice(index + 1, 0, clone);
+        // .splice is in-place mutation — valid in Immer (unlike arrayMove which is assignment)
       }),
 
     // ── Element mutations ──────────────────────────────────────────────────
