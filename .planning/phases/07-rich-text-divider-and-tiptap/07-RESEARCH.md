@@ -728,22 +728,19 @@ export function DividerRenderer({ element }: { element: DividerElement }) {
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
-1. **Preset lock-in vs inline per-char font-size**
+1. **Preset lock-in vs inline per-char font-size** — RESOLVED: Phase 7 BubbleMenu exposes Bold/Italic/Underline/Link only. Font-size and color controls deferred to a post-Phase-7 Format toolbar. CONTEXT.md D-06 is the canonical decision.
    - What we know: `textStyle` field is element-level; individual `FontSize` marks can override per selection
-   - What's unclear: Should the BubbleMenu expose font-size controls in Phase 7, or is that Phase 9 scope?
-   - Recommendation: Phase 7 BubbleMenu = Bold/Italic/Underline/Link only. Font-size/color = deferred to a "Format" toolbar or Phase 9 if needed for export fidelity.
+   - **Decision:** BubbleMenu = Bold/Italic/Underline/Link only (D-06)
 
-2. **TextAlign in BubbleMenu vs toolbar**
+2. **TextAlign in BubbleMenu vs toolbar** — RESOLVED: TextAlign extension installed and configured in RICH_TEXT_EXTENSIONS but NO toolbar buttons in Phase 7. Deferred to post-Phase-7. CONTEXT.md Deferred Ideas is the canonical decision.
    - What we know: TextAlign must configure `types: ['heading', 'paragraph']`
-   - What's unclear: Where to put alignment buttons — BubbleMenu popup or a fixed toolbar?
-   - Recommendation: BubbleMenu only (keeps InspectorPanel focused on preset/color; alignment is selection-level)
+   - **Decision:** No alignment UI in Phase 7 (deferred)
 
-3. **Placeholder extension**
+3. **Placeholder extension** — RESOLVED: NOT included in Phase 7 scope. The `Placeholder` extension from `@tiptap/extensions` is available if needed but adds no requirement coverage. Deferred to post-Phase-7 UX enhancement.
    - What we know: `Placeholder` is in `@tiptap/extensions` (already installed)
-   - What's unclear: Should empty rich-text elements show a placeholder text in the editor?
-   - Recommendation: Add `Placeholder.configure({ placeholder: 'Type something…' })` — minor UX improvement, already available
+   - **Decision:** Skip Placeholder in Phase 7 (deferred)
 
 ---
 
