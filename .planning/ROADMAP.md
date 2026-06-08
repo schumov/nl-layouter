@@ -164,14 +164,16 @@ Plans:
 
 **Requirements covered:** ELEM-01, ELEM-02, ELEM-03, ELEM-04, ELEM-05
 
-### Plans
+**Plans:** 7 plans across 4 waves
 
-1. **`ImageRenderer`** — `<img>` with `src` and `alt` from element config; `width` defaults to 100%; grey placeholder frame (with broken-image icon) when `src` is empty; `object-fit: cover` in builder
-2. **`ImageLinkRenderer`** — `ImageRenderer` wrapped in `<a href={element.href} target="_blank">`; link icon badge overlaid in builder; configurable href
-3. **`ButtonRenderer`** — Two style variants: *filled* (solid background, white/configured text) and *outline* (transparent, border + text in configured colour); configurable `label`, `href`, `bgColor`, `textColor`; centred in column
-4. **`InspectorPanel` shell** — Right panel swaps from palette tabs to `InspectorPanel` when `selectedElementId` is set; back arrow → deselect + return to palette; header shows element type name
-5. **`ImageEditor`** — `src` URL input, `alt` text input (marked required with `*`), `width` input (px or `%`); every field change dispatches `updateElement(id, patch)` to Zustand for live canvas update
-6. **`ButtonEditor`** — Label input, href input, background colour picker (hex text + colour swatch), text colour picker, style toggle (Filled / Outline); colour picker uses native `<input type="color">` with hex display
+Plans:
+- [ ] 06-00-PLAN.md — Wave 0: TDD stubs — 5 new test files (ImageRenderer, ImageLinkRenderer, ButtonRenderer, ImageEditor, ButtonEditor) + update InspectorPanel.test (D-08 prop rename), ColumnSlot.test ([image]→Add image URL), useNewsletterStore.test (updateElement stubs)
+- [ ] 06-01-PLAN.md — Wave 1: updateElement store action (Immer Object.assign patch merge) + remove deprecated setElement
+- [ ] 06-02-PLAN.md — Wave 1: ImageRenderer (branded placeholder + <img> with objectFit:cover) + ImageLinkRenderer (<a> wrapper + data-builder-only ExternalLink badge)
+- [ ] 06-03-PLAN.md — Wave 1: ButtonRenderer (solid/outline variants via inline styles; ghost falls through to solid per D-05; CC-2/CC-6)
+- [ ] 06-04-PLAN.md — Wave 2: ElementRenderer dispatch switch (replaces Phase 5 stub; routes image/image-link/button to renderers; rich-text/divider to named stubs; assertNeverElement default)
+- [ ] 06-05-PLAN.md — Wave 2: ImageEditor (src, alt, width, conditional href) + ButtonEditor (label, href, colour pickers, Filled/Outline style toggle)
+- [ ] 06-06-PLAN.md — Wave 3: InspectorPanel upgrade (element: ElementUnion prop + onUpdate + body routing switch) + BuilderPage wiring (selectedElement selector + updateElement dispatch)
 
 ### Done When
 
