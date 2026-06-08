@@ -33,7 +33,7 @@ describe('ColumnSlot — occupied slot (idle)', () => {
         sectionId="test-section"
       />,
     );
-    getByText('[image]');
+    getByText('Add image URL');
   });
 });
 

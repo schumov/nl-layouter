@@ -116,3 +116,29 @@ describe('useNewsletterStore — element mutations (Phase 5 RED stubs)', () => {
     expect(useNewsletterStore.getState().doc!.rows).toHaveLength(FIXTURE_DOC.rows.length);
   });
 });
+
+describe('useNewsletterStore — updateElement (Phase 6)', () => {
+  it('ELEM-update: updateElement merges patch into slot.element', () => {
+    // RED until Plan 06-01: updateElement does not exist yet
+    const { addElement, updateElement } = useNewsletterStore.getState() as any;
+    addElement('fixture-slot-1col-1', 'button');
+    updateElement('fixture-slot-1col-1', { label: 'Buy Now' });
+    const slot = useNewsletterStore.getState().doc!.rows[0].slots[0];
+    expect(slot.element?.type).toBe('button');
+    expect((slot.element as any).label).toBe('Buy Now');
+  });
+
+  it('ELEM-update: updateElement is a no-op for unknown slotId', () => {
+    // RED until Plan 06-01
+    const { updateElement } = useNewsletterStore.getState() as any;
+    expect(() => updateElement('unknown-slot-id', { label: 'x' })).not.toThrow();
+  });
+
+  it('ELEM-update: updateElement is a no-op when slot.element is null', () => {
+    // RED until Plan 06-01: empty slot must not throw or crash
+    const { updateElement } = useNewsletterStore.getState() as any;
+    expect(() => updateElement('fixture-slot-1col-1', { label: 'x' })).not.toThrow();
+    const slot = useNewsletterStore.getState().doc!.rows[0].slots[0];
+    expect(slot.element).toBeNull();
+  });
+});
