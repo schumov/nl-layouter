@@ -649,22 +649,25 @@ This phase has no backend changes, no authentication, no data persistence beyond
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
 1. **`ImageLinkRenderer` — should anchor clicks be prevented in builder?**
    - What we know: ColumnSlot has `e.stopPropagation()` on its onClick which triggers element selection.
    - What's unclear: If `href` is non-empty and user clicks the image-link element, does the `<a>` also navigate? `stopPropagation` doesn't prevent default anchor navigation.
    - Recommendation: Add `onClick={(e) => e.stopPropagation()}` on the `<a>` in `ImageLinkRenderer` so it only registers as a canvas slot click (handled by ColumnSlot), not a navigation. The UI-SPEC confirms the `<a>` uses `target="_blank"` so any navigation would open in a new tab anyway — minor UX issue, not a breakage. Planner should decide whether to add `e.stopPropagation()` on the anchor element.
+   - **RESOLVED (Plan 06-02):** `onClick={(e) => e.stopPropagation()}` added to the `<a>` in `ImageLinkRenderer` per plan task 06-02-02.
 
 2. **`setElement` removal — TypeScript interface update**
    - What we know: `setElement` is defined in `NewsletterActions` interface. No callers. Comment says "remove in Phase 6".
    - What's unclear: Should the `@deprecated` JSDoc be removed from the interface too?
    - Recommendation: Yes — remove both the interface entry and implementation. It's dead code with no callers.
+   - **RESOLVED (Plan 06-01):** Both `setElement` interface entry and implementation removed in Plan 06-01 task 06-01-01.
 
 3. **`ImageEditor` for `image-link` — `href` field**
    - What we know: `ImageEditor` handles both `image` and `image-link` types. `ImageElement` has no `href`; `ImageLinkElement` has `href`.
    - What's unclear: The UI-SPEC shows `onUpdate: (patch: Partial<ImageElement & ImageLinkElement>)` for `ImageEditor` — should the href field show conditionally for `image-link` only?
    - Recommendation: Yes — show the href field only when `element.type === 'image-link'`. This is implied by the spec (href only exists on ImageLinkElement). The planner should specify this conditional render.
+   - **RESOLVED (Plan 06-05):** `href` input rendered conditionally with `{element.type === 'image-link' && ...}` in `ImageEditor`, cast via `as Partial<ImageLinkElement>` in onChange per plan task 06-05-01.
 
 ---
 

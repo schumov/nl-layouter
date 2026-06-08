@@ -41,7 +41,7 @@ created: 2026-06-08
 | 06-00 | 00-tdd-stubs | 0 | ELEM-01..05 | `cd apps/client && pnpm test run` | ⬜ pending |
 | 06-01 | 01-update-element | 1 | ELEM-01..05 | `cd apps/client && pnpm test run` | ⬜ pending |
 | 06-02 | 02-image-renderers | 1 | ELEM-01, ELEM-02, ELEM-03 | `cd apps/client && pnpm test run` | ⬜ pending |
-| 06-03 | 03-button-renderer | 2 | ELEM-04, ELEM-05 | `cd apps/client && pnpm test run` | ⬜ pending |
+| 06-03 | 03-button-renderer | 1 | ELEM-04, ELEM-05 | `cd apps/client && pnpm test run` | ⬜ pending |
 | 06-04 | 04-element-renderer | 2 | ELEM-01..05 | `cd apps/client && pnpm test run` | ⬜ pending |
 | 06-05 | 05-editors | 2 | ELEM-01..05 | `cd apps/client && pnpm test run` | ⬜ pending |
 | 06-06 | 06-inspector-wiring | 3 | ELEM-01..05 | `cd apps/client && pnpm test run` | ⬜ pending |
