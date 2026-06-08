@@ -76,6 +76,20 @@ const customCollision: CollisionDetection = (args) => {
   return closestCenter(args);  // LAYOUT_CARD + CANVAS_ROW: standard closestCenter unchanged
 };
 
+// ─── ElementCardGhost ─────────────────────────────────────────────────────────
+// DragOverlay ghost for ELEMENT_CARD drags. Extracted from DragDropProvider to
+// avoid the IIFE pattern and keep JSX readable (IN-03 review fix).
+
+function ElementCardGhost({ elementType, elementLabel }: { elementType: ElementUnion['type']; elementLabel: string }) {
+  const Icon = ELEMENT_CARD_ICONS[elementType];
+  return (
+    <div className="p-3 border rounded-md text-sm bg-white shadow-md opacity-80 cursor-grabbing select-none flex items-center gap-2">
+      <Icon className="size-4 shrink-0" aria-hidden="true" />
+      <span>{elementLabel}</span>
+    </div>
+  );
+}
+
 // ─── DragDropProvider ─────────────────────────────────────────────────────────
 
 export function DragDropProvider({ children }: { children: React.ReactNode }) {
@@ -146,12 +160,17 @@ export function DragDropProvider({ children }: { children: React.ReactNode }) {
     }
   }
 
+  function handleDragCancel() {
+    setActiveDrag(null);
+  }
+
   return (
     <DndContext
       sensors={sensors}
       collisionDetection={customCollision}
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
+      onDragCancel={handleDragCancel}
     >
       {children}
       <DragOverlay>
@@ -168,15 +187,12 @@ export function DragDropProvider({ children }: { children: React.ReactNode }) {
           </div>
         )}
         {/* Phase 5: ELEMENT_CARD ghost — icon + label card at 80% opacity */}
-        {activeDrag?.type === DRAG_TYPES.ELEMENT_CARD && activeDrag.elementType && (() => {
-          const Icon = ELEMENT_CARD_ICONS[activeDrag.elementType!];
-          return (
-            <div className="p-3 border rounded-md text-sm bg-white shadow-md opacity-80 cursor-grabbing select-none flex items-center gap-2">
-              <Icon className="size-4 shrink-0" aria-hidden="true" />
-              <span>{activeDrag.elementLabel}</span>
-            </div>
-          );
-        })()}
+        {activeDrag?.type === DRAG_TYPES.ELEMENT_CARD && activeDrag.elementType && (
+          <ElementCardGhost
+            elementType={activeDrag.elementType}
+            elementLabel={activeDrag.elementLabel ?? ''}
+          />
+        )}
       </DragOverlay>
     </DndContext>
   );

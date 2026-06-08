@@ -11,18 +11,7 @@ import React from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import type { ElementUnion } from '../../types/newsletter';
-
-// ─── ELEMENT_LABELS ───────────────────────────────────────────────────────────
-// Display names for element types in the inspector header.
-// Must match DraggableElementCard labels (Plan 05-02) — locked UI-SPEC copy.
-
-const ELEMENT_LABELS: Record<ElementUnion['type'], string> = {
-  'image':      'Image',
-  'image-link': 'Image with Link',
-  'button':     'Button',
-  'rich-text':  'Rich Text',
-  'divider':    'Divider',
-};
+import { ELEMENT_NAMES } from './BuilderPalette';
 
 // ─── InspectorPanel ───────────────────────────────────────────────────────────
 
@@ -45,7 +34,7 @@ export function InspectorPanel({ elementType, onBack }: InspectorPanelProps) {
           <ArrowLeft className="size-4" />
         </Button>
         <span className="text-sm font-semibold text-foreground">
-          {ELEMENT_LABELS[elementType]}
+          {ELEMENT_NAMES[elementType]}
         </span>
       </div>
 

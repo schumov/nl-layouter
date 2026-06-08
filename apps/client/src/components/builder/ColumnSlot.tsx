@@ -6,7 +6,7 @@
 // CC-5: DRAG_TYPES.ELEMENT_CARD used in useDroppable data — never string literal
 // Tailwind v4: ALL class names are complete string literals — no template literals
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDroppable } from '@dnd-kit/core';
 import { X } from 'lucide-react';
 import type { ColumnSlot as ColumnSlotData } from '../../types/newsletter';
@@ -20,11 +20,17 @@ interface ColumnSlotProps {
   sectionId: string;  // kept for forward-compatibility with Phase 6+ actions; not used in Phase 5
 }
 
-export function ColumnSlot({ slot }: ColumnSlotProps) {
+export function ColumnSlot({ slot, sectionId: _sectionId }: ColumnSlotProps) {
   const [isConfirming, setIsConfirming] = useState(false);
 
-  // Direct store reads — avoids prop drilling through ColumnGrid (Finding 8)
-  const { removeElement, setSelectedElement } = useNewsletterStore();
+  // WR-05: reset confirm dialog when element is replaced via drag-drop overwrite
+  useEffect(() => {
+    setIsConfirming(false);
+  }, [slot.element?.id]);
+
+  // IN-01: use selectors to avoid full-store subscription
+  const removeElement      = useNewsletterStore((s) => s.removeElement);
+  const setSelectedElement = useNewsletterStore((s) => s.setSelectedElement);
   const isSelected = useNewsletterStore((s) => s.selectedElementId === slot.id);
 
   const { setNodeRef, isOver } = useDroppable({
@@ -104,7 +110,7 @@ export function ColumnSlot({ slot }: ColumnSlotProps) {
           className={cn(
             'absolute top-1 right-1 flex items-center justify-center size-5 rounded',
             'text-muted-foreground hover:text-destructive hover:bg-accent',
-            'transition-colors duration-100 transition-opacity duration-100',
+            'transition-[color,background-color,opacity] duration-100',
             'opacity-0 group-hover:opacity-100',
             // D-10: hidden by default; visible on group-hover OR when selected
             isSelected && 'opacity-100',

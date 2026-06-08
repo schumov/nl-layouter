@@ -107,9 +107,13 @@ export const useNewsletterStore = create<NewsletterState & NewsletterActions>()(
 
     removeSection: (sectionId) =>
       set((state) => {
-        if (state.doc) {
-          state.doc.rows = state.doc.rows.filter((r) => r.id !== sectionId);
+        if (!state.doc) return;
+        // WR-04: clear selectedElementId if the removed section contains the selected slot
+        const removed = state.doc.rows.find((r) => r.id === sectionId);
+        if (removed?.slots.some((s) => s.id === state.selectedElementId)) {
+          state.selectedElementId = null;
         }
+        state.doc.rows = state.doc.rows.filter((r) => r.id !== sectionId);
       }),
 
     reorderSections: (activeId, overId) =>
@@ -169,6 +173,10 @@ export const useNewsletterStore = create<NewsletterState & NewsletterActions>()(
         // slotId not found — silent no-op
       }),
 
+    /**
+     * @deprecated Use `addElement` / `removeElement` instead.
+     * Retained for Phase 3 canvas compatibility; remove in Phase 6.
+     */
     setElement: (sectionId, slotId, element) =>
       set((state) => {
         const section = state.doc?.rows.find((r) => r.id === sectionId);
