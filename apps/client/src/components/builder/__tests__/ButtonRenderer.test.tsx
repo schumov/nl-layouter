@@ -52,7 +52,7 @@ describe('ButtonRenderer — outline variant (ELEM-05)', () => {
   it('ELEM-05: outline variant has transparent background', () => {
     const { container } = render(<ButtonRenderer element={makeButtonElement({ style: 'outline' })} />);
     const anchor = container.querySelector('a');
-    expect(anchor).toHaveStyle({ backgroundColor: 'transparent' });
+    expect(anchor).toHaveStyle({ backgroundColor: 'rgba(0, 0, 0, 0)' });
   });
 
   it('ELEM-05: outline variant has border derived from backgroundColor', () => {
