@@ -19,18 +19,19 @@ export default function BuilderPage() {
   const selectedElementId   = useNewsletterStore((state) => state.selectedElementId);
   const setSelectedElement  = useNewsletterStore((state) => state.setSelectedElement);
 
-  // Derive element type by looking up the selected slot in the doc (Finding 6)
-  const selectedElementType = useNewsletterStore((state) => {
+  // D-09: Derive full element object (not just type string) for Phase 6 InspectorPanel
+  const selectedElement = useNewsletterStore((state) => {
     if (!state.selectedElementId || !state.doc) return null;
     for (const row of state.doc.rows) {
       for (const slot of row.slots) {
         if (slot.id === state.selectedElementId && slot.element) {
-          return slot.element.type;
+          return slot.element;  // full ElementUnion object
         }
       }
     }
     return null;
   });
+  const updateElement = useNewsletterStore((s) => s.updateElement);
 
   useEffect(() => {
     if (data) setDoc(data.document);
@@ -66,11 +67,12 @@ export default function BuilderPage() {
             doc={doc}
             onCanvasClick={() => setSelectedElement(null)}
           />
-          {selectedElementId && selectedElementType
+          {selectedElementId && selectedElement
             ? (
                 <InspectorPanel
-                  elementType={selectedElementType}
+                  element={selectedElement}
                   onBack={() => setSelectedElement(null)}
+                  onUpdate={(patch) => updateElement(selectedElementId, patch)}
                 />
               )
             : <BuilderPalette />

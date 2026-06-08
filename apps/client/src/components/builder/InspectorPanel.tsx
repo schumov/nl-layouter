@@ -11,16 +11,20 @@ import React from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import type { ElementUnion } from '../../types/newsletter';
+import { assertNeverElement } from '../../types/newsletter';
 import { ELEMENT_NAMES } from './BuilderPalette';
+import { ImageEditor } from './ImageEditor';
+import { ButtonEditor } from './ButtonEditor';
 
 // ─── InspectorPanel ───────────────────────────────────────────────────────────
 
 interface InspectorPanelProps {
-  elementType: ElementUnion['type'];
-  onBack:      () => void;   // → setSelectedElement(null) → palette restores
+  element:   ElementUnion;
+  onBack:    () => void;    // → setSelectedElement(null) → palette restores
+  onUpdate:  (patch: Partial<ElementUnion>) => void;
 }
 
-export function InspectorPanel({ elementType, onBack }: InspectorPanelProps) {
+export function InspectorPanel({ element, onBack, onUpdate }: InspectorPanelProps) {
   return (
     <div className="flex-[2] min-w-0 border-l bg-background overflow-y-auto flex flex-col">
       {/* Header — back arrow + element type name */}
@@ -34,16 +38,29 @@ export function InspectorPanel({ elementType, onBack }: InspectorPanelProps) {
           <ArrowLeft className="size-4" />
         </Button>
         <span className="text-sm font-semibold text-foreground">
-          {ELEMENT_NAMES[elementType]}
+          {ELEMENT_NAMES[element.type]}
         </span>
       </div>
 
-      {/* Body — placeholder note (Phase 6 replaces with real editors) */}
-      <div className="p-4">
-        <p className="text-sm text-muted-foreground">
-          Editing available in the next step.
-        </p>
-      </div>
+      {/* Body — routes to editor component by element type */}
+      {(() => {
+        switch (element.type) {
+          case 'image':
+          case 'image-link':
+            return <ImageEditor element={element} onUpdate={onUpdate} />;
+          case 'button':
+            return <ButtonEditor element={element} onUpdate={onUpdate} />;
+          case 'rich-text':
+          case 'divider':
+            return (
+              <div className="p-4">
+                <p className="text-sm text-muted-foreground">Editor available in Phase 7.</p>
+              </div>
+            );
+          default:
+            return assertNeverElement(element);
+        }
+      })()}
     </div>
   );
 }
