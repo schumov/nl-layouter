@@ -12,7 +12,7 @@ NL Layouter delivers a web-based drag-and-drop newsletter builder in 9 phases. P
 - [x] **Phase 2: Newsletter CRUD & Dashboard** — Full newsletter lifecycle: create, list, open, rename, delete, auto-save
 - [x] **Phase 3: Canvas Shell & Layout Rendering** — Two-panel builder UI; all 5 layout types render with correct column proportions
 - [x] **Phase 4: DnD — Row-Level Operations** — Drag layout sections from palette, reorder, delete, duplicate
-- [ ] **Phase 5: DnD — Element Placement** — Drag elements from palette into column slots; remove and replace elements
+- [x] **Phase 5: DnD — Element Placement** — Drag elements from palette into column slots; remove and replace elements
 - [ ] **Phase 6: Image & Button Elements** — Image, image-link, and button renderers + InspectorPanel editors
 - [ ] **Phase 7: Rich Text, Divider & TipTap** — TipTap v3 WYSIWYG with inline-style output; named styles; divider element
 - [ ] **Phase 8: Header/Footer Presets & Pre-header** — Preset selector UI, seed data, pre-header text field
@@ -278,7 +278,7 @@ Plans:
 | 2. Newsletter CRUD & Dashboard | 9/9 | Complete ✅ | 2026-06-06 |
 | 3. Canvas Shell & Layout Rendering | 4/4 | Complete ✅ | 2026-06-07 |
 | 4. DnD — Row-Level Operations | 7/7 | Complete ✅ | 2026-06-08 |
-| 5. DnD — Element Placement | 6/6 | Executed ✅ | 2026-06-10 |
+| 5. DnD — Element Placement | 6/6 | Complete ✅ | 2026-06-08 |
 | 6. Image & Button Elements | 0/6 | Not started | — |
 | 7. Rich Text, Divider & TipTap | 0/7 | Not started | — |
 | 8. Header/Footer Presets & Pre-header | 0/7 | Not started | — |
