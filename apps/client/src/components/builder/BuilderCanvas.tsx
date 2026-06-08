@@ -4,11 +4,15 @@ import { SortableRowList } from './SortableRowList';
 
 interface BuilderCanvasProps {
   doc: NewsletterDoc | null;
+  onCanvasClick?: () => void;   // D-06: click on canvas background clears selectedElementId
 }
 
-export function BuilderCanvas({ doc }: BuilderCanvasProps) {
+export function BuilderCanvas({ doc, onCanvasClick }: BuilderCanvasProps) {
   return (
-    <div className="flex-[3] min-w-0 overflow-y-auto bg-canvas">
+    <div
+      className="flex-[3] min-w-0 overflow-y-auto bg-canvas"
+      onClick={onCanvasClick}
+    >
       <div className="max-w-[640px] mx-auto px-4 py-8 space-y-2">
         {doc ? (
           <SortableRowList rows={doc.rows} />

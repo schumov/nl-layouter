@@ -6,6 +6,7 @@ import { useAutoSave } from '../hooks/useAutoSave';
 import BuilderHeader from '../components/builder/BuilderHeader';
 import { BuilderCanvas } from '../components/builder/BuilderCanvas';
 import { BuilderPalette } from '../components/builder/BuilderPalette';
+import { InspectorPanel } from '../components/builder/InspectorPanel';
 import { DragDropProvider } from '../components/builder/DragDropProvider';
 
 export default function BuilderPage() {
@@ -14,6 +15,22 @@ export default function BuilderPage() {
   const { setDoc, clearDoc }         = useNewsletterStore();
   const { saveStatus }               = useAutoSave(id!);
   const doc                          = useNewsletterStore((state) => state.doc);
+
+  const selectedElementId   = useNewsletterStore((state) => state.selectedElementId);
+  const setSelectedElement  = useNewsletterStore((state) => state.setSelectedElement);
+
+  // Derive element type by looking up the selected slot in the doc (Finding 6)
+  const selectedElementType = useNewsletterStore((state) => {
+    if (!state.selectedElementId || !state.doc) return null;
+    for (const row of state.doc.rows) {
+      for (const slot of row.slots) {
+        if (slot.id === state.selectedElementId && slot.element) {
+          return slot.element.type;
+        }
+      }
+    }
+    return null;
+  });
 
   useEffect(() => {
     if (data) setDoc(data.document);
@@ -45,8 +62,19 @@ export default function BuilderPage() {
           saveStatus={saveStatus}
         />
         <main className="flex flex-1 overflow-hidden">
-          <BuilderCanvas doc={doc} />
-          <BuilderPalette />
+          <BuilderCanvas
+            doc={doc}
+            onCanvasClick={() => setSelectedElement(null)}
+          />
+          {selectedElementId && selectedElementType
+            ? (
+                <InspectorPanel
+                  elementType={selectedElementType}
+                  onBack={() => setSelectedElement(null)}
+                />
+              )
+            : <BuilderPalette />
+          }
         </main>
       </div>
     </DragDropProvider>
