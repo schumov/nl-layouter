@@ -15,7 +15,6 @@ import type {
   NewsletterDoc,
   Section,
   ElementUnion,
-  ColumnSlot,
 } from '../types/newsletter';
 import { assertNeverElement } from '../types/newsletter';
 
@@ -69,8 +68,8 @@ interface NewsletterActions {
   addElement: (slotId: string, elementType: ElementUnion['type']) => void;
   removeElement: (slotId: string) => void;
 
-  // Element mutations (legacy — used by Phase 3 canvas)
-  setElement: (sectionId: string, slotId: string, element: ElementUnion | null) => void;
+  // Element mutations (Phase 6)
+  updateElement: (slotId: string, patch: Partial<ElementUnion>) => void;
 }
 
 // ─── Store ───────────────────────────────────────────────────────────────────
@@ -173,16 +172,18 @@ export const useNewsletterStore = create<NewsletterState & NewsletterActions>()(
         // slotId not found — silent no-op
       }),
 
-    /**
-     * @deprecated Use `addElement` / `removeElement` instead.
-     * Retained for Phase 3 canvas compatibility; remove in Phase 6.
-     */
-    setElement: (sectionId, slotId, element) =>
+    updateElement: (slotId, patch) =>
       set((state) => {
-        const section = state.doc?.rows.find((r) => r.id === sectionId);
-        if (!section) return;
-        const slot: ColumnSlot | undefined = section.slots.find((s) => s.id === slotId);
-        if (slot) slot.element = element;
+        if (!state.doc) return;
+        for (const row of state.doc.rows) {
+          for (const slot of row.slots) {
+            if (slot.id === slotId && slot.element) {
+              Object.assign(slot.element, patch);  // Immer in-place mutation — do NOT use spread
+              return;  // early exit on first match
+            }
+          }
+        }
+        // slotId not found or slot.element is null — silent no-op
       }),
   }))
 );
