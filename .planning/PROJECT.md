@@ -13,6 +13,8 @@ Users can build a fully structured, export-ready HTML newsletter without writing
 ### Validated
 
 - ✓ User can create, name, save, and load newsletters from the backend — Phase 2
+- ✓ Builder UI: left-side canvas (flex-[3]), right-side palette (flex-[2]) with Layouts/Elements tabs — Phase 3
+- ✓ Available layouts: 1-column, 2-column, 3-column, small-left/big-right, big-left/small-right — Phase 3 (LAYOUT-01–05)
 
 ### Active
 
@@ -80,4 +82,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-06-07 after Phase 2*
+*Last updated: 2026-06-08 after Phase 3*
