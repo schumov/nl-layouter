@@ -49,6 +49,7 @@ export function ButtonRenderer({ element }: ButtonRendererProps) {
         target="_blank"
         rel="noopener noreferrer"
         style={{ ...commonStyle, ...variantStyle }}
+        onClick={(e) => e.preventDefault()}
       >
         {element.label}
       </a>

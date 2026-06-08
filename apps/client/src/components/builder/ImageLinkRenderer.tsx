@@ -28,7 +28,7 @@ export function ImageLinkRenderer({ element }: ImageLinkRendererProps) {
       target="_blank"
       rel="noopener noreferrer"
       className="relative block"
-      onClick={(e) => e.stopPropagation()}
+      onClick={(e) => e.preventDefault()}
     >
       <ImageRenderer element={imageProps} />
 

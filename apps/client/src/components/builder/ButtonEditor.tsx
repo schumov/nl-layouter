@@ -53,7 +53,10 @@ export function ButtonEditor({ element, onUpdate }: ButtonEditorProps) {
           />
           <Input
             value={element.backgroundColor}
-            onChange={(e) => onUpdate({ backgroundColor: e.target.value })}
+            onChange={(e) => {
+              const v = e.target.value;
+              if (/^#[0-9a-fA-F]{6}$/.test(v)) onUpdate({ backgroundColor: v.toLowerCase() });
+            }}
             className="font-mono text-xs h-8 w-[88px]"
             maxLength={7}
           />
@@ -73,7 +76,10 @@ export function ButtonEditor({ element, onUpdate }: ButtonEditorProps) {
           />
           <Input
             value={element.textColor}
-            onChange={(e) => onUpdate({ textColor: e.target.value })}
+            onChange={(e) => {
+              const v = e.target.value;
+              if (/^#[0-9a-fA-F]{6}$/.test(v)) onUpdate({ textColor: v.toLowerCase() });
+            }}
             className="font-mono text-xs h-8 w-[88px]"
             maxLength={7}
           />

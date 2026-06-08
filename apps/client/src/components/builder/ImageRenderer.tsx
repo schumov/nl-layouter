@@ -28,9 +28,9 @@ export function ImageRenderer({ element }: ImageRendererProps) {
       src={element.src}
       alt={element.alt}
       role="img"
-      className="block min-h-[70px] w-full"
+      className="block min-h-[70px]"
       style={{
-        width: element.width ?? '100%',
+        width: element.width || '100%',
         objectFit: 'cover',
         display: 'block',
       }}

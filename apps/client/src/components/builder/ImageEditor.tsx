@@ -8,10 +8,11 @@ import type { ImageElement, ImageLinkElement } from '../../types/newsletter';
 
 // Accepts both image and image-link elements; href field is conditionally shown
 type ImageEditorElement = ImageElement | ImageLinkElement;
+type ImageEditorPatch = Partial<ImageElement> | Partial<ImageLinkElement>;
 
 interface ImageEditorProps {
   element: ImageEditorElement;
-  onUpdate: (patch: Partial<ImageEditorElement>) => void;
+  onUpdate: (patch: ImageEditorPatch) => void;
 }
 
 export function ImageEditor({ element, onUpdate }: ImageEditorProps) {
@@ -56,7 +57,7 @@ export function ImageEditor({ element, onUpdate }: ImageEditorProps) {
           <label className="text-xs font-semibold text-foreground">Link URL</label>
           <Input
             value={(element as ImageLinkElement).href}
-            onChange={(e) => onUpdate({ href: e.target.value } as Partial<ImageLinkElement>)}
+            onChange={(e) => onUpdate({ href: e.target.value })}
             placeholder="https://..."
             className="text-sm"
           />
