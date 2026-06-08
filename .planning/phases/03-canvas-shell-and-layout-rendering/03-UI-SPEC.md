@@ -135,6 +135,8 @@ This enables `className="bg-canvas"` on `BuilderCanvas`. Do NOT use `bg-neutral-
 
 **`<main>` wrapper:** `flex flex-1 overflow-hidden`
 
+> **Primary visual anchor: BuilderCanvas (flex-[3]). The palette panel is secondary UI and must not visually compete with canvas content.**
+
 > `overflow-hidden` on `<main>` constrains both panels to viewport height. Canvas scrolls
 > independently via `overflow-y-auto`. Palette stays full-height naturally — no
 > `position: sticky` required. [Source: RESEARCH.md Pattern 2, Pitfall 2]
