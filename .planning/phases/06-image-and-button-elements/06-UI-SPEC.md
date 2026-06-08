@@ -1,7 +1,7 @@
 ---
 phase: 6
 slug: image-and-button-elements
-status: draft
+status: approved
 shadcn_initialized: true
 preset: "new-york / neutral base / lucide icons"
 created: 2026-06-08
@@ -98,7 +98,7 @@ Carries forward all Phase 5 tokens. Phase 6 adds semantic entries for new canvas
 | Selection ring | `oklch(0.484 0.209 257.0)` ≈ `#0066cc` | `ring-ring` (`--ring`) | Selected occupied slot ring — Phase 5, unchanged |
 | Destructive | `oklch(0.577 0.245 27.325)` ≈ `#dc2626` | `text-destructive` | Remove confirm "Remove?" text — Phase 5, unchanged |
 | Muted foreground | `oklch(0.556 0 0)` ≈ `#71717a` | `text-muted-foreground` | Editor Input placeholders; inspector note; image empty-state icon + text; ExternalLink badge icon |
-| **Accent fill** | `oklch(0.97 0 0)` ≈ `#f5f5f5` | `bg-accent` | **Image empty-state background (D-01)** + hover fills (Phase 5 carry-forward) |
+| **Accent fill (10%)** | `oklch(0.97 0 0)` ≈ `#f5f5f5` | `bg-accent` | **Image empty-state background (D-01)** + hover fills (Phase 5 carry-forward) |
 | Button solid bg | User-configured hex | Inline style only | `style={{ backgroundColor: element.backgroundColor }}` — CC-2/CC-6 |
 | Button solid text | User-configured hex | Inline style only | `style={{ color: element.textColor }}` — CC-2/CC-6 |
 | Button outline border/text | User-configured hex | Inline style only | `style={{ border: '2px solid <bgColor>', color: '<bgColor>' }}` — CC-2/CC-6 |
@@ -979,11 +979,11 @@ OUTLINE (same default colour):
 
 ## Checker Sign-Off
 
-- [ ] Dimension 1 Copywriting: PASS
-- [ ] Dimension 2 Visuals: PASS
-- [ ] Dimension 3 Color: PASS
-- [ ] Dimension 4 Typography: PASS
-- [ ] Dimension 5 Spacing: PASS
-- [ ] Dimension 6 Registry Safety: PASS
+- [x] Dimension 1 Copywriting: PASS
+- [x] Dimension 2 Visuals: PASS
+- [x] Dimension 3 Color: FLAG (non-blocking — Accent fill missing `(10%)` label; fixed)
+- [x] Dimension 4 Typography: PASS
+- [x] Dimension 5 Spacing: PASS
+- [x] Dimension 6 Registry Safety: PASS
 
-**Approval:** pending
+**Approval:** ✓ approved 2026-06-08
