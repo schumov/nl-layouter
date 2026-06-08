@@ -11,7 +11,7 @@ NL Layouter delivers a web-based drag-and-drop newsletter builder in 9 phases. P
 - [x] **Phase 1: Foundation & Stack Setup** — Monorepo, Fastify + Drizzle + PostgreSQL, NewsletterDoc types, TipTap v3 scaffold, DnD type constants
 - [x] **Phase 2: Newsletter CRUD & Dashboard** — Full newsletter lifecycle: create, list, open, rename, delete, auto-save
 - [x] **Phase 3: Canvas Shell & Layout Rendering** — Two-panel builder UI; all 5 layout types render with correct column proportions
-- [ ] **Phase 4: DnD — Row-Level Operations** — Drag layout sections from palette, reorder, delete, duplicate
+- [x] **Phase 4: DnD — Row-Level Operations** — Drag layout sections from palette, reorder, delete, duplicate
 - [ ] **Phase 5: DnD — Element Placement** — Drag elements from palette into column slots; remove and replace elements
 - [ ] **Phase 6: Image & Button Elements** — Image, image-link, and button renderers + InspectorPanel editors
 - [ ] **Phase 7: Rich Text, Divider & TipTap** — TipTap v3 WYSIWYG with inline-style output; named styles; divider element
@@ -110,13 +110,13 @@ Plans:
 **Plans:** 7 plans across 4 waves
 
 Plans:
-- [ ] 04-00-PLAN.md — Wave 0: Test scaffolding — useNewsletterStore.test.ts (store unit tests), extend RowBlock.test.tsx (SectionControls), DragDropProvider.test.tsx + SortableRowList.test.tsx stubs, add DndContext wrappers to BuilderCanvas + BuilderPalette tests
-- [ ] 04-01-PLAN.md — Wave 1: Store extensions — add reorderSections (arrayMove) + duplicateSection (structuredClone + fresh UUIDs) to useNewsletterStore.ts
-- [ ] 04-02-PLAN.md — Wave 1: RowBlock upgrade — extend RowBlock with sortable props + SectionControls sub-component (GripVertical + Copy + Trash2 with inline delete confirm per D-05/D-06/D-07)
-- [ ] 04-03-PLAN.md — Wave 1: BuilderPalette draggable — extract DraggableLayoutCard with useDraggable (DRAG_TYPES.LAYOUT_CARD data); export LAYOUT_NAMES
-- [ ] 04-04-PLAN.md — Wave 2: DragDropProvider — DndContext with PointerSensor (8px) + KeyboardSensor; onDragStart/onDragEnd handlers; DragOverlay with LAYOUT_CARD + CANVAS_ROW ghosts
-- [ ] 04-05-PLAN.md — Wave 2: SortableRowList — empty drop zone (useDroppable, D-03/D-04 blue hover) + SortableRowBlock (local, calls useSortable with DRAG_TYPES.CANVAS_ROW data)
-- [ ] 04-06-PLAN.md — Wave 3: Canvas + Page wiring — BuilderCanvas uses SortableRowList; BuilderPage wraps with DragDropProvider; full test suite green
+- [x] 04-00-PLAN.md — Wave 0: Test scaffolding — useNewsletterStore.test.ts (store unit tests), extend RowBlock.test.tsx (SectionControls), DragDropProvider.test.tsx + SortableRowList.test.tsx stubs, add DndContext wrappers to BuilderCanvas + BuilderPalette tests
+- [x] 04-01-PLAN.md — Wave 1: Store extensions — add reorderSections (arrayMove) + duplicateSection (structuredClone + fresh UUIDs) to useNewsletterStore.ts
+- [x] 04-02-PLAN.md — Wave 1: RowBlock upgrade — extend RowBlock with sortable props + SectionControls sub-component (GripVertical + Copy + Trash2 with inline delete confirm per D-05/D-06/D-07)
+- [x] 04-03-PLAN.md — Wave 1: BuilderPalette draggable — extract DraggableLayoutCard with useDraggable (DRAG_TYPES.LAYOUT_CARD data); export LAYOUT_NAMES
+- [x] 04-04-PLAN.md — Wave 2: DragDropProvider — DndContext with PointerSensor (8px) + KeyboardSensor; onDragStart/onDragEnd handlers; DragOverlay with LAYOUT_CARD + CANVAS_ROW ghosts
+- [x] 04-05-PLAN.md — Wave 2: SortableRowList — empty drop zone (useDroppable, D-03/D-04 blue hover) + SortableRowBlock (local, calls useSortable with DRAG_TYPES.CANVAS_ROW data)
+- [x] 04-06-PLAN.md — Wave 3: Canvas + Page wiring — BuilderCanvas uses SortableRowList; BuilderPage wraps with DragDropProvider; full test suite green
 
 ### Done When
 

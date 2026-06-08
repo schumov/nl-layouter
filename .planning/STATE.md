@@ -5,7 +5,7 @@
 See: `.planning/PROJECT.md` (updated 2026-06-07)
 
 **Core value:** Users can build a fully structured, export-ready HTML newsletter without writing any code.
-**Current focus:** Phase 4 — DnD Row-Level Operations
+**Current focus:** Phase 5 — DnD Element Placement
 
 ---
 
@@ -37,15 +37,16 @@ Goal: The builder page displays a two-panel layout where the canvas correctly re
 **Phase 1 Verified ✅** — All 7 plans executed + smoke test passed + verification report written
 **Phase 2 Verified ✅** — All 9 plans executed, UAT 12/13 passed (1 skipped: auto-save pending Phase 3 canvas), CORS fix applied
 **Phase 3 Verified ✅** — All 4 plans executed, 15 tests passing, two-panel layout + 5 layout types verified
+**Phase 4 Verified ✅** — All 7 plans executed, 30 tests passing, DnD row-level operations fully wired
 
 ---
 
 ## Current Position
 
 ```
-Phase  4 / 9  ████████████░░░░░░░░  ~33% (Phase 3 complete ✅ — Phase 4 ready to plan/execute)
-Plan   0 / 7  (not started)
-Status Phase 4 — planned ✅ — run /gsd-execute-phase 4
+Phase  5 / 9  ██████████████░░░░░░  ~44% (Phase 4 complete ✅ — Phase 5 ready to plan/execute)
+Plan   0 / ?  (not started)
+Status Phase 5 — needs planning
 ```
 
 ---
@@ -55,10 +56,10 @@ Status Phase 4 — planned ✅ — run /gsd-execute-phase 4
 | Metric | Value |
 |--------|-------|
 | Phases total | 9 |
-| Phases complete | 3 ✅ |
+| Phases complete | 4 ✅ |
 | Requirements mapped | 40 / 40 |
-| Plans created | 24 |
-| Plans complete | 20 |
+| Plans created | 31 |
+| Plans complete | 27 |
 
 ---
 
@@ -132,8 +133,8 @@ Status Phase 4 — planned ✅ — run /gsd-execute-phase 4
 
 ## Session Continuity
 
-Last updated: 2026-06-09 (Phase 4 planned — 7 plans ready)
-Next action: Run /gsd-execute-phase 4 to implement DnD Row-Level Operations
+Last updated: 2026-06-08 (Phase 4 executed — all 7 plans complete)
+Next action: Run /gsd-verify-work 4 then advance to Phase 5
 
 ### Phase Dependency Chain
 
