@@ -11,9 +11,9 @@ See: `.planning/PROJECT.md` (updated 2026-06-07)
 
 ## Active Phase
 
-**Phase 3: Canvas Shell & Layout Rendering**
+**Phase 5: DnD — Element Placement**
 
-Goal: The builder page displays a two-panel layout where the canvas correctly renders all five layout section types with proportional columns and empty-slot placeholders.
+Goal: Users can drag element types from the palette into any column slot, remove elements from slots, and replace an element by dropping a new type.
 
 ---
 
@@ -38,15 +38,16 @@ Goal: The builder page displays a two-panel layout where the canvas correctly re
 **Phase 2 Verified ✅** — All 9 plans executed, UAT 12/13 passed (1 skipped: auto-save pending Phase 3 canvas), CORS fix applied
 **Phase 3 Verified ✅** — All 4 plans executed, 15 tests passing, two-panel layout + 5 layout types verified
 **Phase 4 Verified ✅** — All 7 plans executed, 30 tests passing, DnD row-level operations fully wired
+**Phase 5 Executed ✅** — All 6 plans executed, 46 tests passing, element placement + InspectorPanel + canvas click deselect wired
 
 ---
 
 ## Current Position
 
 ```
-Phase  5 / 9  ██████████████░░░░░░  ~44% (Phase 4 complete ✅ — Phase 5 ready to plan/execute)
-Plan   0 / ?  (not started)
-Status Phase 5 — needs planning
+Phase  5 / 9  ████████████████░░░░  ~55% (Phase 5 executed ✅ — awaiting verification)
+Plan   6 / 6  (all plans complete)
+Status Phase 5 — executed, pending verification
 ```
 
 ---
@@ -59,7 +60,7 @@ Status Phase 5 — needs planning
 | Phases complete | 4 ✅ |
 | Requirements mapped | 40 / 40 |
 | Plans created | 31 |
-| Plans complete | 27 |
+| Plans complete | 33 |
 
 ---
 
@@ -133,8 +134,8 @@ Status Phase 5 — needs planning
 
 ## Session Continuity
 
-Last updated: 2026-06-08 (Phase 4 executed — all 7 plans complete)
-Next action: Run /gsd-verify-work 4 then advance to Phase 5
+Last updated: 2026-06-10 (Phase 5 executed — all 6 plans complete)
+Next action: Run /gsd-verify-work 5 to verify phase goal
 
 ### Phase Dependency Chain
 

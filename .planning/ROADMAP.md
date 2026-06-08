@@ -139,12 +139,12 @@ Plans:
 **Plans:** 6 plans across 4 waves
 
 Plans:
-- [ ] 05-00-PLAN.md — Wave 0: TDD stubs — InspectorPanel.tsx minimal stub + InspectorPanel.test.tsx RED stubs; ColumnSlot.test.tsx renderWithDnd upgrade + RED stubs; useNewsletterStore.test.ts addElement/removeElement RED stubs; DragDropProvider.test.tsx ELEMENT_CARD RED stub
-- [ ] 05-01-PLAN.md — Wave 1: Store actions — addElement(slotId, elementType) + removeElement(slotId) + createDefaultElement helper in useNewsletterStore.ts; turns 5 RED store stubs GREEN
-- [ ] 05-02-PLAN.md — Wave 1: DraggableElementCard palette — 5 draggable cards (lucide icon + label) in Elements tab; export ELEMENT_NAMES + ELEMENT_CARD_ICONS for DragDropProvider ghost
-- [ ] 05-03-PLAN.md — Wave 2: ColumnSlot droppable — useDroppable (DRAG_TYPES.ELEMENT_CARD); green hover highlight (D-01–D-03); × remove button with 2-step inline confirm (D-09–D-11); click-to-select + ring (D-10)
-- [ ] 05-04-PLAN.md — Wave 2: DragDropProvider collision + ELEMENT_CARD handler — custom collisionDetection filters slot droppables for ELEMENT_CARD (Finding 1); ELEMENT_CARD branch in onDragEnd calls addElement; DragOverlay ghost
-- [ ] 05-05-PLAN.md — Wave 3: InspectorPanel + wiring — full InspectorPanel placeholder (type name + back arrow + note); BuilderPage conditional right panel; BuilderCanvas onCanvasClick for D-06 deselect
+- [x] 05-00-PLAN.md — Wave 0: TDD stubs — InspectorPanel.tsx minimal stub + InspectorPanel.test.tsx RED stubs; ColumnSlot.test.tsx renderWithDnd upgrade + RED stubs; useNewsletterStore.test.ts addElement/removeElement RED stubs; DragDropProvider.test.tsx ELEMENT_CARD RED stub
+- [x] 05-01-PLAN.md — Wave 1: Store actions — addElement(slotId, elementType) + removeElement(slotId) + createDefaultElement helper in useNewsletterStore.ts; turns 5 RED store stubs GREEN
+- [x] 05-02-PLAN.md — Wave 1: DraggableElementCard palette — 5 draggable cards (lucide icon + label) in Elements tab; export ELEMENT_NAMES + ELEMENT_CARD_ICONS for DragDropProvider ghost
+- [x] 05-03-PLAN.md — Wave 2: ColumnSlot droppable — useDroppable (DRAG_TYPES.ELEMENT_CARD); green hover highlight (D-01–D-03); × remove button with 2-step inline confirm (D-09–D-11); click-to-select + ring (D-10)
+- [x] 05-04-PLAN.md — Wave 2: DragDropProvider collision + ELEMENT_CARD handler — custom collisionDetection filters slot droppables for ELEMENT_CARD (Finding 1); ELEMENT_CARD branch in onDragEnd calls addElement; DragOverlay ghost
+- [x] 05-05-PLAN.md — Wave 3: InspectorPanel + wiring — full InspectorPanel placeholder (type name + back arrow + note); BuilderPage conditional right panel; BuilderCanvas onCanvasClick for D-06 deselect
 
 ### Done When
 
@@ -274,11 +274,11 @@ Plans:
 
 | Phase | Plans Complete | Status | Completed |
 |-------|---------------|--------|-----------|
-| 1. Foundation & Stack Setup | 0/8 | Not started | — |
-| 2. Newsletter CRUD & Dashboard | 0/8 | Not started | — |
-| 3. Canvas Shell & Layout Rendering | 0/7 | Not started | — |
-| 4. DnD — Row-Level Operations | 0/7 | Not started | — |
-| 5. DnD — Element Placement | 0/6 | Not started | — |
+| 1. Foundation & Stack Setup | 7/7 | Complete ✅ | 2026-06-05 |
+| 2. Newsletter CRUD & Dashboard | 9/9 | Complete ✅ | 2026-06-06 |
+| 3. Canvas Shell & Layout Rendering | 4/4 | Complete ✅ | 2026-06-07 |
+| 4. DnD — Row-Level Operations | 7/7 | Complete ✅ | 2026-06-08 |
+| 5. DnD — Element Placement | 6/6 | Executed ✅ | 2026-06-10 |
 | 6. Image & Button Elements | 0/6 | Not started | — |
 | 7. Rich Text, Divider & TipTap | 0/7 | Not started | — |
 | 8. Header/Footer Presets & Pre-header | 0/7 | Not started | — |
