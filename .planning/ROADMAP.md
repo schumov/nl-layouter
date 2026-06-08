@@ -193,15 +193,16 @@ Plans:
 
 **Requirements covered:** ELEM-06, ELEM-07, ELEM-08, ELEM-09
 
-### Plans
+**Plans:** 7 plans
 
-1. **TipTap inline-style extensions** — Override `renderHTML` on TextAlign, Color, Bold, Italic, Underline, and Link extensions to emit `style=""` attributes only; write unit test asserting zero `class=` attributes on any formatting mark in `editor.getHTML()` output
-2. **Named text style presets** — Implement `TextStyle` presets as `RichTextPreset` type: *Header* (`font-size:24px;font-weight:700`), *Subheader* (`font-size:18px;font-weight:600`), *Body Text* (`font-size:14px`), *Code* (`font-family:monospace;font-size:13px`); accessible via toolbar dropdown
-3. **`RichTextStaticRenderer`** — Use `@tiptap/static-renderer` `renderToHTMLString` with custom `nodeMapping` + `markMapping` that matches inline-style extensions; renders non-focused rich text blocks on canvas as static HTML (no ProseMirror instance)
-4. **`RichTextEditor` (active instance)** — Single `<EditorContent>` in `InspectorPanel`; `BubbleMenu` from `@tiptap/react/menus` with Bold / Italic / Underline / Link buttons; named-style picker dropdown; `useEffect` cleanup destroys editor on element deselect
-5. **Editor lifecycle guard** — Verify only one TipTap editor instance mounted at a time; navigate between multiple rich text elements; confirm console shows no "Editor destroyed" leaks or duplicate-instance warnings
-6. **`DividerRenderer`** — `<hr>` with inline `style="border-top: {thickness}px solid {color}; margin: {spacingTop}px 0 {spacingBottom}px"` from element config; default: 1 px `#cccccc`, 16 px spacing
-7. **`DividerEditor`** — Colour picker, thickness input (1–8 px slider), padding-top + padding-bottom inputs; all values dispatch `updateElement(id, patch)` for live canvas preview
+Plans:
+- [ ] 07-00-PLAN.md — TDD RED stubs: create failing test contracts for all Phase 7 components
+- [ ] 07-01-PLAN.md — Package install + shared TipTap extension module (`lib/tiptap-extensions.ts`)
+- [ ] 07-02-PLAN.md — `DividerRenderer` + `DividerEditor` (inline-styled hr + color/thickness/spacing editor)
+- [ ] 07-03-PLAN.md — `addElement` defaults: rich-text content fix + store unit tests
+- [ ] 07-04-PLAN.md — `RichTextStaticRenderer` (generateHTML + dangerouslySetInnerHTML + preset CSS)
+- [ ] 07-05-PLAN.md — `RichTextEditor` (useEditor + BubbleMenu + named preset picker)
+- [ ] 07-06-PLAN.md — Full integration: ElementRenderer lifecycle guard + InspectorPanel routing
 
 ### Done When
 
