@@ -14,13 +14,13 @@ import {
   useSensor,
   useSensors,
 } from '@dnd-kit/core';
-import type { DragStartEvent, DragEndEvent } from '@dnd-kit/core';
+import type { CollisionDetection, DragStartEvent, DragEndEvent } from '@dnd-kit/core';
 import { sortableKeyboardCoordinates } from '@dnd-kit/sortable';
 import { DRAG_TYPES } from '@/dnd/types';
-import type { LayoutType, Section } from '@/types/newsletter';
+import type { LayoutType, Section, ElementUnion } from '@/types/newsletter';
 import { useNewsletterStore } from '@/store/useNewsletterStore';
 import { RowBlock } from './RowBlock';
-import { LAYOUT_NAMES } from './BuilderPalette';
+import { LAYOUT_NAMES, ELEMENT_NAMES, ELEMENT_CARD_ICONS } from './BuilderPalette';
 
 // ─── createSection helper ─────────────────────────────────────────────────────
 // Maps LayoutType → correct slot count — kept in sync with ColumnGrid.tsx COLUMN_CLASSES.
@@ -49,15 +49,38 @@ function createSection(layoutType: LayoutType): Section {
 
 interface ActiveDrag {
   type: string;
-  layoutType?: LayoutType;   // for LAYOUT_CARD ghost — shows layout name label
-  section?: Section;         // for CANVAS_ROW ghost — clones the actual RowBlock
+  layoutType?: LayoutType;              // LAYOUT_CARD ghost
+  section?: Section;                     // CANVAS_ROW ghost
+  elementType?: ElementUnion['type'];    // ELEMENT_CARD ghost — Phase 5
+  elementLabel?: string;                 // display label for ELEMENT_CARD ghost
 }
+
+// ─── customCollision ──────────────────────────────────────────────────────────
+// Critical fix for nested droppable collision (RESEARCH Finding 1).
+// When an ELEMENT_CARD is being dragged, filter droppableContainers to only
+// ColumnSlot droppables (those with data.current.type === DRAG_TYPES.ELEMENT_CARD).
+// Without this, closestCenter returns the SortableRowBlock row in 1-column sections,
+// preventing ColumnSlot.isOver from ever being true.
+
+const customCollision: CollisionDetection = (args) => {
+  const dragType = args.active.data.current?.type;
+
+  if (dragType === DRAG_TYPES.ELEMENT_CARD) {
+    const slotContainers = args.droppableContainers.filter(
+      (c) => c.data.current?.type === DRAG_TYPES.ELEMENT_CARD,
+    );
+    if (slotContainers.length === 0) return [];
+    return closestCenter({ ...args, droppableContainers: slotContainers });
+  }
+
+  return closestCenter(args);  // LAYOUT_CARD + CANVAS_ROW: standard closestCenter unchanged
+};
 
 // ─── DragDropProvider ─────────────────────────────────────────────────────────
 
 export function DragDropProvider({ children }: { children: React.ReactNode }) {
   const [activeDrag, setActiveDrag] = useState<ActiveDrag | null>(null);
-  const { addSection, reorderSections } = useNewsletterStore();
+  const { addSection, reorderSections, addElement } = useNewsletterStore();
   const doc = useNewsletterStore((state) => state.doc);
 
   const sensors = useSensors(
@@ -82,6 +105,13 @@ export function DragDropProvider({ children }: { children: React.ReactNode }) {
       // Find the section in store to render its ghost clone
       const section = doc?.rows.find((r) => r.id === String(active.id));
       setActiveDrag({ type: DRAG_TYPES.CANVAS_ROW, section });
+    } else if (data?.type === DRAG_TYPES.ELEMENT_CARD) {
+      const elemType = data.elementType as ElementUnion['type'];
+      setActiveDrag({
+        type: DRAG_TYPES.ELEMENT_CARD,
+        elementType: elemType,
+        elementLabel: ELEMENT_NAMES[elemType],
+      });
     }
   }
 
@@ -94,6 +124,14 @@ export function DragDropProvider({ children }: { children: React.ReactNode }) {
       // over !== null guard: user must release over a droppable zone (not browser chrome)
       const layoutType = active.data.current?.layoutType as LayoutType;
       addSection(createSection(layoutType));   // appends at bottom (CANVAS-03)
+      return;
+    }
+
+    // ── Palette element card → column slot: create/replace element ─────────
+    if (dragType === DRAG_TYPES.ELEMENT_CARD && over !== null) {
+      const elementType = active.data.current?.elementType as ElementUnion['type'];
+      addElement(String(over.id), elementType);
+      // String() cast: over.id is UniqueIdentifier (string | number); slot.id is always string UUID
       return;
     }
 
@@ -111,7 +149,7 @@ export function DragDropProvider({ children }: { children: React.ReactNode }) {
   return (
     <DndContext
       sensors={sensors}
-      collisionDetection={closestCenter}
+      collisionDetection={customCollision}
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
     >
@@ -129,6 +167,16 @@ export function DragDropProvider({ children }: { children: React.ReactNode }) {
             <RowBlock section={activeDrag.section} />
           </div>
         )}
+        {/* Phase 5: ELEMENT_CARD ghost — icon + label card at 80% opacity */}
+        {activeDrag?.type === DRAG_TYPES.ELEMENT_CARD && activeDrag.elementType && (() => {
+          const Icon = ELEMENT_CARD_ICONS[activeDrag.elementType!];
+          return (
+            <div className="p-3 border rounded-md text-sm bg-white shadow-md opacity-80 cursor-grabbing select-none flex items-center gap-2">
+              <Icon className="size-4 shrink-0" aria-hidden="true" />
+              <span>{activeDrag.elementLabel}</span>
+            </div>
+          );
+        })()}
       </DragOverlay>
     </DndContext>
   );
