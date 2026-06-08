@@ -17,6 +17,30 @@ import type {
   ElementUnion,
   ColumnSlot,
 } from '../types/newsletter';
+import { assertNeverElement } from '../types/newsletter';
+
+// ─── createDefaultElement ─────────────────────────────────────────────────────
+// Returns a fresh ElementUnion with sensible Phase 5 defaults.
+// Phases 6–7 will populate real values via InspectorPanel editors.
+// NOT exported — only used by addElement action inside this module.
+
+function createDefaultElement(type: ElementUnion['type']): ElementUnion {
+  const id = crypto.randomUUID();
+  switch (type) {
+    case 'image':
+      return { type: 'image', id, src: '', alt: '', width: '100%' };
+    case 'image-link':
+      return { type: 'image-link', id, src: '', alt: '', href: '', width: '100%' };
+    case 'button':
+      return { type: 'button', id, label: 'Click me', href: '', backgroundColor: '#0066cc', textColor: '#ffffff', style: 'solid' };
+    case 'rich-text':
+      return { type: 'rich-text', id, content: { type: 'doc', content: [] }, textStyle: 'body' };
+    case 'divider':
+      return { type: 'divider', id, color: '#cccccc', spacing: 16, thickness: 1 };
+    default:
+      return assertNeverElement(type);
+  }
+}
 
 // ─── State shape ─────────────────────────────────────────────────────────────
 
@@ -41,7 +65,11 @@ interface NewsletterActions {
   reorderSections: (activeId: string, overId: string) => void;
   duplicateSection: (sectionId: string) => void;
 
-  // Element mutations (Phase 5 adds: moveElement, replaceElement)
+  // Element mutations (Phase 5)
+  addElement: (slotId: string, elementType: ElementUnion['type']) => void;
+  removeElement: (slotId: string) => void;
+
+  // Element mutations (legacy — used by Phase 3 canvas)
   setElement: (sectionId: string, slotId: string, element: ElementUnion | null) => void;
 }
 
@@ -114,6 +142,33 @@ export const useNewsletterStore = create<NewsletterState & NewsletterActions>()(
       }),
 
     // ── Element mutations ──────────────────────────────────────────────────
+    addElement: (slotId, elementType) =>
+      set((state) => {
+        if (!state.doc) return;
+        for (const row of state.doc.rows) {
+          const slot = row.slots.find((s) => s.id === slotId);
+          if (slot) {
+            // D-15: addElement on occupied slot overwrites existing element directly
+            slot.element = createDefaultElement(elementType);
+            return;
+          }
+        }
+        // slotId not found — silent no-op (guard against stale IDs)
+      }),
+
+    removeElement: (slotId) =>
+      set((state) => {
+        if (!state.doc) return;
+        for (const row of state.doc.rows) {
+          const slot = row.slots.find((s) => s.id === slotId);
+          if (slot) {
+            slot.element = null;
+            return;
+          }
+        }
+        // slotId not found — silent no-op
+      }),
+
     setElement: (sectionId, slotId, element) =>
       set((state) => {
         const section = state.doc?.rows.find((r) => r.id === sectionId);
