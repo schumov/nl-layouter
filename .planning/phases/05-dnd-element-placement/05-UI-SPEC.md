@@ -42,7 +42,7 @@ Carries forward Phase 4 scale. Phase 5 usages added:
 | xs | 4px | `gap-1`, `p-1`, `top-1`, `right-1` | × button position inside slot (`top-1 right-1`); remove-confirm button gap (`gap-1`) |
 | sm | 8px | `gap-2`, `p-2`, `space-y-2` | Element card icon-label gap (`gap-2`); Elements tab card list spacing (`space-y-2`) |
 | md | 16px | `p-4`, `px-4` | Elements tab content padding (`p-4`); inspector body padding (`p-4`); inspector header horizontal padding (`px-4`) |
-| lg | 24px | `py-3` | Inspector header vertical padding (`py-3` = 12px — nearest to `gap-2` rounding; see exception) |
+| lg | 24px | `py-6` | Standard lg token (24px) — not directly used in Phase 5 components (see inspector exception below) |
 | xl | 32px | `py-8` | Canvas vertical padding (Phase 3 — unchanged) |
 | 2xl | 48px | `h-48` | Empty canvas drop zone height (Phase 4 — unchanged) |
 | 3xl | 64px | `py-16` | Empty canvas loading state padding (Phase 3 — unchanged) |
@@ -64,10 +64,11 @@ No new type roles introduced beyond Phase 4. Phase 5 reuses the existing 3-size 
 | Role | Size | Tailwind | Weight | Line Height | Phase 5 Usage |
 |------|------|----------|--------|-------------|---------------|
 | Body | 14px | `text-sm` | 400 regular | 1.5 | Element card labels; inspector note text; empty slot hint text (unchanged) |
-| Label | 12px | `text-xs` | 500 medium | 1.4 | Remove confirm "Remove?" text; remove confirm "Cancel" text |
-| Title | 16px | `text-base` | 600 semibold | 1.2 | BuilderHeader (Phase 2 — no change) |
+| Label/Title | 12–16px | `text-xs` / `text-sm` / `text-base` | 600 semibold | 1.2–1.4 | Remove confirm "Remove?" text; inspector panel header; BuilderHeader |
 
-**Inspector panel header text:** `text-sm font-medium` (14px / weight 500) — matches palette section heading convention; not a new type role.
+**Two weights only:** `400 regular` for body/muted text; `600 semibold` for all labels, headings, and actionable text. Weight 500 (medium) is not used in Phase 5.
+
+**Inspector panel header text:** `text-sm font-semibold` (14px / weight 600) — consistent with label role above; not a new type role.
 
 **No heading or display sizes introduced in Phase 5.** Element content typography belongs to Phases 6–7.
 
@@ -90,7 +91,7 @@ Carries forward all Phase 4 tokens plus one new semantic entry for element drag-
 | Accent fill | `oklch(0.97 0 0)` ≈ `#f5f5f5` | `bg-accent` | × button hover background fill |
 
 **Accent reserved for:**
-- × button `hover:bg-accent` background fill — one element only per Phase 4 convention
+- Hover background on all interactive surface controls: element palette cards (`hover:bg-accent hover:text-accent-foreground`), × remove button (`hover:bg-accent`), and ghost icon buttons such as the back arrow (`hover:bg-accent hover:text-accent-foreground` via shadcn `variant="ghost"`)
 
 **Green reserved for:**
 - Empty ColumnSlot `isOver` state ONLY — never used for any other interactive or visual state in Phase 5
@@ -118,13 +119,13 @@ Carries forward all Phase 4 tokens plus one new semantic entry for element drag-
 | Elements tab — "Button" card | "Button" | `text-sm`; paired with `MousePointerClick` lucide icon |
 | Elements tab — "Rich Text" card | "Rich Text" | `text-sm`; paired with `AlignLeft` lucide icon |
 | Elements tab — "Divider" card | "Divider" | `text-sm`; paired with `Minus` lucide icon |
-| Inspector panel header — Image | "Image" | `text-sm font-medium`; element type display name |
-| Inspector panel header — Image with Link | "Image with Link" | `text-sm font-medium` |
-| Inspector panel header — Button | "Button" | `text-sm font-medium` |
-| Inspector panel header — Rich Text | "Rich Text" | `text-sm font-medium` |
-| Inspector panel header — Divider | "Divider" | `text-sm font-medium` |
+| Inspector panel header — Image | "Image" | `text-sm font-semibold`; element type display name |
+| Inspector panel header — Image with Link | "Image with Link" | `text-sm font-semibold` |
+| Inspector panel header — Button | "Button" | `text-sm font-semibold` |
+| Inspector panel header — Rich Text | "Rich Text" | `text-sm font-semibold` |
+| Inspector panel header — Divider | "Divider" | `text-sm font-semibold` |
 | Inspector panel body note | "Editing available in the next step." | `text-sm text-muted-foreground`; Phase 5 placeholder; replaced in Phase 6 |
-| Remove confirm — primary | "Remove?" | `text-xs font-medium text-destructive`; second click dispatches `removeElement(slotId)` |
+| Remove confirm — primary | "Remove?" | `text-xs font-semibold text-destructive`; second click dispatches `removeElement(slotId)` |
 | Remove confirm — cancel | "Cancel" | `text-xs text-muted-foreground`; resets per-slot `isConfirming` state |
 | × button aria-label | "Remove element" | Screen reader label; element not yet named in Phase 5 |
 | Back arrow aria-label | "Back to palette" | Screen reader label on inspector back arrow button |
@@ -307,7 +308,7 @@ div
   className="absolute top-1 right-1 flex items-center gap-1"
 ```
 Children:
-- `"Remove?"` button: `text-xs font-medium text-destructive hover:underline cursor-pointer whitespace-nowrap`
+- `"Remove?"` button: `text-xs font-semibold text-destructive hover:underline cursor-pointer whitespace-nowrap`
   - `onClick={(e) => { e.stopPropagation(); removeElement(slot.id); }}` — dispatches store action
 - `"Cancel"` button: `text-xs text-muted-foreground hover:text-foreground cursor-pointer whitespace-nowrap`
   - `onClick={(e) => { e.stopPropagation(); setIsConfirming(false); }}`
@@ -367,7 +368,7 @@ div.flex-[2].min-w-0.border-l.bg-background.overflow-y-auto.flex.flex-col
 div.flex.items-center.gap-2.px-4.py-3.border-b.shrink-0
   ├── <Button variant="ghost" size="icon-sm" aria-label="Back to palette" onClick={onBack}>
   │     <ArrowLeft className="size-4" />
-  └── <span className="text-sm font-medium text-foreground">{ELEMENT_LABELS[elementType]}</span>
+  └── <span className="text-sm font-semibold text-foreground">{ELEMENT_LABELS[elementType]}</span>
 ```
 
 **Body:**
