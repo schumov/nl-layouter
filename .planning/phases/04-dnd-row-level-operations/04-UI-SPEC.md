@@ -1,7 +1,7 @@
 ---
 phase: 4
 slug: dnd-row-level-operations
-status: draft
+status: approved
 shadcn_initialized: true
 preset: "new-york / neutral base / lucide icons"
 created: 2026-06-08
@@ -361,16 +361,22 @@ Complete enumeration of all interactive states in Phase 4.
 
 ---
 
+## Visual Focal Point
+
+**Primary visual anchor (idle state):** The RowBlock stack is the main content object — the repeating white card rows dominate the canvas surface. `SectionControls` is the secondary visual layer, rendered outside the block to the right and intentionally lighter (`text-muted-foreground`) to not compete with content.
+
+**Drag-active state:** The `DragOverlay` ghost becomes the primary focal point temporarily; source rows and palette card fade to `opacity-40` to reinforce this hierarchy shift.
+
 ## Checker Sign-Off
 
-- [ ] Dimension 1 Copywriting: PASS
-- [ ] Dimension 2 Visuals: PASS
-- [ ] Dimension 3 Color: PASS
-- [ ] Dimension 4 Typography: PASS
-- [ ] Dimension 5 Spacing: PASS
-- [ ] Dimension 6 Registry Safety: PASS
+- [x] Dimension 1 Copywriting: PASS
+- [x] Dimension 2 Visuals: PASS (focal point declared above)
+- [x] Dimension 3 Color: PASS
+- [x] Dimension 4 Typography: PASS
+- [x] Dimension 5 Spacing: PASS
+- [x] Dimension 6 Registry Safety: PASS
 
-**Approval:** pending
+**Approval:** ✓ approved 2026-06-09
 
 ---
 
