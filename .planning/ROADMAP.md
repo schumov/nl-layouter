@@ -107,15 +107,16 @@ Plans:
 
 **Requirements covered:** CANVAS-02, CANVAS-03, CANVAS-04, CANVAS-05, CANVAS-06
 
-### Plans
+**Plans:** 7 plans across 4 waves
 
-1. **`DragDropProvider`** — Wrap `BuilderPage` in `DndContext` with `PointerSensor` + `KeyboardSensor`; set collision detection to `closestCenter`; configure sensors with 8 px activation distance
-2. **Palette `LayoutCards`** — 5 draggable cards using `useDraggable(type: DRAG_TYPES.LAYOUT_CARD, data: { layoutType })`; drag overlay renders a ghost card thumbnail
-3. **Canvas droppable zone** — `useDroppable` on canvas area accepting `DRAG_TYPES.LAYOUT_CARD`; blue highlight border on active drag-over
-4. **`SortableRowList` + `useSortable`** — Wrap section list in `SortableContext` (`verticalListSortingStrategy`); each `RowBlock` uses `useSortable(type: DRAG_TYPES.CANVAS_ROW)`
-5. **Drop handler — palette → canvas** — `onDragEnd`: detect `LAYOUT_CARD` drop on canvas zone → dispatch `addSection(layoutType)` to Zustand; new section appends at bottom
-6. **Reorder handler** — `onDragEnd`: detect `CANVAS_ROW` drag within `SortableContext` → dispatch `reorderSections(activeId, overId)` using `arrayMove`; Zustand mutates section array
-7. **Section controls** — GripVertical drag handle; trash Delete button → dispatch `removeSection(id)`; Duplicate button → dispatch `duplicateSection(id)` (deep clone with fresh UUIDs for section, columns, elements)
+Plans:
+- [ ] 04-00-PLAN.md — Wave 0: Test scaffolding — useNewsletterStore.test.ts (store unit tests), extend RowBlock.test.tsx (SectionControls), DragDropProvider.test.tsx + SortableRowList.test.tsx stubs, add DndContext wrappers to BuilderCanvas + BuilderPalette tests
+- [ ] 04-01-PLAN.md — Wave 1: Store extensions — add reorderSections (arrayMove) + duplicateSection (structuredClone + fresh UUIDs) to useNewsletterStore.ts
+- [ ] 04-02-PLAN.md — Wave 1: RowBlock upgrade — extend RowBlock with sortable props + SectionControls sub-component (GripVertical + Copy + Trash2 with inline delete confirm per D-05/D-06/D-07)
+- [ ] 04-03-PLAN.md — Wave 1: BuilderPalette draggable — extract DraggableLayoutCard with useDraggable (DRAG_TYPES.LAYOUT_CARD data); export LAYOUT_NAMES
+- [ ] 04-04-PLAN.md — Wave 2: DragDropProvider — DndContext with PointerSensor (8px) + KeyboardSensor; onDragStart/onDragEnd handlers; DragOverlay with LAYOUT_CARD + CANVAS_ROW ghosts
+- [ ] 04-05-PLAN.md — Wave 2: SortableRowList — empty drop zone (useDroppable, D-03/D-04 blue hover) + SortableRowBlock (local, calls useSortable with DRAG_TYPES.CANVAS_ROW data)
+- [ ] 04-06-PLAN.md — Wave 3: Canvas + Page wiring — BuilderCanvas uses SortableRowList; BuilderPage wraps with DragDropProvider; full test suite green
 
 ### Done When
 
