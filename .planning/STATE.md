@@ -45,7 +45,7 @@ Goal: The builder page displays a two-panel layout where the canvas correctly re
 ```
 Phase  4 / 9  ████████████░░░░░░░░  ~33% (Phase 3 complete ✅ — Phase 4 ready to plan/execute)
 Plan   0 / 7  (not started)
-Status Phase 4 — context gathered ✅ — run /gsd-plan-phase 4
+Status Phase 4 — planned ✅ — run /gsd-execute-phase 4
 ```
 
 ---
@@ -132,8 +132,8 @@ Status Phase 4 — context gathered ✅ — run /gsd-plan-phase 4
 
 ## Session Continuity
 
-Last updated: 2026-06-09 (Phase 4 UI-SPEC approved)
-Next action: Run /gsd-plan-phase 4 to plan DnD Row-Level Operations
+Last updated: 2026-06-09 (Phase 4 planned — 7 plans ready)
+Next action: Run /gsd-execute-phase 4 to implement DnD Row-Level Operations
 
 ### Phase Dependency Chain
 
