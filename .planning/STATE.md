@@ -5,15 +5,15 @@
 See: `.planning/PROJECT.md` (updated 2026-06-07)
 
 **Core value:** Users can build a fully structured, export-ready HTML newsletter without writing any code.
-**Current focus:** Phase 5 — DnD Element Placement
+**Current focus:** Phase 6 — Image & Button Elements
 
 ---
 
 ## Active Phase
 
-**Phase 5: DnD — Element Placement**
+**Phase 6: Image & Button Elements** ✅ VERIFIED
 
-Goal: Users can drag element types from the palette into any column slot, remove elements from slots, and replace an element by dropping a new type.
+Goal: Image, image-link, and button element renderers + InspectorPanel editors wired end-to-end. All 7 plans complete.
 
 ---
 
@@ -39,15 +39,16 @@ Goal: Users can drag element types from the palette into any column slot, remove
 **Phase 3 Verified ✅** — All 4 plans executed, 15 tests passing, two-panel layout + 5 layout types verified
 **Phase 4 Verified ✅** — All 7 plans executed, 30 tests passing, DnD row-level operations fully wired
 **Phase 5 Verified ✅** — All 6 plans executed, 46 tests passing, element placement + InspectorPanel + canvas click deselect wired; browser UAT passed
+**Phase 6 Verified ✅** — All 7 plans executed, 84 tests passing, image/image-link/button renderers + ImageEditor/ButtonEditor wired end-to-end; code review fixes applied
 
 ---
 
 ## Current Position
 
 ```
-Phase  5 / 9  ████████████████░░░░  ~55% (Phase 5 complete ✅ — Phase 6 ready)
-Plan   6 / 6  (all plans complete)
-Status Phase 5 — verified ✅
+Phase  6 / 9  ████████████████████░░  ~66% (Phase 6 complete ✅ — Phase 7 ready)
+Plan   7 / 7  (all plans complete)
+Status Phase 6 — verified ✅
 ```
 
 ---
@@ -57,10 +58,10 @@ Status Phase 5 — verified ✅
 | Metric | Value |
 |--------|-------|
 | Phases total | 9 |
-| Phases complete | 4 ✅ |
+| Phases complete | 6 ✅ |
 | Requirements mapped | 40 / 40 |
-| Plans created | 31 |
-| Plans complete | 33 |
+| Plans created | 38 |
+| Plans complete | 40 |
 
 ---
 
@@ -134,8 +135,8 @@ Status Phase 5 — verified ✅
 
 ## Session Continuity
 
-Last updated: 2026-06-08 (Phase 5 verified — browser UAT passed)
-Next action: Advance to Phase 6 (Image & Button Elements)
+Last updated: 2026-06-08 (Phase 6 verified — 84 tests GREEN, code review fixes applied)
+Next action: Advance to Phase 7 (Rich Text, Divider & TipTap)
 
 ### Phase Dependency Chain
 
