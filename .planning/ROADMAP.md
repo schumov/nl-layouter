@@ -10,7 +10,7 @@ NL Layouter delivers a web-based drag-and-drop newsletter builder in 9 phases. P
 
 - [x] **Phase 1: Foundation & Stack Setup** — Monorepo, Fastify + Drizzle + PostgreSQL, NewsletterDoc types, TipTap v3 scaffold, DnD type constants
 - [x] **Phase 2: Newsletter CRUD & Dashboard** — Full newsletter lifecycle: create, list, open, rename, delete, auto-save
-- [ ] **Phase 3: Canvas Shell & Layout Rendering** — Two-panel builder UI; all 5 layout types render with correct column proportions
+- [x] **Phase 3: Canvas Shell & Layout Rendering** — Two-panel builder UI; all 5 layout types render with correct column proportions
 - [ ] **Phase 4: DnD — Row-Level Operations** — Drag layout sections from palette, reorder, delete, duplicate
 - [ ] **Phase 5: DnD — Element Placement** — Drag elements from palette into column slots; remove and replace elements
 - [ ] **Phase 6: Image & Button Elements** — Image, image-link, and button renderers + InspectorPanel editors
@@ -85,17 +85,17 @@ Plans:
 **Plans:** 4 plans across 3 waves
 
 Plans:
-- [ ] 03-00-PLAN.md — Wave 0: Test infrastructure — install @testing-library devDeps, vitest setupFiles, test-setup.ts, FIXTURE_DOC fixture, three stub test files
-- [ ] 03-01-PLAN.md — Wave 1: Core rendering chain — CSS canvas token, ElementRenderer stub, ColumnSlot (empty placeholder), ColumnGrid (COLUMN_CLASSES record, all 5 layout types), RowBlock (section card); fill ColumnGrid + ColumnSlot tests
-- [ ] 03-02-PLAN.md — Wave 1: Palette shell (parallel) — install shadcn tabs via CLI, BuilderPalette with Layouts/Elements tabs and 5 layout cards
-- [ ] 03-03-PLAN.md — Wave 2: Canvas wiring — BuilderCanvas (left panel, bg-canvas, RowBlock render), BuilderPage replace `<main>` placeholder, dev fixture route in main.tsx; fill BuilderCanvas tests
+- [x] 03-00-PLAN.md — Wave 0: Test infrastructure — install @testing-library devDeps, vitest setupFiles, test-setup.ts, FIXTURE_DOC fixture, three stub test files
+- [x] 03-01-PLAN.md — Wave 1: Core rendering chain — CSS canvas token, ElementRenderer stub, ColumnSlot (empty placeholder), ColumnGrid (COLUMN_CLASSES record, all 5 layout types), RowBlock (section card); fill ColumnGrid + ColumnSlot tests
+- [x] 03-02-PLAN.md — Wave 1: Palette shell (parallel) — install shadcn tabs via CLI, BuilderPalette with Layouts/Elements tabs and 5 layout cards
+- [x] 03-03-PLAN.md — Wave 2: Canvas wiring — BuilderCanvas (left panel, bg-canvas, RowBlock render), BuilderPage replace `<main>` placeholder, dev fixture route in main.tsx; fill BuilderCanvas tests
 
 ### Done When
 
-- [ ] Navigating to `/newsletters/:id` shows a two-panel builder: scrollable canvas left, sticky palette right
-- [ ] All five layout types render with visually distinct, correctly-proportioned columns
-- [ ] Empty column slots show a dashed-border placeholder with hint text
-- [ ] The palette shows a "Layouts" tab listing all 5 layout names
+- [x] Navigating to `/newsletters/:id` shows a two-panel builder: scrollable canvas left, sticky palette right
+- [x] All five layout types render with visually distinct, correctly-proportioned columns
+- [x] Empty column slots show a dashed-border placeholder with hint text
+- [x] The palette shows a "Layouts" tab listing all 5 layout names
 
 **UI hint**: yes
 
