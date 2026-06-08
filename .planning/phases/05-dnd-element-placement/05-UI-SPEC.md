@@ -1,7 +1,8 @@
 ---
 phase: 5
 slug: dnd-element-placement
-status: draft
+status: approved
+reviewed_at: 2026-06-08T15:07:59+02:00
 shadcn_initialized: true
 preset: "new-york / neutral base / lucide icons"
 created: 2026-06-08
