@@ -6,6 +6,7 @@ import { useAutoSave } from '../hooks/useAutoSave';
 import BuilderHeader from '../components/builder/BuilderHeader';
 import { BuilderCanvas } from '../components/builder/BuilderCanvas';
 import { BuilderPalette } from '../components/builder/BuilderPalette';
+import { DragDropProvider } from '../components/builder/DragDropProvider';
 
 export default function BuilderPage() {
   const { id }                       = useParams<{ id: string }>();
@@ -36,16 +37,18 @@ export default function BuilderPage() {
   }
 
   return (
-    <div className="flex flex-col h-screen">
-      <BuilderHeader
-        id={id!}
-        title={data?.title ?? ''}
-        saveStatus={saveStatus}
-      />
-      <main className="flex flex-1 overflow-hidden">
-        <BuilderCanvas doc={doc} />
-        <BuilderPalette />
-      </main>
-    </div>
+    <DragDropProvider>
+      <div className="flex flex-col h-screen">
+        <BuilderHeader
+          id={id!}
+          title={data?.title ?? ''}
+          saveStatus={saveStatus}
+        />
+        <main className="flex flex-1 overflow-hidden">
+          <BuilderCanvas doc={doc} />
+          <BuilderPalette />
+        </main>
+      </div>
+    </DragDropProvider>
   );
 }
