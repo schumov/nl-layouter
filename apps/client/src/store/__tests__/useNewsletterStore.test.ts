@@ -70,3 +70,49 @@ describe('useNewsletterStore — section mutations', () => {
     expect(useNewsletterStore.getState().doc!.rows).toHaveLength(FIXTURE_DOC.rows.length);
   });
 });
+
+describe('useNewsletterStore — element mutations (Phase 5 RED stubs)', () => {
+  it('ELEM-10: addElement creates element with given type in the matching slot', () => {
+    // RED: addElement does not exist yet — TypeError: addElement is not a function
+    const { addElement } = useNewsletterStore.getState() as any;
+    addElement('fixture-slot-1col-1', 'image');
+    const slot = useNewsletterStore.getState().doc!.rows[0].slots[0];
+    expect(slot.element).not.toBeNull();
+    expect(slot.element?.type).toBe('image');
+  });
+
+  it('ELEM-11: addElement on occupied slot overwrites existing element (replace)', () => {
+    // RED: addElement does not exist yet
+    const { addElement } = useNewsletterStore.getState() as any;
+    addElement('fixture-slot-1col-1', 'image');
+    addElement('fixture-slot-1col-1', 'button');
+    const slot = useNewsletterStore.getState().doc!.rows[0].slots[0];
+    expect(slot.element?.type).toBe('button');
+  });
+
+  it('ELEM-10: addElement creates element with a non-null id string', () => {
+    // RED: addElement does not exist yet
+    const { addElement } = useNewsletterStore.getState() as any;
+    addElement('fixture-slot-2col-1', 'divider');
+    const slot = useNewsletterStore.getState().doc!.rows[1].slots[0];
+    expect(typeof slot.element?.id).toBe('string');
+    expect(slot.element!.id.length).toBeGreaterThan(0);
+  });
+
+  it('ELEM-12: removeElement sets slot.element to null', () => {
+    // RED: removeElement does not exist yet — TypeError: removeElement is not a function
+    const { addElement, removeElement } = useNewsletterStore.getState() as any;
+    addElement('fixture-slot-1col-1', 'rich-text');
+    removeElement('fixture-slot-1col-1');
+    const slot = useNewsletterStore.getState().doc!.rows[0].slots[0];
+    expect(slot.element).toBeNull();
+  });
+
+  it('ELEM-12: removeElement is a no-op for unknown slotId', () => {
+    // RED: removeElement does not exist yet
+    const { removeElement } = useNewsletterStore.getState() as any;
+    expect(() => removeElement('unknown-slot-id')).not.toThrow();
+    // rows should be unchanged
+    expect(useNewsletterStore.getState().doc!.rows).toHaveLength(FIXTURE_DOC.rows.length);
+  });
+});
