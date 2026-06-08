@@ -4,12 +4,15 @@ import { useNewsletter } from '../hooks/useNewsletters';
 import { useNewsletterStore } from '../store/useNewsletterStore';
 import { useAutoSave } from '../hooks/useAutoSave';
 import BuilderHeader from '../components/builder/BuilderHeader';
+import { BuilderCanvas } from '../components/builder/BuilderCanvas';
+import { BuilderPalette } from '../components/builder/BuilderPalette';
 
 export default function BuilderPage() {
   const { id }                       = useParams<{ id: string }>();
   const { data, isPending, isError } = useNewsletter(id!);
   const { setDoc, clearDoc }         = useNewsletterStore();
   const { saveStatus }               = useAutoSave(id!);
+  const doc                          = useNewsletterStore((state) => state.doc);
 
   useEffect(() => {
     if (data) setDoc(data.document);
@@ -39,7 +42,10 @@ export default function BuilderPage() {
         title={data?.title ?? ''}
         saveStatus={saveStatus}
       />
-      <main className="flex-1 bg-neutral-100" />
+      <main className="flex flex-1 overflow-hidden">
+        <BuilderCanvas doc={doc} />
+        <BuilderPalette />
+      </main>
     </div>
   );
 }

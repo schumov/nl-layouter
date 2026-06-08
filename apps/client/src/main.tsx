@@ -15,6 +15,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import './index.css'
 import DashboardPage from './pages/DashboardPage';
 import BuilderPage from './pages/BuilderPage';
+import { BuilderCanvas } from './components/builder/BuilderCanvas';
+import { FIXTURE_DOC } from './fixtures/newsletter.fixture';
 import { Toaster } from '@/components/ui/sonner';
 
 const queryClient = new QueryClient({
@@ -40,6 +42,13 @@ const router = createBrowserRouter([
     path: '/newsletters/:id',
     element: <BuilderPage />,
   },
+  // DEV ONLY — remove after Phase 4 UAT passes
+  ...(import.meta.env.DEV ? [
+    {
+      path: '/dev/canvas-fixture',
+      element: <BuilderCanvas doc={FIXTURE_DOC} />,
+    },
+  ] : []),
 ])
 
 const rootEl = document.getElementById('root')
