@@ -120,12 +120,18 @@ export function RowBlock({
         paddingBottom: section.paddingBottom ? `${section.paddingBottom}px` : undefined,
       }}
       className={cn(
-        'relative bg-white rounded border shadow-sm overflow-hidden',
+        'relative bg-white rounded border shadow-sm',
         // 'relative' enables the absolute-positioned SectionControls (D-05)
+        // NOTE: overflow-hidden intentionally omitted here — SectionControls uses
+        // translate-x-full to float outside the right edge; overflow-hidden would clip it.
         isDragging && 'opacity-40 transition-opacity duration-150',
       )}
     >
-      <ColumnGrid section={section} />
+      {/* overflow-hidden scoped to ColumnGrid only so section content is clipped
+          but SectionControls can escape the parent bounds */}
+      <div className="overflow-hidden rounded">
+        <ColumnGrid section={section} />
+      </div>
       <SectionControls
         listeners={listeners}
         onDuplicate={onDuplicate}
