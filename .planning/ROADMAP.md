@@ -136,14 +136,15 @@ Plans:
 
 **Requirements covered:** ELEM-10, ELEM-11, ELEM-12
 
-### Plans
+**Plans:** 6 plans across 4 waves
 
-1. **Palette `ElementCards`** — 5 draggable element cards (image, image-link, button, rich-text, divider) using `useDraggable(type: DRAG_TYPES.ELEMENT_CARD, data: { elementType })`; renders element icon + label
-2. **`ColumnSlot` droppable** — Convert `ColumnSlot` to `useDroppable(accept: [DRAG_TYPES.ELEMENT_CARD])`; pulsing green outline on active drag-over; slot renders `EmptySlot` or `ElementRenderer` based on slot state
-3. **Element selection state** — Click element → `setSelectedElement(slotId, elementId)` in Zustand; click outside any element → clear selection; selected slot gets highlight ring
-4. **Drop handler — palette → slot** — `onDragEnd`: `ELEMENT_CARD` dropped on droppable slot → dispatch `addElement(slotId, elementType)` creating element with default config (empty strings, default colours); replaces existing element automatically
-5. **Remove element** — "×" control on element toolbar (visible on hover/select) → dispatch `removeElement(slotId)`; slot returns to `EmptySlot`
-6. **Replace element** — Drop new `ELEMENT_CARD` onto occupied slot → dispatch `replaceElement(slotId, newElementType)` creating fresh default config; previous element content discarded
+Plans:
+- [ ] 05-00-PLAN.md — Wave 0: TDD stubs — InspectorPanel.tsx minimal stub + InspectorPanel.test.tsx RED stubs; ColumnSlot.test.tsx renderWithDnd upgrade + RED stubs; useNewsletterStore.test.ts addElement/removeElement RED stubs; DragDropProvider.test.tsx ELEMENT_CARD RED stub
+- [ ] 05-01-PLAN.md — Wave 1: Store actions — addElement(slotId, elementType) + removeElement(slotId) + createDefaultElement helper in useNewsletterStore.ts; turns 5 RED store stubs GREEN
+- [ ] 05-02-PLAN.md — Wave 1: DraggableElementCard palette — 5 draggable cards (lucide icon + label) in Elements tab; export ELEMENT_NAMES + ELEMENT_CARD_ICONS for DragDropProvider ghost
+- [ ] 05-03-PLAN.md — Wave 2: ColumnSlot droppable — useDroppable (DRAG_TYPES.ELEMENT_CARD); green hover highlight (D-01–D-03); × remove button with 2-step inline confirm (D-09–D-11); click-to-select + ring (D-10)
+- [ ] 05-04-PLAN.md — Wave 2: DragDropProvider collision + ELEMENT_CARD handler — custom collisionDetection filters slot droppables for ELEMENT_CARD (Finding 1); ELEMENT_CARD branch in onDragEnd calls addElement; DragOverlay ghost
+- [ ] 05-05-PLAN.md — Wave 3: InspectorPanel + wiring — full InspectorPanel placeholder (type name + back arrow + note); BuilderPage conditional right panel; BuilderCanvas onCanvasClick for D-06 deselect
 
 ### Done When
 
