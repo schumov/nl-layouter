@@ -897,15 +897,13 @@ All other claims are [VERIFIED] from direct source inspection.
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
-1. **`createDefaultElement` file placement**
-   - What we know: Phase 4's `createSection` helper lives in `DragDropProvider.tsx`
-   - What's unclear: Should `createDefaultElement` also live in `DragDropProvider.tsx` (near the drag handler that calls it) or in a shared utils file?
-   - Recommendation: Start in `DragDropProvider.tsx` (consistent with `createSection`). If Phase 6-7 need to import it for testing, move to `src/utils/elementDefaults.ts` at that point.
+1. **`createDefaultElement` file placement** — RESOLVED: Lives in `useNewsletterStore.ts` (factory co-located with the store actions that use it — simpler import graph than DragDropProvider). Plan 05-01 implements it there.
+   - ~~What we know: Phase 4's `createSection` helper lives in `DragDropProvider.tsx`~~
+   - ~~Recommendation: Start in `DragDropProvider.tsx`~~
 
-2. **`RemoveButton` visibility with `isSelected` CSS**
-   - What we know: D-10 says visible on hover OR selected. `group-hover:opacity-100` handles hover. `isSelected` needs to also force `opacity-100`.
+2. **`RemoveButton` visibility with `isSelected` CSS** — RESOLVED: `isSelected` state read directly inside `ColumnSlot` component from Zustand (no separate RemoveButton sub-component, no prop drilling). Plan 05-03 applies `opacity-0 group-hover:opacity-100` + `isSelected && 'opacity-100'` inline.
    - What's unclear: Should `isSelected` be passed as a prop to `RemoveButton` or accessed via Zustand inside it?
    - Recommendation: Access `isSelected` inside `RemoveButton` via `useNewsletterStore` (consistent with how `removeElement` is accessed — no prop drilling).
 

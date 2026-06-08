@@ -38,13 +38,12 @@ created: 2026-06-08
 
 | Task ID | Plan | Wave | Requirement | Automated Command | Status |
 |---------|------|------|-------------|-------------------|--------|
-| 05-00-stubs | 00 | 0 | ELEM-10/11/12 | `cd apps/client && pnpm test run` | ⬜ pending |
-| 05-01-element-cards | 01 | 1 | ELEM-10 | `cd apps/client && pnpm test run` | ⬜ pending |
-| 05-02-slot-droppable | 02 | 1 | ELEM-10/11/12 | `cd apps/client && pnpm test run` | ⬜ pending |
-| 05-03-store-actions | 03 | 1 | ELEM-10/11/12 | `cd apps/client && pnpm test run` | ⬜ pending |
-| 05-04-drop-handler | 04 | 2 | ELEM-10/11 | `cd apps/client && pnpm test run` | ⬜ pending |
-| 05-05-selection-panel | 05 | 2 | D-04/D-05 | `cd apps/client && pnpm test run` | ⬜ pending |
-| 05-06-remove-element | 06 | 3 | ELEM-12 | `cd apps/client && pnpm test run` | ⬜ pending |
+| 05-00 | 00-tdd-stubs | 0 | ELEM-10/11/12 | `cd apps/client && pnpm test run` | ⬜ pending |
+| 05-01 | 01-store-actions | 1 | ELEM-10/11/12 | `cd apps/client && pnpm test run` | ⬜ pending |
+| 05-02 | 02-element-cards | 1 | ELEM-10 | `cd apps/client && pnpm test run` | ⬜ pending |
+| 05-03 | 03-slot-droppable | 2 | ELEM-10/11/12 | `cd apps/client && pnpm test run` | ⬜ pending |
+| 05-04 | 04-drop-handler | 2 | ELEM-10/11 | `cd apps/client && pnpm test run` | ⬜ pending |
+| 05-05 | 05-inspector-wiring | 3 | ELEM-10/11/12 | `cd apps/client && pnpm test run` | ⬜ pending |
 
 *Status: ⬜ pending · ✅ green · ❌ red · ⚠️ flaky*
 
