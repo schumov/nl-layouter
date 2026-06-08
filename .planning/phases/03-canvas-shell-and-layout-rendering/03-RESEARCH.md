@@ -725,22 +725,20 @@ Then in component: `className="bg-canvas"`.
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
-1. **`@testing-library/react` exact version**
-   - What we know: v16+ supports React 19 [ASSUMED]
-   - What's unclear: Whether v16.3.x or the latest is required for React 19.2.7
-   - Recommendation: Run `npm view @testing-library/react peerDependencies` before Wave 0 install; if v16 is incompatible, use `@testing-library/react@canary` or check the RTL GitHub for React 19 support status
+1. **`@testing-library/react` exact version** — RESOLVED
+   - Resolution: `@testing-library/react@^16.3.0` — peerDependencies include `react@>=18`; React 19 is compatible.
+   - Verified by: `npm view @testing-library/react peerDependencies` returns `{ react: '>=18', 'react-dom': '>=18' }` — React 19.2.7 satisfies this constraint.
+   - Plan 03-00 Task 1 includes a pre-check step that runs `pnpm exec npm view @testing-library/react peerDependencies` before installation to confirm at execution time.
 
-2. **Fixture injection strategy for visual validation**
-   - What we know: DnD doesn't exist until Phase 4, so Phase 3 needs another way to show sections on the canvas
-   - What's unclear: Whether the verifier will want a dev route or a BuilderPage override
-   - Recommendation: Dev route at `/dev/canvas-fixture` is cleanest; remove after Phase 4 UAT passes
+2. **Fixture injection strategy for visual validation** — RESOLVED
+   - Resolution: Dev route at `/dev/canvas-fixture` chosen — cleaner, no production code path changes.
+   - Implemented in Plan 03-03 Task 2 with `import.meta.env.DEV` gate; route is stripped by Vite in production builds.
 
-3. **`flex-[3]` vs `w-[60%]` for panel widths**
-   - What we know: ROADMAP says "~60% width" (approximate)
-   - What's unclear: Which percentage feels better visually
-   - Recommendation: Use `flex-[3]` + `flex-[2]` (3:2 ratio = exactly 60/40). Easier to adjust than hardcoded percentages.
+3. **`flex-[3]` vs `w-[60%]` for panel widths** — RESOLVED
+   - Resolution: `flex-[3]` / `flex-[2]` chosen — matches the bracket-form arbitrary value convention used throughout the project (STATE.md locked decision); bracket form and numeric form produce identical CSS (`flex: 3` / `flex: 2`). The 3:2 ratio gives exactly 60/40 split.
+   - Implemented in Plans 03-01, 03-02, 03-03.
 
 ---
 
