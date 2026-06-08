@@ -25,8 +25,14 @@ describe('BuilderPalette', () => {
     getByText('Big-Left / Small-Right');
   });
 
-  it('renders Elements stub text in Elements tab', () => {
+  it('renders all 5 element type cards in Elements tab', () => {
     const { getByText } = renderWithDnd(<BuilderPalette />);
-    getByText('Elements will be available in a future phase.', { hidden: true });
+    // UI-SPEC D-08 locked label strings — must match exactly
+    // { hidden: true } needed because Elements tab is force-mounted but inactive (aria-hidden) by default
+    getByText('Image', { hidden: true });
+    getByText('Image with Link', { hidden: true });
+    getByText('Button', { hidden: true });
+    getByText('Rich Text', { hidden: true });
+    getByText('Divider', { hidden: true });
   });
 });
