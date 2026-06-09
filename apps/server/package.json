@@ -8,23 +8,27 @@
     "build": "tsc -b",
     "start": "node dist/index.js",
     "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "db:push": "drizzle-kit push",
     "migrate:presets": "tsx src/db/migrate-presets.ts",
     "seed": "tsx src/db/seed.ts"
   },
   "dependencies": {
-    "fastify": "5.8.5",
-    "@fastify/cors": "11.2.0",
     "@fastify/cookie": "11.0.2",
-    "zod": "4.4.3",
+    "@fastify/cors": "11.2.0",
     "dotenv": "^16.0.0",
     "drizzle-orm": "0.45.2",
-    "postgres": "3.4.9"
+    "fastify": "5.8.5",
+    "postgres": "3.4.9",
+    "zod": "4.4.3"
   },
   "devDependencies": {
-    "typescript": "6.0.3",
+    "@types/node": "^22.0.0",
+    "@vitest/coverage-v8": "^3.2.6",
     "drizzle-kit": "0.31.10",
     "tsx": "4.22.4",
-    "@types/node": "^22.0.0"
+    "typescript": "6.0.3",
+    "vitest": "^3.2.6"
   }
 }
