@@ -142,3 +142,27 @@ describe('useNewsletterStore — updateElement (Phase 6)', () => {
     expect(slot.element).toBeNull();
   });
 });
+
+describe('useNewsletterStore — addElement defaults (D-12, Phase 7)', () => {
+  it('ELEM-06: rich-text default has content with one empty paragraph node', () => {
+    useNewsletterStore.getState().addElement('fixture-slot-1col-1', 'rich-text');
+    const slot = useNewsletterStore.getState().doc!.rows[0].slots[0];
+    const element = slot.element as import('../../types/newsletter').RichTextElement;
+    expect(element.type).toBe('rich-text');
+    expect(element.textStyle).toBe('body');
+    expect(element.content).toEqual({
+      type: 'doc',
+      content: [{ type: 'paragraph' }],
+    });
+  });
+
+  it('ELEM-09: divider default has color #cccccc, spacing 16, thickness 1', () => {
+    useNewsletterStore.getState().addElement('fixture-slot-1col-1', 'divider');
+    const slot = useNewsletterStore.getState().doc!.rows[0].slots[0];
+    const element = slot.element as import('../../types/newsletter').DividerElement;
+    expect(element.type).toBe('divider');
+    expect(element.color).toBe('#cccccc');
+    expect(element.spacing).toBe(16);
+    expect(element.thickness).toBe(1);
+  });
+});

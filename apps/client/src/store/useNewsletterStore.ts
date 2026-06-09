@@ -33,7 +33,12 @@ function createDefaultElement(type: ElementUnion['type']): ElementUnion {
     case 'button':
       return { type: 'button', id, label: 'Click me', href: '', backgroundColor: '#0066cc', textColor: '#ffffff', style: 'solid' };
     case 'rich-text':
-      return { type: 'rich-text', id, content: { type: 'doc', content: [] }, textStyle: 'body' };
+      return {
+        type: 'rich-text',
+        id,
+        content: { type: 'doc', content: [{ type: 'paragraph' }] },
+        textStyle: 'body',
+      };
     case 'divider':
       return { type: 'divider', id, color: '#cccccc', spacing: 16, thickness: 1 };
     default:

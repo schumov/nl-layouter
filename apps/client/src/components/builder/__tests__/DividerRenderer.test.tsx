@@ -17,7 +17,7 @@ describe('DividerRenderer (ELEM-09)', () => {
   it('applies border-top color from element.color', () => {
     const { container } = render(<DividerRenderer element={makeDivider({ color: '#ff0000' })} />);
     const hr = container.querySelector('hr') as HTMLElement;
-    expect(hr.style.borderTop).toContain('#ff0000');
+    expect(hr).toHaveStyle({ borderTopColor: '#ff0000' });
   });
 
   it('applies border-top thickness from element.thickness', () => {
