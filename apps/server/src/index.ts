@@ -4,6 +4,7 @@ import cookie from '@fastify/cookie';
 import { config } from './config.js';
 import newsletterRoutes from './routes/newsletters.js';
 import presetsRoutes from './routes/presets.js';
+import exportRoute from './routes/export.js';
 
 const server = Fastify({
   logger: true,
@@ -24,6 +25,9 @@ await server.register(newsletterRoutes);
 
 // Preset read-only routes — GET /presets, GET /presets/:id
 await server.register(presetsRoutes);
+
+// Export route — POST /newsletters/:id/export
+await server.register(exportRoute);
 
 // Health check — returns exactly {"status":"ok"}
 // DO NOT add env info, version numbers, or uptime — information disclosure risk
