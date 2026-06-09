@@ -15,6 +15,8 @@ import { assertNeverElement } from '../../types/newsletter';
 import { ELEMENT_NAMES } from './BuilderPalette';
 import { ImageEditor } from './ImageEditor';
 import { ButtonEditor } from './ButtonEditor';
+import { RichTextEditor } from './RichTextEditor';
+import { DividerEditor } from './DividerEditor';
 
 // ─── InspectorPanel ───────────────────────────────────────────────────────────
 
@@ -51,12 +53,9 @@ export function InspectorPanel({ element, onBack, onUpdate }: InspectorPanelProp
           case 'button':
             return <ButtonEditor element={element} onUpdate={onUpdate} />;
           case 'rich-text':
+            return <RichTextEditor element={element} onUpdate={onUpdate} />;
           case 'divider':
-            return (
-              <div className="p-4">
-                <p className="text-sm text-muted-foreground">Editor available in Phase 7.</p>
-              </div>
-            );
+            return <DividerEditor element={element} onUpdate={onUpdate} />;
           default:
             return assertNeverElement(element);
         }
