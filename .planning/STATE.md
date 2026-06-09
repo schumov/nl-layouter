@@ -5,15 +5,15 @@
 See: `.planning/PROJECT.md` (updated 2026-06-07)
 
 **Core value:** Users can build a fully structured, export-ready HTML newsletter without writing any code.
-**Current focus:** Phase 6 — Image & Button Elements
+**Current focus:** Phase 8 — Header/Footer Presets & Pre-header
 
 ---
 
 ## Active Phase
 
-**Phase 7: Rich Text, Divider & TipTap** ✅ VERIFIED
+**Phase 8: Header/Footer Presets & Pre-header** ✅ COMPLETE
 
-Goal: Rich text WYSIWYG (TipTap v3), named presets (header/subheader/body/code), divider element with inline styles. All 7 plans complete. 105 tests passing.
+Goal: Preset selector UI, seed data, pre-header text field. All 8 plans complete. 119 tests passing.
 
 ---
 
@@ -41,15 +41,16 @@ Goal: Rich text WYSIWYG (TipTap v3), named presets (header/subheader/body/code),
 **Phase 5 Verified ✅** — All 6 plans executed, 46 tests passing, element placement + InspectorPanel + canvas click deselect wired; browser UAT passed
 **Phase 6 Verified ✅** — All 7 plans executed, 84 tests passing, image/image-link/button renderers + ImageEditor/ButtonEditor wired end-to-end; code review fixes applied
 **Phase 7 Verified ✅** — All 7 plans executed, 105 tests passing, rich-text/divider elements fully wired; TipTap v3 BubbleMenu + preset picker; code review fixes applied (draft state + key prop)
+**Phase 8 Complete ✅** — All 8 plans executed, 119 tests passing, header/footer preset selector + pre-header text field fully wired; DB migration pending (Neon ECONNRESET in dev environment)
 
 ---
 
 ## Current Position
 
 ```
-Phase  7 / 9  ██████████████████████░░  ~77% (Phase 7 complete ✅ — Phase 8 ready)
-Plan   7 / 7  (all plans complete)
-Status Phase 7 — verified ✅
+Phase  8 / 9  ████████████████████████░  ~88% (Phase 8 complete ✅ — Phase 9 ready)
+Plan   8 / 8  (all plans complete)
+Status Phase 8 — complete ✅
 ```
 
 ---
@@ -59,7 +60,7 @@ Status Phase 7 — verified ✅
 | Metric | Value |
 |--------|-------|
 | Phases total | 9 |
-| Phases complete | 7 ✅ |
+| Phases complete | 8 ✅ |
 | Requirements mapped | 40 / 40 |
 | Plans created | 38 |
 | Plans complete | 40 |
@@ -136,8 +137,8 @@ Status Phase 7 — verified ✅
 
 ## Session Continuity
 
-Last updated: 2026-06-09 (Phase 7 verified — 105 tests GREEN, code review fixes applied)
-Next action: Advance to Phase 8 (Header/Footer Presets & Pre-header)
+Last updated: 2026-06-14 (Phase 8 complete — 119 tests GREEN, header/footer preset selector + pre-header text field wired)
+Next action: Advance to Phase 9 (HTML Export Pipeline)
 
 ### Phase Dependency Chain
 

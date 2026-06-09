@@ -15,7 +15,7 @@ NL Layouter delivers a web-based drag-and-drop newsletter builder in 9 phases. P
 - [x] **Phase 5: DnD — Element Placement** — Drag elements from palette into column slots; remove and replace elements
 - [x] **Phase 6: Image & Button Elements** — Image, image-link, and button renderers + InspectorPanel editors
 - [x] **Phase 7: Rich Text, Divider & TipTap** — TipTap v3 WYSIWYG with inline-style output; named styles; divider element
-- [ ] **Phase 8: Header/Footer Presets & Pre-header** — Preset selector UI, seed data, pre-header text field
+- [ ] **Phase 8: Header/Footer Presets & Pre-header** ✅ COMPLETE — Preset selector UI, seed data, pre-header text field
 - [ ] **Phase 9: HTML Export Pipeline** — react-email + juice + MSO conditionals + browser download
 
 ---
@@ -284,7 +284,7 @@ Plans:
 | 5. DnD — Element Placement | 6/6 | Complete ✅ | 2026-06-08 |
 | 6. Image & Button Elements | 0/6 | Not started | — |
 | 7. Rich Text, Divider & TipTap | 0/7 | Not started | — |
-| 8. Header/Footer Presets & Pre-header | 0/7 | Not started | — |
+| 8. Header/Footer Presets & Pre-header | 8/8 | ✅ Complete | ab12521 |
 | 9. HTML Export Pipeline | 0/8 | Not started | — |
 
 ---
@@ -299,10 +299,10 @@ Plans:
 | NL-04 | Phase 2 | Pending |
 | NL-05 | Phase 2 | Pending |
 | NL-06 | Phase 2 | Pending |
-| HF-01 | Phase 8 | Pending |
-| HF-02 | Phase 8 | Pending |
-| HF-03 | Phase 8 | Pending |
-| HF-04 | Phase 8 | Pending |
+| HF-01 | Phase 8 | ✅ Complete |
+| HF-02 | Phase 8 | ✅ Complete |
+| HF-03 | Phase 8 | ✅ Complete |
+| HF-04 | Phase 8 | ✅ Complete |
 | CANVAS-01 | Phase 3 | Pending |
 | CANVAS-02 | Phase 4 | Pending |
 | CANVAS-03 | Phase 4 | Pending |
