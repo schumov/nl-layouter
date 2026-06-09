@@ -4,7 +4,7 @@
 //
 // Usage:  pnpm --filter nl-layouter-server migrate:mssql
 import 'dotenv/config';
-import * as sql from 'mssql';
+import sql from 'mssql';
 
 const connStr = process.env['MSSQL_CONNECTION_STRING'];
 if (!connStr) {

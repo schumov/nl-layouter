@@ -8,7 +8,7 @@
 // IDs: UNIQUEIDENTIFIER with DEFAULT NEWID() — crypto.randomUUID() on insert.
 //
 // RETURNING equivalent: SQL Server OUTPUT clause (OUTPUT INSERTED.*).
-import * as sql from 'mssql';
+import sql from 'mssql';
 import { randomUUID } from 'crypto';
 import type { NLRepository, NewsletterRow, NewsletterFull, PresetSummary, PresetFull, NewNewsletter, NewsletterDoc } from './repository.js';
 
