@@ -3,9 +3,7 @@
 // No write/delete endpoints — presets are managed via seed.ts, not user actions.
 import type { FastifyPluginAsync } from 'fastify';
 import { z } from 'zod';
-import { eq } from 'drizzle-orm';
-import { db } from '../db/connection.js';
-import { presets } from '../db/schema.js';
+import { repository } from '../db/index.js';
 
 // Zod v4 — validate query param 'type' as 'header' | 'footer'
 const TypeQuerySchema = z.object({
@@ -22,26 +20,14 @@ const presetsRoutes: FastifyPluginAsync = async (fastify) => {
     if (!parsed.success) {
       return reply.code(400).send({ error: 'type query param must be "header" or "footer"' });
     }
-    const rows = await db
-      .select({
-        id:        presets.id,
-        type:      presets.type,
-        name:      presets.name,
-        thumbnail: presets.thumbnail,
-      })
-      .from(presets)
-      .where(eq(presets.type, parsed.data.type));
-    return rows;
+    return repository.listPresets(parsed.data.type);
   });
 
   // GET /presets/:id
   // Returns full preset row including htmlContent for rendering in the canvas.
   fastify.get('/presets/:id', async (request, reply) => {
     const { id } = request.params as { id: string };
-    const [row] = await db
-      .select()
-      .from(presets)
-      .where(eq(presets.id, id));
+    const row = await repository.getPreset(id);
     if (!row) return reply.code(404).send({ error: 'Preset not found' });
     return row;
   });

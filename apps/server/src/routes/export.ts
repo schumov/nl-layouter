@@ -7,9 +7,7 @@
 // EXPORT-07: Content-Disposition: attachment triggers browser download
 
 import type { FastifyPluginAsync } from 'fastify';
-import { eq } from 'drizzle-orm';
-import { db } from '../db/connection.js';
-import { newsletters, presets } from '../db/schema.js';
+import { repository } from '../db/index.js';
 import { renderToEmailHtml } from '../export/pipeline.js';
 import type { NewsletterDoc } from '../export/documentToEmailTree.js';
 
@@ -22,10 +20,7 @@ import type { NewsletterDoc } from '../export/documentToEmailTree.js';
 async function getPresetHtml(presetId: string): Promise<string> {
   if (!presetId) return '';
   try {
-    const [preset] = await db
-      .select({ htmlContent: presets.htmlContent })
-      .from(presets)
-      .where(eq(presets.id, presetId));
+    const preset = await repository.getPreset(presetId);
     return preset?.htmlContent ?? '';
   } catch {
     // Graceful fallback — export works without presets (e.g., DB cold-start)
@@ -52,10 +47,7 @@ const exportRoute: FastifyPluginAsync = async (fastify) => {
     const { id } = request.params as { id: string };
 
     // Load newsletter from DB
-    const [newsletter] = await db
-      .select()
-      .from(newsletters)
-      .where(eq(newsletters.id, id));
+    const newsletter = await repository.getNewsletter(id);
 
     if (!newsletter) {
       return reply.code(404).send({ error: 'Newsletter not found' });

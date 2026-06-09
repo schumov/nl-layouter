@@ -11,6 +11,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "db:push": "drizzle-kit push",
+    "migrate:mssql": "tsx src/db/migrate.mssql.ts",
     "migrate:presets": "tsx src/db/migrate-presets.ts",
     "seed": "tsx src/db/seed.ts"
   },
@@ -23,6 +24,7 @@
     "drizzle-orm": "0.45.2",
     "fastify": "5.8.5",
     "juice": "^12.1.0",
+    "mssql": "^12.5.5",
     "postgres": "3.4.9",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
