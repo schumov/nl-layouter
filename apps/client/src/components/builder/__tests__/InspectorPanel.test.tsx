@@ -9,6 +9,15 @@ import type {
   RichTextElement, DividerElement,
 } from '../../../types/newsletter';
 
+// TipTap mocks — needed once InspectorPanel renders RichTextEditor (Plan 07-06)
+vi.mock('@tiptap/react', () => ({
+  useEditor: vi.fn(() => null),
+  EditorContent: () => <div data-testid="editor-content" />,
+}));
+vi.mock('@tiptap/react/menus', () => ({
+  BubbleMenu: () => null,
+}));
+
 // Mock element fixtures — cover all 5 element types
 const MOCK_IMAGE: ImageElement = { type: 'image', id: 'e1', src: '', alt: '', width: '100%' };
 const MOCK_RICHTEXT: RichTextElement = { type: 'rich-text', id: 'e2', content: { type: 'doc', content: [] }, textStyle: 'body' };
@@ -29,12 +38,6 @@ describe('InspectorPanel (Phase 6)', () => {
     expect(screen.getByText('Rich Text')).toBeInTheDocument();
   });
 
-  it('D-08: rich-text element shows Phase 7 note in body', () => {
-    // RED until Plan 06-06: component still shows "Editing available in the next step."
-    render(<InspectorPanel element={MOCK_RICHTEXT} onBack={() => {}} onUpdate={vi.fn()} />);
-    expect(screen.getByText('Editor available in Phase 7.')).toBeInTheDocument();
-  });
-
   it('D-08: renders back arrow button with aria-label "Back to palette"', () => {
     // Passes even before Plan 06-06 (button still renders regardless of prop rename)
     render(<InspectorPanel element={MOCK_DIVIDER} onBack={() => {}} onUpdate={vi.fn()} />);
@@ -48,5 +51,17 @@ describe('InspectorPanel (Phase 6)', () => {
     const btn = screen.getByRole('button', { name: 'Back to palette' });
     fireEvent.click(btn);
     expect(onBack).toHaveBeenCalledOnce();
+  });
+});
+
+describe('InspectorPanel (Phase 7 — RED until Plan 07-06)', () => {
+  it('ELEM-09: renders DividerEditor controls (Thickness label) when element is divider type', () => {
+    render(<InspectorPanel element={MOCK_DIVIDER} onBack={() => {}} onUpdate={vi.fn()} />);
+    expect(screen.getByText('Thickness')).toBeInTheDocument();
+  });
+
+  it('ELEM-06: renders RichTextEditor preset picker (Header button) when element is rich-text type', () => {
+    render(<InspectorPanel element={MOCK_RICHTEXT} onBack={() => {}} onUpdate={vi.fn()} />);
+    expect(screen.getByRole('button', { name: 'Header' })).toBeInTheDocument();
   });
 });
