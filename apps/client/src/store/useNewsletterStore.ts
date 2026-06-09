@@ -75,6 +75,11 @@ interface NewsletterActions {
 
   // Element mutations (Phase 6)
   updateElement: (slotId: string, patch: Partial<ElementUnion>) => void;
+
+  // Header/Footer preset selection + pre-header text (Phase 8)
+  updateHeader:    (presetId: string) => void;
+  updateFooter:    (presetId: string) => void;
+  updatePreHeader: (text: string) => void;
 }
 
 // ─── Store ───────────────────────────────────────────────────────────────────
@@ -189,6 +194,24 @@ export const useNewsletterStore = create<NewsletterState & NewsletterActions>()(
           }
         }
         // slotId not found or slot.element is null — silent no-op
+      }),
+
+    updateHeader: (presetId) =>
+      set((state) => {
+        if (!state.doc) return;
+        state.doc.header.presetId = presetId;
+      }),
+
+    updateFooter: (presetId) =>
+      set((state) => {
+        if (!state.doc) return;
+        state.doc.footer.presetId = presetId;
+      }),
+
+    updatePreHeader: (text) =>
+      set((state) => {
+        if (!state.doc) return;
+        state.doc.preHeader = text;
       }),
   }))
 );

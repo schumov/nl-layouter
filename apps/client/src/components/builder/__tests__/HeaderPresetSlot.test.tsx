@@ -22,9 +22,9 @@ describe('HeaderPresetSlot (HF-01)', () => {
     expect(getByText('No header selected')).toBeInTheDocument();
   });
 
-  it('renders "No header selected" when presetId is unknown (no matching preset fetched)', () => {
-    const { getByText } = render(<HeaderPresetSlot presetId="unknown-xyz" />, { wrapper: makeWrapper() });
-    expect(getByText('No header selected')).toBeInTheDocument();
+  it('renders "No header selected" when presetId is unknown (no matching preset fetched)', async () => {
+    const { findByText } = render(<HeaderPresetSlot presetId="unknown-xyz" />, { wrapper: makeWrapper() });
+    expect(await findByText('No header selected')).toBeInTheDocument();
   });
 
   it('renders a div element wrapping the slot area', () => {

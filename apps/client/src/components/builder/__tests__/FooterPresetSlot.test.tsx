@@ -22,9 +22,9 @@ describe('FooterPresetSlot (HF-02)', () => {
     expect(getByText('No footer selected')).toBeInTheDocument();
   });
 
-  it('renders "No footer selected" when presetId is unknown (no matching preset fetched)', () => {
-    const { getByText } = render(<FooterPresetSlot presetId="unknown-xyz" />, { wrapper: makeWrapper() });
-    expect(getByText('No footer selected')).toBeInTheDocument();
+  it('renders "No footer selected" when presetId is unknown (no matching preset fetched)', async () => {
+    const { findByText } = render(<FooterPresetSlot presetId="unknown-xyz" />, { wrapper: makeWrapper() });
+    expect(await findByText('No footer selected')).toBeInTheDocument();
   });
 
   it('accepts presetId prop without throwing', () => {

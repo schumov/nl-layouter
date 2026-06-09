@@ -131,6 +131,7 @@ export interface NewsletterDoc {
   rows: Section[];               // The canvas sections, in display order
   footer: FooterConfig;
   globalStyles: GlobalStyles;
+  preHeader?: string;            // HF-04: hidden inbox-preview text, max 90 chars
 }
 
 // ─── Type guard functions ────────────────────────────────────────────────────
