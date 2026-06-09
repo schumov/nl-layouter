@@ -282,8 +282,8 @@ Plans:
 | 3. Canvas Shell & Layout Rendering | 4/4 | Complete ✅ | 2026-06-07 |
 | 4. DnD — Row-Level Operations | 7/7 | Complete ✅ | 2026-06-08 |
 | 5. DnD — Element Placement | 6/6 | Complete ✅ | 2026-06-08 |
-| 6. Image & Button Elements | 0/6 | Not started | — |
-| 7. Rich Text, Divider & TipTap | 0/7 | Not started | — |
+| 6. Image & Button Elements | 7/7 | ✅ Complete | — |
+| 7. Rich Text, Divider & TipTap | 7/7 | ✅ Complete | — |
 | 8. Header/Footer Presets & Pre-header | 8/8 | ✅ Complete | ab12521 |
 | 9. HTML Export Pipeline | 8/8 | ✅ Complete | 3ada5fe |
 
