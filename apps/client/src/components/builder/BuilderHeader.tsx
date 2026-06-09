@@ -50,6 +50,32 @@ export default function BuilderHeader({
   const [headerSelectorOpen, setHeaderSelectorOpen] = useState(false);
   const [footerSelectorOpen, setFooterSelectorOpen] = useState(false);
 
+  // Phase 9: export state
+  const [isExporting, setIsExporting] = useState(false);
+
+  const handleExport = async () => {
+    setIsExporting(true);
+    try {
+      const res = await fetch(`http://localhost:3001/newsletters/${id}/export`, { method: 'POST' });
+      if (!res.ok) throw new Error('Export failed');
+      const html  = await res.text();
+      const blob  = new Blob([html], { type: 'text/html' });
+      const url   = URL.createObjectURL(blob);
+      const a     = document.createElement('a');
+      a.href      = url;
+      a.download  = `${title.replace(/[^a-z0-9]/gi, '-').toLowerCase()}.html`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      toast.success('Newsletter exported!');
+    } catch {
+      toast.error('Export failed. Please try again.');
+    } finally {
+      setIsExporting(false);
+    }
+  };
+
   useEffect(() => {
     if (!isEditing) setEditValue(title);
   }, [title, isEditing]);
@@ -158,9 +184,10 @@ export default function BuilderHeader({
             <Button
               variant="outline"
               size="sm"
-              onClick={() => toast('Export is not yet available')}
+              onClick={handleExport}
+              disabled={isExporting}
             >
-              Export
+              {isExporting ? 'Exporting\u2026' : 'Export'}
             </Button>
 
           </div>
