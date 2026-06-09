@@ -19,6 +19,11 @@ export default function BuilderPage() {
   const selectedElementId   = useNewsletterStore((state) => state.selectedElementId);
   const setSelectedElement  = useNewsletterStore((state) => state.setSelectedElement);
 
+  // Phase 8: preset + pre-header actions
+  const updateHeader    = useNewsletterStore((s) => s.updateHeader);
+  const updateFooter    = useNewsletterStore((s) => s.updateFooter);
+  const updatePreHeader = useNewsletterStore((s) => s.updatePreHeader);
+
   // D-09: Derive full element object (not just type string) for Phase 6 InspectorPanel
   const selectedElement = useNewsletterStore((state) => {
     if (!state.selectedElementId || !state.doc) return null;
@@ -61,11 +66,17 @@ export default function BuilderPage() {
           id={id!}
           title={data?.title ?? ''}
           saveStatus={saveStatus}
+          doc={doc}
+          onUpdateHeader={updateHeader}
+          onUpdateFooter={updateFooter}
+          onUpdatePreHeader={updatePreHeader}
         />
         <main className="flex flex-1 overflow-hidden">
           <BuilderCanvas
             doc={doc}
             onCanvasClick={() => setSelectedElement(null)}
+            headerPresetId={doc?.header?.presetId ?? ''}
+            footerPresetId={doc?.footer?.presetId ?? ''}
           />
           {selectedElementId && selectedElement
             ? (
