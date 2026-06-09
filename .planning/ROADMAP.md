@@ -16,7 +16,7 @@ NL Layouter delivers a web-based drag-and-drop newsletter builder in 9 phases. P
 - [x] **Phase 6: Image & Button Elements** — Image, image-link, and button renderers + InspectorPanel editors
 - [x] **Phase 7: Rich Text, Divider & TipTap** — TipTap v3 WYSIWYG with inline-style output; named styles; divider element
 - [ ] **Phase 8: Header/Footer Presets & Pre-header** ✅ COMPLETE — Preset selector UI, seed data, pre-header text field
-- [ ] **Phase 9: HTML Export Pipeline** — react-email + juice + MSO conditionals + browser download
+- [ ] **Phase 9: HTML Export Pipeline** ✅ COMPLETE — react-email + juice + MSO conditionals + browser download
 
 ---
 
@@ -285,7 +285,7 @@ Plans:
 | 6. Image & Button Elements | 0/6 | Not started | — |
 | 7. Rich Text, Divider & TipTap | 0/7 | Not started | — |
 | 8. Header/Footer Presets & Pre-header | 8/8 | ✅ Complete | ab12521 |
-| 9. HTML Export Pipeline | 0/8 | Not started | — |
+| 9. HTML Export Pipeline | 8/8 | ✅ Complete | 3ada5fe |
 
 ---
 
@@ -326,13 +326,13 @@ Plans:
 | ELEM-10 | Phase 5 | Pending |
 | ELEM-11 | Phase 5 | Pending |
 | ELEM-12 | Phase 5 | Pending |
-| EXPORT-01 | Phase 9 | Pending |
-| EXPORT-02 | Phase 9 | Pending |
-| EXPORT-03 | Phase 9 | Pending |
-| EXPORT-04 | Phase 9 | Pending |
-| EXPORT-05 | Phase 9 | Pending |
-| EXPORT-06 | Phase 9 | Pending |
-| EXPORT-07 | Phase 9 | Pending |
+| EXPORT-01 | Phase 9 | ✅ Complete |
+| EXPORT-02 | Phase 9 | ✅ Complete |
+| EXPORT-03 | Phase 9 | ✅ Complete |
+| EXPORT-04 | Phase 9 | ✅ Complete |
+| EXPORT-05 | Phase 9 | ✅ Complete |
+| EXPORT-06 | Phase 9 | ✅ Complete |
+| EXPORT-07 | Phase 9 | ✅ Complete |
 
 **v1 requirements mapped: 40/40 ✓**
 

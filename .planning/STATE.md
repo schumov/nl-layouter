@@ -5,15 +5,15 @@
 See: `.planning/PROJECT.md` (updated 2026-06-07)
 
 **Core value:** Users can build a fully structured, export-ready HTML newsletter without writing any code.
-**Current focus:** Phase 8 — Header/Footer Presets & Pre-header
+**Current focus:** Phase 9 — HTML Export Pipeline ✅ COMPLETE
 
 ---
 
 ## Active Phase
 
-**Phase 8: Header/Footer Presets & Pre-header** ✅ COMPLETE
+**Phase 9: HTML Export Pipeline** ✅ COMPLETE
 
-Goal: Preset selector UI, seed data, pre-header text field. All 8 plans complete. 119 tests passing.
+Goal: react-email + juice + MSO conditionals + browser download. All 8 plans complete. 121 client tests + 16 server tests passing.
 
 ---
 
@@ -41,16 +41,16 @@ Goal: Preset selector UI, seed data, pre-header text field. All 8 plans complete
 **Phase 5 Verified ✅** — All 6 plans executed, 46 tests passing, element placement + InspectorPanel + canvas click deselect wired; browser UAT passed
 **Phase 6 Verified ✅** — All 7 plans executed, 84 tests passing, image/image-link/button renderers + ImageEditor/ButtonEditor wired end-to-end; code review fixes applied
 **Phase 7 Verified ✅** — All 7 plans executed, 105 tests passing, rich-text/divider elements fully wired; TipTap v3 BubbleMenu + preset picker; code review fixes applied (draft state + key prop)
-**Phase 8 Complete ✅** — All 8 plans executed, 119 tests passing, header/footer preset selector + pre-header text field fully wired; DB migration pending (Neon ECONNRESET in dev environment)
+**Phase 9 Complete ✅** — All 8 plans executed, 121 client + 16 server tests passing, full HTML export pipeline: TipTap→react-email→juice→XHTML doctype; POST /newsletters/:id/export + browser download; MSO conditional comments for multi-column Outlook layout
 
 ---
 
 ## Current Position
 
 ```
-Phase  8 / 9  ████████████████████████░  ~88% (Phase 8 complete ✅ — Phase 9 ready)
+Phase  9 / 9  ████████████████████████████  100% ✅ (Phase 9 complete)
 Plan   8 / 8  (all plans complete)
-Status Phase 8 — complete ✅
+Status Phase 9 — complete ✅
 ```
 
 ---
@@ -60,7 +60,7 @@ Status Phase 8 — complete ✅
 | Metric | Value |
 |--------|-------|
 | Phases total | 9 |
-| Phases complete | 8 ✅ |
+| Phases complete | 9 ✅ |
 | Requirements mapped | 40 / 40 |
 | Plans created | 38 |
 | Plans complete | 40 |
@@ -126,7 +126,7 @@ Status Phase 8 — complete ✅
 
 ### Todos
 
-- [ ] Confirm `react-email` version during Phase 9 research
+- [x] ~~Confirm `react-email` version during Phase 9 research~~ — `@react-email/components@1.0.12`, `@react-email/render@2.0.8` (confirmed Phase 9)
 - [ ] Pin fractional-indexing library version if section ordering needs it (PITFALL CRITICAL-4)
 
 ### Blockers
@@ -137,8 +137,8 @@ Status Phase 8 — complete ✅
 
 ## Session Continuity
 
-Last updated: 2026-06-14 (Phase 8 complete — 119 tests GREEN, header/footer preset selector + pre-header text field wired)
-Next action: Advance to Phase 9 (HTML Export Pipeline)
+Last updated: 2026-06-15 (Phase 9 complete — 121 client + 16 server tests GREEN, full HTML export pipeline wired)
+Next action: All v1 planned phases complete — run gsd-verify-work or advance to v2 planning
 
 ### Phase Dependency Chain
 
