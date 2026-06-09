@@ -3,6 +3,7 @@ import cors from '@fastify/cors';
 import cookie from '@fastify/cookie';
 import { config } from './config.js';
 import newsletterRoutes from './routes/newsletters.js';
+import presetsRoutes from './routes/presets.js';
 
 const server = Fastify({
   logger: true,
@@ -20,6 +21,9 @@ await server.register(cookie);
 
 // Newsletter CRUD routes
 await server.register(newsletterRoutes);
+
+// Preset read-only routes — GET /presets, GET /presets/:id
+await server.register(presetsRoutes);
 
 // Health check — returns exactly {"status":"ok"}
 // DO NOT add env info, version numbers, or uptime — information disclosure risk

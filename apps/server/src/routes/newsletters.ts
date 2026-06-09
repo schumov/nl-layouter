@@ -15,10 +15,10 @@ const CreateSchema    = z.object({ title: z.string().min(1) });
 const UpdateDocSchema = z.object({ document: z.unknown() });
 const RenameSchema    = z.object({ title: z.string().min(1) });
 
-// ── Initial document shape (Decisions D-07 + D-08) ─────────────────────────
+// ── Initial document shape (Decisions D-07 + D-08, updated Phase 8) ─────────
 const INITIAL_DOC: NewsletterDoc = {
-  header:       { presetId: 'infineon-default', variables: {} },
-  footer:       { presetId: 'infineon-default', variables: {} },
+  header:       { presetId: 'header-minimal-logo', variables: {} },
+  footer:       { presetId: 'footer-simple-links', variables: {} },
   rows:         [],
   globalStyles: {
     fontFamily:      'Arial, sans-serif',
