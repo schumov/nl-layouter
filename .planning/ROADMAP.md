@@ -14,7 +14,7 @@ NL Layouter delivers a web-based drag-and-drop newsletter builder in 9 phases. P
 - [x] **Phase 4: DnD — Row-Level Operations** — Drag layout sections from palette, reorder, delete, duplicate
 - [x] **Phase 5: DnD — Element Placement** — Drag elements from palette into column slots; remove and replace elements
 - [x] **Phase 6: Image & Button Elements** — Image, image-link, and button renderers + InspectorPanel editors
-- [ ] **Phase 7: Rich Text, Divider & TipTap** — TipTap v3 WYSIWYG with inline-style output; named styles; divider element
+- [x] **Phase 7: Rich Text, Divider & TipTap** — TipTap v3 WYSIWYG with inline-style output; named styles; divider element
 - [ ] **Phase 8: Header/Footer Presets & Pre-header** — Preset selector UI, seed data, pre-header text field
 - [ ] **Phase 9: HTML Export Pipeline** — react-email + juice + MSO conditionals + browser download
 
@@ -196,13 +196,13 @@ Plans:
 **Plans:** 7 plans
 
 Plans:
-- [ ] 07-00-PLAN.md — TDD RED stubs: create failing test contracts for all Phase 7 components
-- [ ] 07-01-PLAN.md — Package install + shared TipTap extension module (`lib/tiptap-extensions.ts`)
-- [ ] 07-02-PLAN.md — `DividerRenderer` + `DividerEditor` (inline-styled hr + color/thickness/spacing editor)
-- [ ] 07-03-PLAN.md — `addElement` defaults: rich-text content fix + store unit tests
-- [ ] 07-04-PLAN.md — `RichTextStaticRenderer` (generateHTML + dangerouslySetInnerHTML + preset CSS)
-- [ ] 07-05-PLAN.md — `RichTextEditor` (useEditor + BubbleMenu + named preset picker)
-- [ ] 07-06-PLAN.md — Full integration: ElementRenderer lifecycle guard + InspectorPanel routing
+- [x] 07-00-PLAN.md — TDD RED stubs: create failing test contracts for all Phase 7 components
+- [x] 07-01-PLAN.md — Package install + shared TipTap extension module (`lib/tiptap-extensions.ts`)
+- [x] 07-02-PLAN.md — `DividerRenderer` + `DividerEditor` (inline-styled hr + color/thickness/spacing editor)
+- [x] 07-03-PLAN.md — `addElement` defaults: rich-text content fix + store unit tests
+- [x] 07-04-PLAN.md — `RichTextStaticRenderer` (generateHTML + dangerouslySetInnerHTML + preset CSS)
+- [x] 07-05-PLAN.md — `RichTextEditor` (useEditor + BubbleMenu + named preset picker)
+- [x] 07-06-PLAN.md — Full integration: ElementRenderer lifecycle guard + InspectorPanel routing
 
 ### Done When
 
@@ -319,10 +319,10 @@ Plans:
 | ELEM-03 | Phase 6 | Complete |
 | ELEM-04 | Phase 6 | Complete |
 | ELEM-05 | Phase 6 | Complete |
-| ELEM-06 | Phase 7 | Pending |
-| ELEM-07 | Phase 7 | Pending |
-| ELEM-08 | Phase 7 | Pending |
-| ELEM-09 | Phase 7 | Pending |
+| ELEM-06 | Phase 7 | Complete |
+| ELEM-07 | Phase 7 | Complete |
+| ELEM-08 | Phase 7 | Complete |
+| ELEM-09 | Phase 7 | Complete |
 | ELEM-10 | Phase 5 | Pending |
 | ELEM-11 | Phase 5 | Pending |
 | ELEM-12 | Phase 5 | Pending |
