@@ -5,7 +5,7 @@
 // CC-2/CC-6: color values go in style={} — never in Tailwind class names.
 // font-medium is FORBIDDEN — use font-semibold for all labels (STATE.md constraint).
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import type { DividerElement } from '../../types/newsletter';
 import { Input } from '@/components/ui/input';
 
@@ -15,6 +15,13 @@ interface DividerEditorProps {
 }
 
 export function DividerEditor({ element, onUpdate }: DividerEditorProps) {
+  // Draft state for hex text input — allows partial keystrokes without snapping back.
+  // Syncs with element.color when the color swatch (or external update) changes the value.
+  const [colorDraft, setColorDraft] = useState(element.color);
+  useEffect(() => {
+    setColorDraft(element.color);
+  }, [element.color]);
+
   return (
     <div className="flex flex-col gap-4 p-4">
 
@@ -29,12 +36,13 @@ export function DividerEditor({ element, onUpdate }: DividerEditorProps) {
             onChange={(e) => onUpdate({ color: e.target.value })}
             className="h-8 w-10 cursor-pointer rounded border border-border p-0"
           />
-          {/* Hex text input — validates before dispatch */}
+          {/* Hex text input — draft state allows partial keystrokes; dispatches when valid */}
           <Input
             type="text"
-            value={element.color}
+            value={colorDraft}
             onChange={(e) => {
               const val = e.target.value;
+              setColorDraft(val);
               if (/^#[0-9a-fA-F]{6}$/.test(val)) {
                 onUpdate({ color: val });
               }

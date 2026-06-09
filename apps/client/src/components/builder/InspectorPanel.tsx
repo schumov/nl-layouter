@@ -53,7 +53,9 @@ export function InspectorPanel({ element, onBack, onUpdate }: InspectorPanelProp
           case 'button':
             return <ButtonEditor element={element} onUpdate={onUpdate} />;
           case 'rich-text':
-            return <RichTextEditor element={element} onUpdate={onUpdate} />;
+            // key={element.id} forces remount when a different rich-text element is selected,
+            // ensuring TipTap reinitializes content from element.content (not stale doc state).
+            return <RichTextEditor key={element.id} element={element} onUpdate={onUpdate} />;
           case 'divider':
             return <DividerEditor element={element} onUpdate={onUpdate} />;
           default:
