@@ -166,3 +166,29 @@ describe('useNewsletterStore — addElement defaults (D-12, Phase 7)', () => {
     expect(element.thickness).toBe(1);
   });
 });
+
+describe('useNewsletterStore — header/footer/preHeader actions (Phase 8 RED)', () => {
+  // RED until Plan 08-03: updateHeader/updateFooter/updatePreHeader do not exist yet.
+  // TypeError: updateHeader is not a function — correct RED signal.
+
+  it('HF-01: updateHeader sets doc.header.presetId', () => {
+    const { updateHeader } = useNewsletterStore.getState() as any;
+    updateHeader('header-minimal-logo');
+    const doc = useNewsletterStore.getState().doc!;
+    expect(doc.header.presetId).toBe('header-minimal-logo');
+  });
+
+  it('HF-02: updateFooter sets doc.footer.presetId', () => {
+    const { updateFooter } = useNewsletterStore.getState() as any;
+    updateFooter('footer-simple-links');
+    const doc = useNewsletterStore.getState().doc!;
+    expect(doc.footer.presetId).toBe('footer-simple-links');
+  });
+
+  it('HF-04: updatePreHeader sets doc.preHeader string', () => {
+    const { updatePreHeader } = useNewsletterStore.getState() as any;
+    updatePreHeader('Hello inbox!');
+    const doc = useNewsletterStore.getState().doc!;
+    expect((doc as any).preHeader).toBe('Hello inbox!');
+  });
+});
