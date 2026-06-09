@@ -7,7 +7,10 @@
     "dev": "tsx watch src/index.ts",
     "build": "tsc -b",
     "start": "node dist/index.js",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "db:push": "drizzle-kit push",
+    "migrate:presets": "tsx src/db/migrate-presets.ts",
+    "seed": "tsx src/db/seed.ts"
   },
   "dependencies": {
     "fastify": "5.8.5",
