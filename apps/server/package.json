@@ -17,14 +17,21 @@
   "dependencies": {
     "@fastify/cookie": "11.0.2",
     "@fastify/cors": "11.2.0",
+    "@react-email/components": "^1.0.12",
+    "@react-email/render": "^2.0.8",
     "dotenv": "^16.0.0",
     "drizzle-orm": "0.45.2",
     "fastify": "5.8.5",
+    "juice": "^12.1.0",
     "postgres": "3.4.9",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
     "zod": "4.4.3"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
+    "@types/react": "^19.2.16",
+    "@types/react-dom": "^19.2.3",
     "@vitest/coverage-v8": "^3.2.6",
     "drizzle-kit": "0.31.10",
     "tsx": "4.22.4",
